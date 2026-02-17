@@ -1,0 +1,2006 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Koulen&family&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,900&display=swap');
+
+/* -------------------------------------------------------------------------- */
+/* RETRO HEADER (The Boot Sequence)                                           */
+/* -------------------------------------------------------------------------- */
+
+.home-header {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.terminal-box {
+  background-color: #000;
+  border: 4px solid #333; /* Dark bezel */
+  border-radius: 12px;
+  padding: 1.5rem 3rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2), inset 0 0 20px rgba(0,255,0,0.1);
+  display: inline-block;
+  position: relative;
+}
+
+/* The Glowing Green Text */
+.terminal-box h1 {
+  font-family: 'VT323', monospace;
+  font-size: 4rem; /* Nice and big */
+  line-height: 1;
+  margin: 0;
+  color: #33ff00; /* Classic Terminal Green */
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(51, 255, 0, 0.6), 0 0 2px rgba(51, 255, 0, 0.4);
+  letter-spacing: 2px;
+}
+
+/* The Blinking Cursor Animation */
+.cursor {
+  display: inline-block;
+  width: 15px;
+  height: 3rem;
+  background-color: #33ff00;
+  vertical-align: bottom;
+  margin-left: 5px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* The sub-text below the box */
+.home-header p {
+  margin-top: 1.5rem;
+  font-family: 'Epilogue', sans-serif; /* Keep the instruction readable */
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* -------------------------------------------------------------------------- */
+/* LOGO SPECIFIC STYLES "This is where the fun begins!" - Anakin Skywalker    */
+/* -------------------------------------------------------------------------- */
+
+
+
+/* -------------------------------------------------------------------------- */
+/* PEACH IIe (Apple IIe Parody)                                               */
+/* -------------------------------------------------------------------------- */
+
+/* PEACH IIe */
+.peach-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between fruit and text */
+}
+
+.peach-icon {
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2)); /* Give the fruit some depth */
+}
+
+.peach-text-group {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.peach-word {
+  font-family: 'Comfortaa', sans-serif; /* The new free font */
+  font-weight: 700; /* Bold matches the casing text */
+  font-size: 3rem;
+  letter-spacing: -3px; /* Tighten it up to look retro */
+  color: #222; /* Soft black */
+  transform: scaleY(0.9); /* Squish it slightly to look more like the 80s font */
+}
+
+/* Optional: Make the //e italic and bold to match */
+.iie-word {
+  font-family: sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: #222;
+  margin-left: 5px;
+}
+
+/* Specific Card Background for Peach IIe */
+/* The original case was beige/putty color */
+.vibe-card.apple-iie {
+  background-color: #f2f0e4; 
+  border: 1px solid #dcd9cc;
+}
+
+/* -------------------------------------------------------------------------- */
+/* PEACH WRITER ][ (Apple IIe Specific Layout)                                */
+/* -------------------------------------------------------------------------- */
+
+/* 1. LAYOUT ADJUSTMENTS */
+.apple-iie .screen {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem; /* Give the text some breathing room from the bezel */
+}
+
+.apple-iie textarea {
+  flex-grow: 1; /* Take up all available space between header and footer */
+  padding: 1rem 0; /* Space between header and text */
+}
+
+/* 2. THE TOP HEADER (The "Paul Lutus" Box) */
+.apple-header {
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-family: 'AppleIIe', monospace;
+  color: #33ff33;
+}
+
+.apple-header-border {
+  border: 4px double #33ff33; /* The classic double line! */
+  padding: 0.5rem 2rem;
+  display: inline-block;
+  background: #000;
+}
+
+/* 3. THE COMMAND LINE (Bottom Controls) */
+.apple-iie .retro-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px dashed #33ff33; /* A separator line */
+  padding-top: 0.8rem;
+  margin-top: 0.5rem;
+  font-family: 'AppleIIe', monospace;
+}
+
+/* The File Input */
+.apple-iie .status-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #33ff33;
+}
+
+.apple-iie .status-field input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #33ff33; /* Underline style input */
+  color: #33ff33;
+  font-family: 'AppleIIe', monospace;
+  font-size: 1.2rem;
+  width: 200px;
+  outline: none;
+  text-transform: uppercase;
+}
+
+/* The Buttons (Inverted Video Style) */
+.apple-iie .command-group {
+  display: flex;
+  gap: 15px;
+}
+
+.apple-iie button {
+  background: transparent;
+  border: none;
+  color: #33ff33;
+  font-family: 'AppleIIe', monospace;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 2px 5px;
+  text-transform: uppercase;
+}
+
+/* HOVER EFFECT: The classic "Inverted Green Block" cursor look */
+.apple-iie button:hover {
+  background-color: #33ff33;
+  color: #000; /* Black text on Green background */
+}
+
+/* -------------------------------------------------------------------------- */
+/* ADMIRAL 75 (Commodore 64 Parody)                                           */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background (Beige Breadbin Case) */
+.vibe-card.commodore-64 {
+  background-color: #9e9a88; /* The classic beige case color */
+  border: 4px solid #858170; /* Slightly darker plastic rim */
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* The Dark Grey Badge Strip */
+.admiral-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background-color: #444; /* Dark grey badge background */
+  padding: 15px 25px;
+  border-radius: 4px; /* Slightly rounded corners */
+  border: 1px solid #666; /* Highlight on the badge edge */
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Depth */
+}
+
+.admiral-icon {
+  filter: drop-shadow(1px 1px 0px rgba(255,255,255,0.2)); /* Plastic shine */
+}
+
+.admiral-text-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admiral-word {
+  font-family: 'Michroma', sans-serif; /* The wide 80s tech font */
+  font-size: 1.8rem;
+  color: #fff;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+.model-75 {
+  font-family: 'Michroma', sans-serif;
+  font-size: 2.2rem;
+  color: #fff;
+  font-weight: 900; /* Extra thick */
+}
+
+/* The Rainbow Stripes */
+.c64-stripes {
+  display: flex;
+  flex-direction: column;
+  width: 60px; /* Length of the stripes */
+  height: 25px; /* Height of the stack */
+}
+
+.c-stripe {
+  flex: 1; /* Equal height */
+  width: 100%;
+}
+
+.s-red    { background-color: #e63e34; }
+.s-orange { background-color: #e68334; }
+.s-yellow { background-color: #e6d334; }
+.s-green  { background-color: #55a846; }
+.s-blue   { background-color: #4044a8; }
+
+/* -------------------------------------------------------------------------- */
+/* ADMIRAL WORD (Commodore 64 Layout)                                         */
+/* -------------------------------------------------------------------------- */
+
+/* 1. LAYOUT & COLORS */
+.commodore-64 .screen {
+  background-color: #352879; /* The iconic C64 Dark Blue */
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem; /* C64 had wide margins */
+  border: 20px solid #706de3; /* The C64 "Border" color (Light Purple/Blue) */
+  border-radius: 4px; /* Less rounded than a modern screen */
+}
+
+/* 2. THE HEADER SECTION */
+.c64-header-container {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* The Solid Bar */
+.c64-header-bar {
+  background-color: #a8a8ff; /* Light Blue Background */
+  color: #352879;            /* Dark Blue Text */
+  font-family: 'Commodore64', monospace;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.2); /* Slight drop shadow for depth */
+}
+
+.c64-subtext {
+  font-family: 'Commodore64', monospace;
+  color: #a8a8ff;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* 3. THE TEXT AREA */
+.commodore-64 textarea {
+  font-family: 'Commodore64', monospace;
+  color: #a8a8ff; /* Light Blue Text */
+  flex-grow: 1;
+  caret-color: #a8a8ff; /* Blinking cursor matches text */
+}
+
+/* 4. THE COMMAND LINE (Bottom) */
+.commodore-64 .retro-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  border-top: 2px solid #a8a8ff; /* Solid line separator */
+  padding-top: 0.8rem;
+  font-family: 'Commodore64', monospace;
+}
+
+/* Inputs */
+.commodore-64 .status-field {
+  color: #a8a8ff;
+}
+
+.commodore-64 .status-field input {
+  background: #2a2a60; /* Slightly darker input box */
+  border: 1px solid #a8a8ff;
+  color: #fff;
+  font-family: 'Commodore64', monospace;
+  width: 180px;
+  padding: 2px 5px;
+}
+
+/* Buttons */
+.commodore-64 button {
+  background: #a8a8ff;
+  color: #352879;
+  border: none;
+  font-family: 'Commodore64', monospace;
+  padding: 4px 8px;
+  cursor: pointer;
+  margin-left: 10px;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.commodore-64 button:hover {
+  background: #fff; /* White flash on hover */
+}
+
+/* -------------------------------------------------------------------------- */
+/* OLARI 500 (Atari 400 Parody)                                               */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background (Beige Plastic) */
+.vibe-card.atari-400 {
+  background-color: #d6cfb8; /* That specific warm beige */
+  border: 4px solid #bba; /* Shadowy edge */
+}
+
+/* The "Badge" Plate */
+.solaris-badge {
+  background-color: #e3dec9; /* Slightly lighter plate color */
+  border: 2px solid #a39f8f; /* The inset groove line */
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 4px;
+  box-shadow: inset 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+.solaris-icon-box {
+  background-color: #333; /* The dark square behind the logo */
+  border-radius: 4px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solaris-icon path {
+  fill: #fff; /* White logo on dark box (like the reference) */
+}
+
+.solaris-text-group {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.solaris-word {
+  font-family: 'Koulen', sans-serif; /* The tall geometric font */
+  font-size: 2.5rem;
+  color: #222; /* Sharp Black */
+  line-height: 0.8;
+  letter-spacing: -1px;
+}
+
+.model-500 {
+  font-family: 'Koulen', sans-serif;
+  font-size: 2.5rem;
+  color: transparent; /* See-through center */
+  -webkit-text-stroke: 2px #eebc38; /* The Mustard Yellow Outline! */
+  line-height: 0.8;
+}
+
+/* -------------------------------------------------------------------------- */
+/* BIG BLUE OX JR (IBM PC Jr Parody)                                          */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background (Industrial Cool Gray) */
+.vibe-card.ibm-pc-jr {
+  background-color: #e0e0e0; /* Cool, neutral grey */
+  border: 1px solid #c0c0c0;
+}
+
+.ox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0px;
+}
+
+.big-blue-text {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  color: #004085; /* Dark Corporate Blue */
+  text-transform: uppercase;
+  margin-left: 2px;
+}
+
+.ox-main-row {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  line-height: 0.8;
+}
+
+.ox-logo {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 900;
+  font-size: 5rem;
+  letter-spacing: -2px;
+  
+  /* THE CSS MAGIC: Blue Scanlines! */
+  background: repeating-linear-gradient(
+    to bottom,
+    #006699 0%,
+    #006699 15%,   /* Blue Stripe */
+    transparent 15%,
+    transparent 25% /* Gap */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Hide the actual text color so stripes show */
+}
+
+.ox-jr {
+  font-family: 'Times New Roman', serif; /* Classic Serif for the 'jr' */
+  font-weight: bold;
+  font-style: italic;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+/* -------------------------------------------------------------------------- */
+/* PEACH MACANDCHEESE (Macintosh 1985 Parody)                                 */
+/* -------------------------------------------------------------------------- */
+
+/* 1. THE DESKTOP (50% Grey Dither) */
+.journal.apple-mac-1985 {
+  /* This creates the checkerboard pattern of the original Mac desktop */
+  background-color: #808080;
+  background-image: 
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
+  background-size: 4px 4px;
+  background-position: 0 0, 2px 2px;
+  
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'AppleMac1985', 'Geneva', sans-serif; /* Your imported font */
+}
+
+/* 2. THE MENU BAR (Fixed Top) */
+.mac-menu-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  background: #fff;
+  border-bottom: 2px solid #000;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  gap: 20px;
+  z-index: 100;
+}
+
+.mac-menu-apple {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.mac-menu-item {
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+}
+.mac-menu-item:hover {
+  background: #000;
+  color: #fff; /* Inverted video on hover */
+  padding: 0 5px;
+}
+
+/* 3. THE WINDOW FRAME */
+.mac-window {
+  width: 700px;
+  height: 500px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 8px; /* Mac windows had rounded corners */
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.5); /* Hard drop shadow */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 4. THE PINSTRIPE TITLE BAR */
+.mac-title-bar {
+  height: 28px;
+  border-bottom: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+  /* THE PINSTRIPE MAGIC */
+  background: repeating-linear-gradient(
+    to bottom,
+    #fff,
+    #fff 2px,
+    #000 2px,
+    #000 3px
+  );
+}
+
+/* The Title Text (White Box centered) */
+.mac-title-text-container {
+  background: #fff;
+  padding: 0 15px;
+  border-left: 1px solid #fff; /* Masks the lines */
+  border-right: 1px solid #fff;
+  z-index: 2;
+}
+
+.mac-title-text {
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* The Close Box (Top Left) */
+.mac-close-box {
+  position: absolute;
+  left: 8px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 1px solid #000;
+  box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px #000; /* Creates the "box inside box" look */
+  cursor: pointer;
+  z-index: 5;
+}
+.mac-close-box:active {
+  background: #000; /* Invert on click */
+}
+
+/* 5. THE RULER */
+.mac-ruler {
+  height: 30px;
+  border-bottom: 2px solid #000;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  background: #fff;
+}
+.ruler-line {
+  flex-grow: 1;
+  border-bottom: 1px dotted #000; /* Dotted line */
+  display: flex;
+  justify-content: space-between;
+  padding-right: 40px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* 6. CONTENT AREA */
+.mac-content {
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+}
+
+.mac-content textarea {
+  flex-grow: 1;
+  border: none;
+  resize: none;
+  outline: none;
+  padding: 10px;
+  font-family: 'AppleMac1985', 'Geneva', sans-serif;
+  font-size: 18px; /* Mac fonts were chunky */
+  line-height: 1.5;
+}
+
+/* Scrollbar (Right) */
+.mac-scrollbar {
+  width: 20px;
+  border-left: 2px solid #000;
+  display: flex;
+  flex-direction: column;
+  background-image: radial-gradient(#000 15%, transparent 16%); /* Stippled pattern */
+  background-size: 2px 2px;
+}
+
+.scroll-arrow {
+  height: 20px;
+  background: #fff;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: pointer;
+}
+.scroll-track {
+  flex-grow: 1;
+  position: relative;
+}
+.scroll-thumb {
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  border: 1px solid #000;
+  position: absolute;
+  top: 10px;
+}
+
+/* 7. FOOTER (Resize Handle) */
+.mac-footer {
+  height: 15px;
+  border-top: 2px solid #000;
+  display: flex;
+  justify-content: flex-end;
+}
+.mac-resize-box {
+  width: 15px;
+  height: 100%;
+  border-left: 2px solid #000;
+  background: #fff;
+}
+
+/* 8. FLOATING SAVE BUTTON */
+.mac-floppy-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: 'AppleMac1985', sans-serif;
+  box-shadow: 4px 4px 0 #000;
+  cursor: pointer;
+}
+.mac-floppy-btn:active {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(2px, 2px);
+}
+
+/* -------------------------------------------------------------------------- */
+/* DX-DISK 87 (Microsoft MS-DOS Parody)                                       */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background (Manual Cover Cream) */
+.vibe-card.dos-1987 {
+  background-color: #f2eecb; /* Yellowed paper look */
+  border: 1px solid #dcd8b8;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+}
+
+.dos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centered like the box cover */
+  justify-content: center;
+}
+
+.dos-main-text {
+  line-height: 0.8;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap; /* Wraps on small screens if needed */
+  justify-content: center;
+}
+
+.dx-text, .disk-text {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 900; /* Super heavy */
+  font-style: italic; /* The Key Feature! */
+  font-size: 3.5rem;
+  color: #111; /* Stark Black */
+  letter-spacing: -2px;
+}
+
+.number-87 {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 400; /* Lighter weight for the number, often seen on boxes */
+  font-style: italic;
+  font-size: 3.5rem;
+  color: #111;
+  margin-left: 5px;
+}
+
+.dos-subtitle {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #444;
+  letter-spacing: 1px;
+  border-top: 1px solid #444; /* That little line often seen on manuals */
+  padding-top: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+/* -------------------------------------------------------------------------- */
+/* SEATTLESOFT DOORWAYS 3.1 (Windows 3.1 Parody)                              */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background (Clean Box White) */
+.vibe-card.windows-31-1990 {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.doorways-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+/* The Logo Row */
+.doorways-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+/* The Pixel Trail Grid */
+.pixel-trail {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-right: 5px;
+  opacity: 0.6;
+}
+
+.pix {
+  width: 6px;
+  height: 6px;
+  background-color: #000;
+}
+/* Stagger the pixels to look like motion */
+.p1 { transform: translateX(5px); }
+.p3 { transform: translateX(2px); }
+.p6 { transform: translateX(-2px); }
+
+.doorways-icon {
+  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
+}
+
+/* The Typography */
+.doorways-text-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.seattle-text {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1rem;
+  color: #111;
+}
+
+.doorways-text {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 2.2rem;
+  color: #111;
+  letter-spacing: -1px;
+}
+
+.ver-text {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 0.9rem;
+  color: #111;
+  margin-top: 2px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* PEACH ORCHARD 7 (Mac System 7 / Mac OS 8 Parody)                           */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background (Classic Mac Grey) */
+.vibe-card.mac-system-7-1994 {
+  background-color: #b0b0b0; /* That flat, slightly dark grey */
+  border: 1px solid #999;
+  /* Optional: Simple CSS pattern to mimic dither if you want, but flat grey is safer */
+}
+
+.orchard-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The White "Welcome" Window */
+.orchard-window {
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.2); /* Hard drop shadow */
+  width: 80%;
+}
+
+.picasso-peach {
+  /* No drop shadow needed, the flat look is the aesthetic */
+}
+
+.orchard-text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.orchard-title {
+  font-family: 'EB Garamond', serif; /* Re-using our classy font */
+  font-size: 2rem;
+  line-height: 1;
+  color: #333;
+}
+
+.orchard-subtitle {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-self: flex-start; /* "Starting up..." is usually left-aligned or centered */
+}
+
+/* The Progress Bar */
+.orchard-progress-bar {
+  width: 100%;
+  height: 8px;
+  border: 1px solid #666;
+  background: #eee;
+  border-radius: 0; /* Square edges */
+  padding: 1px;
+}
+
+.orchard-progress-fill {
+  width: 40%; /* Stuck at 40% forever */
+  height: 100%;
+  background-color: #4b62b0; /* Matches the dark blue of the logo */
+}
+
+/* -------------------------------------------------------------------------- */
+/* SEATTLESOFT DOORWAYS 95 (Windows 95 Parody)                                */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background (The Cloudy Sky) */
+.vibe-card.windows-95 {
+  /* A nice soft sky gradient mimicking the box art */
+  background: linear-gradient(to bottom, #5d9ad3 0%, #8ebceb 100%);
+  border: 1px solid #4a80b0;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+.doorways-95-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.doorways-95-logo-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  /* The 95 logo was tilted upwards/right */
+  transform: rotate(-5deg) translateY(-5px); 
+}
+
+.trail-95 {
+  opacity: 0.4; /* Slightly subtler trail for the modern look */
+}
+
+/* The Icon needs to pop against the blue sky */
+.icon-95 {
+  filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.2));
+}
+
+.doorways-95-text-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Left aligned looks more like the boot screen */
+  color: #fff; /* White text looks great on the sky blue */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.seattle-95 {
+  font-family: 'Arial', sans-serif; /* Basic sans for the brand name */
+  font-size: 0.9rem;
+  font-weight: bold;
+  opacity: 0.9;
+  margin-left: 2px;
+}
+
+.doorways-row {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  line-height: 0.9;
+}
+
+.doorways-95-title {
+  font-family: 'Arial Black', 'Helvetica Black', sans-serif; /* Thick Sans-Serif! */
+  font-weight: 900;
+  font-size: 1.8rem;
+  letter-spacing: -1px;
+}
+
+.number-95 {
+  font-family: 'Arial', sans-serif;
+  font-weight: 100; /* Thin font for the number, very 90s aesthetic */
+  font-size: 1.8rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* PEACH AQUA (Mac OS X Parody)                                               */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background (Pinstripes!) */
+.vibe-card.mac-osx-2001 {
+  background-color: #f0f0f0;
+  /* The Pinstripe Pattern */
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  border: 1px solid #ccc;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.aqua-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* The "Gel" Effect on the Icon */
+.aqua-icon {
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); /* Soft shadow floating */
+}
+
+/* To simulate the 3D depth of Aqua, we add an inner shine via CSS if needed,
+   but the SVG paths handle most of it! */
+
+.aqua-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 2.5rem;
+  color: #333;
+  opacity: 0.8;
+  letter-spacing: -1px;
+}
+
+/* The Candy Loading Bar */
+.aqua-loader {
+  width: 120px;
+  height: 10px;
+  background: #ddd;
+  border-radius: 10px; /* Fully rounded caps */
+  border: 1px solid #bbb;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.aqua-bar {
+  width: 100%;
+  height: 100%;
+  /* The "Barber Pole" blue animation */
+  background: repeating-linear-gradient(
+    45deg,
+    #5ac8fa,
+    #5ac8fa 10px,
+    #007aff 10px,
+    #007aff 20px
+  );
+  opacity: 0.8;
+}
+
+/* -------------------------------------------------------------------------- */
+/* SEATTLESOFT DOORWAYS XP (Windows XP Parody)                                */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background: "Bliss" Hill Parody */
+.vibe-card.windows-xp-2001 {
+  background: linear-gradient(to bottom, #6d9dfd 0%, #6d9dfd 50%, #7dbb34 50%, #7dbb34 100%);
+  border: 1px solid #0055ea; /* That XP Blue border */
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+}
+
+.xp-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.xp-flag {
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+.xp-text-group {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.xp-doorways {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+  letter-spacing: -1px;
+}
+
+.xp-badge {
+  font-family: 'Franklin Gothic Medium', 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #ff6a00; /* That specific Orange */
+  position: relative;
+  top: -10px; /* Superscript effect */
+  text-shadow: 1px 1px 0 #fff; /* White outline effect */
+}
+
+/* -------------------------------------------------------------------------- */
+/* DOORWAYS XP (Windows XP Parody)                                            */
+/* -------------------------------------------------------------------------- */
+
+/* 1. THE DESKTOP (Bliss Wallpaper Gradient) */
+.journal.windows-xp-2001 {
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  /* The Classic Sky-to-Grass Gradient */
+  background: linear-gradient(to bottom, #5896e8 0%, #8ebceb 60%, #5ba922 60%, #468c13 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2. THE WINDOW FRAME */
+.xp-window {
+  width: 800px;
+  height: 600px;
+  background-color: #ece9d8; /* That classic beige-grey */
+  border: 4px solid #0055ea; /* Luna Blue Border */
+  border-radius: 8px 8px 0 0; /* Rounded top corners only */
+  box-shadow: 4px 4px 15px rgba(0,0,0,0.4); /* Drop shadow */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+/* 3. THE TITLE BAR (Glossy Blue) */
+.xp-title-bar {
+  /* The "Luna" Gradient */
+  background: linear-gradient(to bottom, #0058ee 0%, #3593ff 4%, #288eff 18%, #127dff 46%, #0369fd 60%, #0250cf 100%);
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-family: 'Tahoma', sans-serif;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  font-weight: bold;
+  border-bottom: 1px solid #00309e;
+}
+
+.xp-title-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.xp-app-icon {
+  font-family: serif;
+  background: #fff;
+  color: #0055ea;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 2px;
+}
+
+/* 4. THE WINDOW CONTROLS (CSS Buttons!) */
+.xp-window-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.xp-control-btn {
+  width: 22px;
+  height: 22px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: inset 0 0 2px rgba(255,255,255,0.5);
+}
+
+/* Blue Buttons (Min/Max) */
+.xp-control-btn.min, .xp-control-btn.max {
+  background: linear-gradient(to bottom, #609cf4 0%, #377fee 48%, #0b5ad3 50%, #1562dd 100%);
+  border-color: #0b49b4;
+  line-height: 0.8;
+}
+
+/* The Red Close Button */
+.xp-control-btn.close {
+  background: linear-gradient(to bottom, #e87b6a 0%, #dc5842 48%, #c52912 50%, #d54932 100%);
+  border-color: #9b2015;
+  font-size: 18px;
+  padding-bottom: 2px;
+}
+
+.xp-control-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* 5. MENUS & TOOLBARS */
+.xp-menu-bar {
+  background-color: #ece9d8;
+  padding: 4px 10px;
+  display: flex;
+  gap: 12px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 12px;
+  border-bottom: 1px solid #d3d1c3;
+}
+.xp-menu-bar span:hover {
+  background-color: #316ac5;
+  color: #fff;
+  cursor: default;
+}
+
+.xp-toolbar {
+  background-color: #ece9d8;
+  padding: 6px 10px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  border-bottom: 1px solid #d3d1c3;
+}
+
+.xp-tool-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border: 1px solid transparent;
+}
+.xp-tool-btn:hover {
+  border: 1px solid #316ac5;
+  background-color: #c1d2ee;
+  border-radius: 2px;
+}
+
+.xp-divider {
+  width: 1px;
+  height: 20px;
+  background-color: #aca899;
+  margin: 0 4px;
+}
+
+/* 6. CONTENT AREA (The Paper) */
+.xp-content-area {
+  flex-grow: 1;
+  background-color: #6d6d6d; /* Dark grey workspace behind paper */
+  padding: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+/* The Textarea acts as the "Paper" */
+.xp-content-area textarea {
+  width: 100%;
+  max-width: 700px;
+  height: 100%;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  padding: 40px;
+  font-family: 'Times New Roman', serif;
+  font-size: 16px;
+  resize: none;
+  outline: none;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5); /* Paper shadow */
+}
+
+/* Filename Input in Toolbar */
+.xp-filename-input {
+  border: 1px solid #7f9db9;
+  padding: 2px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 12px;
+  width: 150px;
+}
+
+/* 7. STATUS BAR */
+.xp-status-bar {
+  background-color: #ece9d8;
+  border-top: 1px solid #d3d1c3;
+  padding: 2px 10px;
+  display: flex;
+  gap: 20px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 11px;
+  color: #333;
+}
+
+/* 8. THE TASKBAR */
+.xp-taskbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  /* Luna Blue Taskbar Gradient */
+  background: linear-gradient(to bottom, #245edb 0%, #255fd7 3%, #3f76e3 6%, #2960da 10%, #194fdb 100%);
+  border-top: 2px solid #3a6ea5;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  padding-right: 10px;
+}
+
+.xp-start-button {
+  height: 30px;
+  background: linear-gradient(to bottom, #3c9f40 0%, #46b345 5%, #358d34 100%);
+  border: none;
+  border-radius: 0 10px 10px 0; /* Iconic curved shape */
+  padding: 0 20px 0 10px;
+  color: #fff;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Tahoma', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: inset 1px 1px 2px rgba(255,255,255,0.4);
+  cursor: pointer;
+  margin-right: 10px;
+}
+.xp-start-button:hover {
+  filter: brightness(1.1);
+}
+
+.xp-task-group {
+  flex-grow: 1;
+  display: flex;
+}
+
+.xp-task-item {
+  background-color: #1e52b7;
+  color: #fff;
+  padding: 4px 15px;
+  border-radius: 3px;
+  width: 160px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border: 1px solid #143f8e;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2); /* Pressed in look */
+}
+.xp-task-item.active {
+  background-color: #1a469c; /* Darker when active */
+  background: linear-gradient(to bottom, #173d88 0%, #1e52b7 100%);
+}
+
+.xp-tray {
+  background-color: #1290e8;
+  border: 1px solid #0d78c3;
+  padding: 2px 10px;
+  border-radius: 2px;
+  color: #fff;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 12px;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* -------------------------------------------------------------------------- */
+/* ELECTRONIC PAPER (E-Ink / NeoVim Style)                                    */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background: Matte E-Ink Grey */
+.vibe-card.e-ink {
+  background-color: #d4d4d4; /* Matching the NeoVim bg */
+  border: 4px solid #333; /* Thick dark border */
+  box-shadow: none; /* Flat design */
+}
+
+.e-ink-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.e-ink-icon-box {
+  background-color: #d4d4d4;
+  padding: 10px;
+}
+
+.e-ink-label-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.e-ink-title {
+  font-family: 'Courier New', monospace; /* Monospace for that code/terminal vibe */
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.e-ink-subtitle {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* INKWRITER 2008 (E-Ink Layout)                                              */
+/* -------------------------------------------------------------------------- */
+
+/* 1. THE SCREEN (The Device) */
+.journal.e-ink {
+  background-color: #333; /* Dark desk background */
+}
+
+.e-ink .screen {
+  /* DAY MODE (Default) - Matches the NeoVim Screenshot */
+  background-color: #d4d4d4; 
+  border: 15px solid #e0e0e0; /* Slightly lighter plastic bezel */
+  border-radius: 8px;
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  position: relative;
+  transition: background-color 0.3s ease; /* Smooth fade when switching modes */
+}
+
+/* 2. NIGHT MODE OVERRIDES */
+.e-ink.night-mode .screen {
+  background-color: #1a1a1a; /* Dark Screen */
+  border-color: #333; /* Darker bezel in low light */
+}
+
+/* 3. THE HEADER */
+.e-ink-header {
+  background-color: #000;
+  color: #fff;
+  padding: 8px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* 4. THE WRITING AREA (Crucial Fix for Text Color) */
+.e-ink textarea {
+  flex-grow: 1;
+  border: none;
+  resize: none;
+  outline: none;
+  padding: 2rem;
+  font-family: 'EB Garamond', serif; /* The "Book" Font */
+  font-size: 1.3rem;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+
+  /* FORCE DAY MODE COLORS */
+  background-color: #d4d4d4; 
+  color: #222222 !important; /* Forces Dark Text */
+}
+
+/* NIGHT MODE TEXTAREA */
+.e-ink.night-mode textarea {
+  background-color: #1a1a1a;
+  color: #c0c0c0 !important; /* Soft Silver Text */
+}
+
+/* Placeholder Colors */
+.e-ink textarea::placeholder {
+  color: #666;
+  font-style: italic;
+}
+.e-ink.night-mode textarea::placeholder {
+  color: #555;
+}
+
+/* 5. THE FOOTER */
+.e-ink-footer {
+  border-top: 2px solid #111;
+  padding: 10px 15px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Night mode footer (optional inverted look) */
+.e-ink.night-mode .e-ink-footer {
+  background-color: #222;
+  border-top: 1px solid #444;
+}
+
+.e-ink-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.e-ink-filename {
+  border: 1px solid #111;
+  background: #fff;
+  color: #111;
+  padding: 5px 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  width: 200px;
+}
+
+/* Buttons */
+.e-ink-button-row button {
+  background: #fff;
+  border: 2px solid #111;
+  color: #111;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  padding: 5px 15px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #888;
+}
+
+/* Night Mode Buttons */
+.e-ink.night-mode .e-ink-button-row button {
+  background: #333;
+  color: #fff;
+  border-color: #666;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.e-ink-status-line {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: #555;
+}
+.e-ink.night-mode .e-ink-status-line {
+  color: #888;
+}
+/* -------------------------------------------------------------------------- */
+/* HOME / GALLERY LAYOUT                                                      */
+/* -------------------------------------------------------------------------- */
+
+.home { 
+  text-align: center; 
+  padding: 4rem 2rem; 
+  background: #f4f4f5; /* Softer gray */
+  min-height: 100vh; 
+  color: #333;
+}
+
+.home-header {
+  margin-bottom: 3rem;
+}
+
+.home-header h1 {
+  margin-bottom: 0.5rem;
+  font-size: 3.5rem;
+  letter-spacing: -1px;
+}
+
+/* The Grid Container */
+.vibe-grid { 
+  display: grid; 
+  /* Auto-fit columns: nice and big (min 280px) */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: 2rem; 
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The Card Itself */
+.vibe-card { 
+  background: #fff;
+  border-radius: 20px;
+  height: 220px; /* Big click target! */
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  overflow: hidden;
+}
+
+/* Hover Effects */
+.vibe-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: #646cff; /* Highlight color on hover */
+}
+
+/* Placeholder for where the Logos will go */
+.logo-area {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.temp-logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #aaa;
+  text-transform: uppercase;
+}
+
+/* The little label at the bottom */
+.vibe-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #999;
+  margin-bottom: 1.5rem;
+  opacity: 0; /* Hidden by default */
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.vibe-card:hover .vibe-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dark Mode Support (optional, based on your system pref code) */
+@media (prefers-color-scheme: dark) {
+  .home { background: #18181b; color: #fff; }
+  .vibe-card { background: #27272a; }
+  .vibe-card:hover { border-color: #818cf8; }
+}
+
+/* -------------------------------------------------------------------------- */
+/* FONTS                                                                      */
+/* -------------------------------------------------------------------------- */
+
+@font-face { font-family: 'AppleIIe'; src: url('/fonts/Appleiie.ttf') format('truetype'); }
+@font-face { font-family: 'Commodore64'; src: url('/fonts/Commodore64.ttf') format('truetype'); }
+@font-face { font-family: 'Atari400'; src: url('/fonts/Atari400.ttf') format('truetype'); }
+@font-face { font-family: 'IBMPCJr'; src: url('/fonts/IBMPCjr.ttf') format('truetype'); }
+@font-face { font-family: 'AppleMac1985'; src: url('/fonts/Mac1985.ttf') format('truetype'); }
+@font-face { font-family: 'Dos1987'; src: url('/fonts/DOS1987.ttf') format('truetype'); }
+@font-face { font-family: 'Windows31'; src: url('/fonts/windows1990.ttf') format('truetype'); }
+@font-face { font-family: 'MacSystem7'; src: url('/fonts/MacSystem7.ttf') format('truetype'); }
+@font-face { font-family: 'Windows95'; src: url('/fonts/windows95.ttf') format('truetype'); }
+@font-face { font-family: 'MacOsx2001'; src: url('/fonts/MacOSX2001.ttf') format('truetype'); }
+
+/* -------------------------------------------------------------------------- */
+/* JOURNAL LAYOUT                                                             */
+/* -------------------------------------------------------------------------- */
+
+.journal {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #222; /* Fallback dark background behind the monitor */
+}
+
+.screen {
+  position: relative;
+  
+  /* --- THE CRT MAGIC FIX --- */
+  width: 100%;
+  max-width: 800px;  /* Limits size on big screens */
+  aspect-ratio: 4/3; /* Forces perfect CRT shape */
+  /* ------------------------- */
+
+  background: #000;
+  border: 20px solid #444; /* Thicker border mimics a plastic bezel for now */
+  border-radius: 10px;     /* Slight curve to the "monitor casing" */
+  overflow: hidden;
+}
+
+/* Pseudo-element for Scanlines Overlay */
+.screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2; /* Sits above text */
+}
+
+.screen textarea {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 2rem; /* More padding keeps text away from bezel edges */
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.controls {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* THE MAIN CONTAINER (FEBRUARY 16 UPDATE)                                    */
+/* -------------------------------------------------------------------------- */
+
+/* The Main Container - Split View */
+.control-center-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: #e0e0e0; /* The Light Grey from your concept */
+  overflow: hidden;
+  font-family: 'Courier Prime', monospace;
+}
+
+/* --- LEFT SIDEBAR --- */
+.sidebar {
+  width: 350px; /* Fixed width for the menu */
+  background-color: #f5f5f5;
+  border-right: 2px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  overflow-y: auto; /* Allow scrolling if list is long */
+  box-shadow: 5px 0 15px rgba(0,0,0,0.05);
+}
+
+.sidebar-header h2 {
+  font-family: 'VT323', monospace;
+  font-size: 2.5rem;
+  margin: 0;
+  border: 2px solid #000;
+  padding: 5px 10px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.sidebar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columns of buttons */
+  gap: 1rem;
+}
+
+/* The Buttons */
+.sidebar-btn {
+  aspect-ratio: 1/1; /* Square buttons */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  padding: 5px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.sidebar-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-color: #999;
+}
+
+/* The Active State (Selected) */
+.sidebar-btn.active {
+  border: 3px solid #007aff; /* Blue highlight ring */
+  background-color: #f0f8ff;
+}
+
+/* --- RIGHT MAIN STAGE --- */
+.main-stage {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d4d4d4; /* Darker grey background */
+  position: relative;
+}
+
+/* The Physical Monitor Look */
+.monitor-bezel {
+  width: 800px;
+  height: 600px;
+  background-color: #222; /* Dark Grey Plastic */
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 
+    0 20px 50px rgba(0,0,0,0.5), /* Big drop shadow */
+    inset 0 0 10px rgba(255,255,255,0.1); /* Plastic Shine */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monitor-screen {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border-radius: 10px; /* Screen curvature */
+  overflow: hidden;
+  position: relative;
+  border: 2px solid #333;
+}
+
+.monitor-logo {
+  color: #666;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+/* --- PREVIEW CONTENT (Temporary) --- */
+.preview-content {
+  color: #33ff00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: 'VT323', monospace;
+}
+
+.boot-button {
+  margin-top: 2rem;
+  padding: 10px 30px;
+  font-size: 1.5rem;
+  font-family: 'VT323', monospace;
+  background-color: #33ff00;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.boot-button:hover {
+  background-color: #fff;
+}
+
+/* -------------------------------------------------------------------------- */
+/* ANIMATIONS & EFFECTS                                                       */
+/* -------------------------------------------------------------------------- */
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.92; } /* Subtler flicker is easier on eyes */
+}
+
+/* -------------------------------------------------------------------------- */
+/* RETRO THEMES                                                               */
+/* -------------------------------------------------------------------------- */
+
+/* Apple IIe */
+.apple-iie .screen {
+  background: #000;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.4); /* Glow effect */
+  animation: flicker 0.15s infinite;
+  border-color: #2b2b2b;
+}
+.apple-iie .screen::before {
+  /* Scanlines */
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.2) 50%);
+  background-size: 100% 4px;
+}
+.apple-iie textarea {
+  font-family: 'AppleIIe', monospace;
+  color: #33ff33; /* Classic Green Phosphor */
+  text-shadow: 0 0 4px rgba(51, 255, 51, 0.6);
+}
+
+/* Commodore 64 */
+.commodore-64 .screen {
+  background: #3a3a9c;
+  border-color: #888; /* Grey breadbin case color */
+  animation: flicker 0.15s infinite;
+}
+.commodore-64 .screen::before {
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.15) 50%);
+  background-size: 100% 4px;
+}
+.commodore-64 textarea {
+  font-family: 'Commodore64', monospace;
+  color: #a3a3ff;
+}
+
+/* Atari 400 */
+.atari-400 .screen {
+  background: #00405c; /* Deep Atari blue */
+  border-color: #bfa675; /* Beige/Tan plastic */
+}
+.atari-400 .screen::before {
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.15) 50%);
+  background-size: 100% 4px;
+}
+.atari-400 textarea {
+  font-family: 'Atari400', monospace;
+  color: #fff;
+}
+
+/* IBM PC Jr */
+.ibm-pc-jr .screen {
+  background: #000;
+  box-shadow: 0 0 10px rgba(200, 200, 200, 0.3); /* White glow */
+  border-color: #ddd;
+}
+.ibm-pc-jr textarea {
+  font-family: 'IBMPCJr', monospace;
+  color: #fff;
+}
+
+/* Apple Mac 1985 */
+.apple-mac-1985 .screen {
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 4px; /* Mac screens were slightly curved but GUI was sharp */
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+.apple-mac-1985 textarea {
+  font-family: 'AppleMac1985', sans-serif;
+  color: #000;
+}
+
+/* DOS 1987 */
+.dos-1987 .screen {
+  background: #000;
+  animation: flicker 0.15s infinite;
+  border-color: #666;
+}
+.dos-1987 .screen::before {
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.2) 50%);
+  background-size: 100% 4px;
+}
+.dos-1987 textarea {
+  font-family: 'Dos1987', monospace;
+  color: #ccc; /* Generic white/grey text */
+}
+
+/* Windows 3.1 */
+.windows-31-1990 .screen {
+  background: #c0c0c0; /* The classic gray background */
+  box-shadow: inset 2px 2px 0 #fff, inset -2px -2px 0 #000; /* Beveled look */
+  border: 4px solid #c0c0c0;
+}
+.windows-31-1990 textarea {
+  font-family: 'Windows31', sans-serif;
+  color: #000;
+}
+
+/* Mac System 7 */
+.mac-system-7-1994 .screen {
+  background: #eee;
+  border-radius: 0;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+.mac-system-7-1994 textarea {
+  font-family: 'MacSystem7', sans-serif;
+  color: #000;
+}
+
+/* Windows 95 */
+.windows-95 .screen {
+  background: #008080; /* Perfect Teal */
+  border: 4px solid #c0c0c0; /* Window border */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+.windows-95 textarea {
+  font-family: 'Windows95', sans-serif;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Mac OSX */
+.mac-osx-2001 .screen {
+  background: linear-gradient(to bottom, #f2f2f2, #d8d8d8);
+  border: 1px solid #aaa;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 100, 255, 0.2); /* Aqua Glow */
+}
+.mac-osx-2001 textarea {
+  font-family: 'MacOsx2001', sans-serif;
+  color: #000;
+}

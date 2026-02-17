@@ -1,0 +1,332 @@
+/* ========================================= */
+/* 0. RESET & BASE */
+/* ========================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========================================= */
+/* 1. THE SPLIT LAYOUT CONTAINER */
+/* ========================================= */
+.split-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f4f4f5; /* Match gallery bg */
+  overflow: hidden;
+  font-family: 'Courier Prime', monospace;
+}
+
+/* ========================================= */
+/* 2. LEFT SIDE: THE GALLERY (Scrollable) */
+/* ========================================= */
+.gallery-section {
+  flex: 1; /* Takes up remaining space (e.g. 55-60%) */
+  overflow-y: auto;
+  padding: 2rem 3rem;
+  border-right: 4px solid #333; /* Strong divider */
+  box-shadow: 10px 0 20px rgba(0,0,0,0.1);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.gallery-header p {
+  margin-top: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* THE GRID */
+.vibe-grid {
+  display: grid;
+  /* Auto-fit columns: nice and big (min 280px) */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* THE CARD STYLE (Restored from your original) */
+.vibe-card {
+  background: #fff;
+  border-radius: 20px;
+  height: 220px; /* Big height for big logos! */
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  overflow: hidden;
+}
+
+.vibe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+/* ACTIVE STATE (The "Selected" Glow) */
+.vibe-card.active-card {
+  border: 4px solid #33ff00; /* Terminal Green selection ring */
+  box-shadow: 0 0 15px rgba(51, 255, 0, 0.3);
+}
+
+/* ========================================= */
+/* 3. RIGHT SIDE: THE MONITOR (Fixed) */
+/* ========================================= */
+.monitor-section {
+  width: 45%; /* Fixed width for monitor area */
+  min-width: 500px; /* Prevent it from getting too squished */
+  background-color: #d4d4d4; /* Desk color */
+  background-image: radial-gradient(#ccc 1px, transparent 1px);
+  background-size: 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Re-using your Monitor Styles */
+.monitor-bezel {
+  width: 90%; /* Responsive to the section width */
+  max-width: 700px;
+  aspect-ratio: 4/3;
+  background-color: #222;
+  border-radius: 20px;
+  padding: 20px 20px 40px 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.monitor-screen {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid #333;
+}
+
+.monitor-logo {
+  color: #666;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-top: 15px;
+  letter-spacing: 2px;
+}
+
+/* ========================================= */
+/* 4. PREVIEW & ANIMATIONS */
+/* ========================================= */
+
+@keyframes turn-on {
+  0% { transform: scale(1, 0.002) scaleY(0); filter: brightness(3); opacity: 0; }
+  10% { transform: scale(1, 0.002) scaleY(1); filter: brightness(3); opacity: 1; }
+  60% { transform: scale(1, 1) scaleY(1); filter: brightness(1.5); }
+  100% { transform: scale(1, 1); filter: brightness(1); opacity: 1; }
+}
+
+.preview-content {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  position: relative;
+  animation: turn-on 0.4s ease-out forwards;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+.boot-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.preview-content:hover .boot-overlay {
+  opacity: 1;
+}
+
+.boot-button {
+  padding: 15px 40px;
+  font-size: 1.5rem;
+  font-family: 'VT323', monospace;
+  background-color: transparent;
+  color: #33ff00;
+  border: 2px solid #33ff00;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  box-shadow: 0 0 10px rgba(51, 255, 0, 0.2);
+}
+
+.boot-button:hover {
+  background-color: #33ff00;
+  color: #000;
+  box-shadow: 0 0 20px rgba(51, 255, 0, 0.6);
+}
+
+
+
+/* 1. SYSTEM MENU (Top Right Buttons) */
+.system-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.system-btn {
+  background-color: transparent;
+  border: 2px solid #666;
+  color: #666;
+  padding: 8px 20px;
+  border-radius: 50px; /* Pill shape */
+  font-family: 'Courier Prime', monospace;
+  font-weight: bold;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.system-btn:hover {
+  background-color: #666;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* 2. THE ABOUT MODAL (Restored) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-modal {
+  width: 600px;
+  background-color: #ccc; /* Win95 Grey */
+  border: 2px solid #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  padding: 2px;
+}
+
+.about-title-bar {
+  background-color: #000080; /* Win95 Blue */
+  color: #fff;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.about-title-bar button {
+  background: #ccc;
+  border: 1px solid #fff;
+  border-right-color: #000;
+  border-bottom-color: #000;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.about-content {
+  background-color: #000;
+  color: #33ff00; /* Terminal Green */
+  padding: 30px;
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  border: 2px solid #888;
+  margin-top: 2px;
+}
+
+.ascii-art {
+  font-size: 1rem;
+  line-height: 1;
+  margin-bottom: 20px;
+  color: #33ff00;
+  font-weight: bold;
+}
+
+.dashed-line {
+  border-bottom: 2px dashed #005500;
+  margin: 20px 0;
+}
+
+.trojan-text {
+  color: #fff;
+  font-family: 'Courier Prime', monospace;
+  margin: 20px 0;
+  line-height: 1.4;
+}
+
+.underline {
+  text-decoration: underline;
+  color: #ff3333; /* Red highlight */
+}
+
+.credits-section h3 {
+  color: #666;
+  font-size: 1rem;
+  margin-top: 20px;
+  text-decoration: underline;
+}
+
+.credits-section a {
+  color: #33ff00;
+  text-decoration: none;
+}
+.credits-section a:hover {
+  background-color: #33ff00;
+  color: #000;
+}
+
+.eof {
+  text-align: center;
+  margin-top: 30px;
+  color: #444;
+}
