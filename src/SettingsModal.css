@@ -1,0 +1,125 @@
+/* SETTINGS MODAL STYLES */
+
+/* The Modal Container */
+.settings-window {
+  width: 500px;
+  background-color: #c0c0c0; /* Classic Win95 Gray */
+  border: 2px solid #fff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title Bar */
+.settings-title-bar {
+  background: navy;
+  color: white;
+  padding: 4px 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: #c0c0c0;
+  border: 1px solid #fff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  font-weight: bold;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+}
+
+/* Tabs */
+.settings-tabs {
+  padding: 10px 10px 0 10px;
+  display: flex;
+  gap: 2px;
+}
+
+.settings-tabs button {
+  background: #c0c0c0;
+  border: 1px solid #fff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  top: 1px; /* Overlap the border */
+}
+
+.settings-tabs button.active {
+  background: #c0c0c0;
+  border-bottom: 1px solid #c0c0c0; /* Hide bottom border to merge */
+  font-weight: bold;
+  z-index: 2;
+  margin-top: -2px; /* Pop up slightly */
+  padding-bottom: 8px;
+}
+
+/* Content Area */
+.settings-content {
+  flex-grow: 1;
+  border: 1px solid #fff;
+  border-top-color: #fff;
+  border-left-color: #fff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  background: #c0c0c0;
+  margin: 0 10px;
+  padding: 20px;
+  min-height: 250px;
+}
+
+/* Form Elements */
+.checkbox-row, .radio-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #fff;
+  margin: 15px 0;
+}
+
+.panel-label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Footer */
+.settings-footer {
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.save-btn, .cancel-btn {
+  padding: 6px 20px;
+  background: #c0c0c0;
+  border: 2px solid #fff;
+  border-right-color: #404040;
+  border-bottom-color: #404040;
+  cursor: pointer;
+}
+
+.save-btn:active, .cancel-btn:active {
+  border: 2px solid #404040;
+  border-right-color: #fff;
+  border-bottom-color: #fff;
+}

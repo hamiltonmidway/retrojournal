@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SettingsModal from './SettingsModal'; 
 import './Home.css';
 
 // Keep your vibes array exactly as it is!
@@ -24,6 +25,39 @@ function Home() {
   
   // State for the About Modal
   const [showAbout, setShowAbout] = useState(false);
+
+  // State for the Settings Modal
+  const [showSettings, setShowSettings] = useState(false);
+
+// === NEW: AUTO-JUMP LOGIC ===
+  useEffect(() => {
+    // 1. Check if we have already "booted" this session (Prevents the Loop Trap!)
+    const hasBooted = sessionStorage.getItem('sessionActive');
+    
+    // 2. Load the User's Preferences
+    const settings = JSON.parse(localStorage.getItem('retroSettings')) || {};
+    const lastVibeId = localStorage.getItem('lastVibe');
+
+    // 3. The Decision: If clean start + setting ON + history exists -> JUMP!
+    if (!hasBooted && settings.skipMenu && lastVibeId) {
+      // Mark session as active so coming "back" doesn't trigger this again
+      sessionStorage.setItem('sessionActive', 'true');
+      console.log("Auto-Skipping Menu -> " + lastVibeId);
+      navigate(`/journal/${lastVibeId}`);
+    }
+  }, [navigate]);
+
+  // === NEW: BOOT HANDLER ===
+  const handleBoot = () => {
+    // 1. Remember this vibe for next time
+    localStorage.setItem('lastVibe', selectedVibe.id);
+    
+    // 2. Mark session as active
+    sessionStorage.setItem('sessionActive', 'true');
+    
+    // 3. Go!
+    navigate(`/journal/${selectedVibe.id}`);
+  };
 
   return (
     <div className="split-layout">
@@ -190,7 +224,7 @@ function Home() {
         {/* Top Right System Buttons */}
         <div className="system-menu">
           <button className="system-btn" onClick={() => setShowAbout(true)}>ABOUT</button>
-          <button className="system-btn" onClick={() => alert("Settings coming soon!")}>SETTINGS</button>
+          <button className="system-btn" onClick={() => setShowSettings(true)}>SETTINGS</button>
         </div>
 
         <div className="monitor-bezel">
@@ -212,7 +246,7 @@ function Home() {
               <div className="boot-overlay">
                 <button 
                   className="boot-button"
-                  onClick={() => navigate(`/journal/${selectedVibe.id}`)}
+                  onClick={handleBoot}
                 >
                   BOOT SYSTEM
                 </button>
@@ -222,6 +256,9 @@ function Home() {
           <div className="monitor-logo">HME VISUAL DISPLAY UNIT</div>
         </div>
       </div>
+
+      {/* THE SETTINGS MODAL */}
+      {showSettings && <SettingsModal onClose={() => setShowSettings(false)} />}
 
       {/* THE ABOUT MODAL */}
       {showAbout && (
@@ -249,32 +286,26 @@ function Home() {
     | | ___  _   _ _ __ _ __   __ _  | |
  _  | |/ _ \| | | | '__| '_ \ / _' | | |
 | |_| | (_) | |_| | |  | | | | (_| | | |
- \___/ \___/ \__,_|_|  |_| |_|\__,_| |_| `}
+\_____/\___/\___,_|_|  |_| |_|\__,_| |_| `}
                 </pre>
                 
                 <div className="dashed-line"></div>
                 <p>Version: 1.0.4</p>
-                <p className="trojan-text">
-                    Retro Journal is a passion project dedicated to the era when computers 
-                    were fun, offline, and <span className="underline">not Trojan Horses</span> 
-                    to sell subscription software.
+                <p className="passion-text">
+               Retro Journal is a passion project dedicated to the bygone era when computers 
+               were completely offline, because your entire life was completely offline.
                 </p>
                 
                 <div className="credits-section">
                    <h3>CREATED BY</h3>
                    <p>Hamilton Midway Enterprises, LLC</p>
-                   <p className="location">Minnetonka, Minnesota</p>
-                   
-                   <h3>SOURCE</h3>
-                   <a href="https://github.com/yourusername/retrojournal" target="_blank">
-                      github.com/retrojournal
-                   </a>
-                </div>
-
-                <div className="eof">&lt; EOF &gt;</div>
-             </div>
+                  <a href="https://hamiltonmidway.com" target="_blank">
+                     Website
+                  </a>
+                  </div>
+                  </div>
+               </div>
           </div>
-        </div>
       )}
 
     </div>

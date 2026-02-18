@@ -24,7 +24,7 @@ function createWindow() {
   mainWindow.webContents.openDevTools();
 
   // 2. USE 127.0.0.1 (More reliable on Linux than localhost)
-  const devUrl = 'http://localhost:5173';
+  const devUrl = 'http://127.0.0.1:5173';
   console.log(`[Main] Attempting to load: ${devUrl}`);
 
   // 3. LOAD URL (With NO crashing backup plan)
@@ -34,12 +34,20 @@ function createWindow() {
 }
 
 // === FILE SYSTEM HANDLERS ===
-ipcMain.handle('save-journal', async (event, { fileName, content }) => {
+// === save journal ===
+ipcMain.handle('save-journal', async (event, { fileName, content, format }) => {
   try {
+    // 1. Determine the extension based on the user's setting
+    const ext = format || 'txt'; 
+    
+    // 2. Configure the save dialog to match that extension
     const { filePath } = await dialog.showSaveDialog(mainWindow, {
       title: 'Save Journal Entry',
-      defaultPath: fileName,
-      filters: [{ name: 'Text Documents', extensions: ['txt', 'md'] }]
+      defaultPath: fileName.endsWith(`.${ext}`) ? fileName : `${fileName}.${ext}`,
+      filters: [
+        { name: `${ext.toUpperCase()} File`, extensions: [ext] },
+        { name: 'All Files', extensions: ['*'] }
+      ]
     });
 
     if (filePath) {
@@ -52,6 +60,7 @@ ipcMain.handle('save-journal', async (event, { fileName, content }) => {
   }
 });
 
+// === load journal ===
 ipcMain.handle('load-journal', async (event) => {
   try {
     const { filePaths } = await dialog.showOpenDialog(mainWindow, {

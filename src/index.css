@@ -1881,11 +1881,7 @@
   animation: flicker 0.15s infinite;
   border-color: #2b2b2b;
 }
-.apple-iie .screen::before {
-  /* Scanlines */
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.2) 50%);
-  background-size: 100% 4px;
-}
+
 .apple-iie textarea {
   font-family: 'AppleIIe', monospace;
   color: #33ff33; /* Classic Green Phosphor */
@@ -1898,10 +1894,7 @@
   border-color: #888; /* Grey breadbin case color */
   animation: flicker 0.15s infinite;
 }
-.commodore-64 .screen::before {
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.15) 50%);
-  background-size: 100% 4px;
-}
+
 .commodore-64 textarea {
   font-family: 'Commodore64', monospace;
   color: #a3a3ff;
@@ -1912,10 +1905,7 @@
   background: #00405c; /* Deep Atari blue */
   border-color: #bfa675; /* Beige/Tan plastic */
 }
-.atari-400 .screen::before {
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.15) 50%);
-  background-size: 100% 4px;
-}
+
 .atari-400 textarea {
   font-family: 'Atari400', monospace;
   color: #fff;
@@ -1950,10 +1940,8 @@
   animation: flicker 0.15s infinite;
   border-color: #666;
 }
-.dos-1987 .screen::before {
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.2) 50%);
-  background-size: 100% 4px;
-}
+
+
 .dos-1987 textarea {
   font-family: 'Dos1987', monospace;
   color: #ccc; /* Generic white/grey text */
@@ -2003,4 +1991,88 @@
 .mac-osx-2001 textarea {
   font-family: 'MacOsx2001', sans-serif;
   color: #000;
+}
+
+/* ========================================= */
+/* VISUAL SETTINGS FX (The Magic!)           */
+/* ========================================= */
+
+/* 1. CRT FILTER (Scanlines) */
+.visual-crt .screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.visual-crt .screen::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg, 
+    rgba(255, 0, 0, 0.06), 
+    rgba(0, 255, 0, 0.02), 
+    rgba(0, 0, 255, 0.06)
+  );
+  z-index: 10;
+  background-size: 100% 4px, 6px 100%; /* The scanline size */
+  pointer-events: none; /* Lets you click through the lines! */
+}
+
+/* 2. CURVED MONITOR */
+.visual-curve .screen {
+  /* Force a heavy curve */
+  border-radius: 50px !important; 
+  
+  /* CRITICAL: Clip the square corners of the text area inside */
+  overflow: hidden !important;
+  
+  /* The "Glass Tube" Effect: Inner shadow makes it look 3D */
+  box-shadow: inset 0 0 80px rgba(0,0,0,0.5) !important;
+  
+  /* Fix for C64: Ensure the thick border respects the curve */
+  background-clip: border-box !important;
+  
+  transition: all 0.3s ease;
+}
+
+/* Optional: Push text away from the curved edges */
+.visual-curve textarea {
+  padding: 40px !important; 
+}
+
+/* 3. BLOCK CURSOR */
+.visual-cursor textarea {
+  caret-color: transparent; /* Hide the thin line cursor */
+  animation: none; /* Stop normal blinking */
+}
+
+/* We use a caret-shape property, though support varies. 
+   Fallback is often just a color change. */
+.visual-cursor textarea {
+  caret-color: #33ff00; /* Force green */
+  caret-shape: block; 
+}
+
+/* 4. MONITOR FRAME (Bezel) */
+.visual-bezel {
+  padding: 40px;
+  background-color: #222; /* Dark desk background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual-bezel .screen {
+  border: 30px solid #444; /* The Plastic Case */
+  border-radius: 20px;
+  box-shadow: 
+    inset 2px 2px 5px rgba(255,255,255,0.1), /* Inner shine */
+    10px 10px 30px rgba(0,0,0,0.5); /* Drop shadow on desk */
 }

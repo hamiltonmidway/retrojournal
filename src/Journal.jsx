@@ -7,9 +7,17 @@ function Journal() {
   const [fileName, setFileName] = useState('Untitled'); 
   const [isNightMode, setIsNightMode] = useState(false);
 
+  // NEW: State for Visual Settings
+  const [visuals, setVisuals] = useState({
+    crt: false,
+    curve: false,
+    cursor: false,
+    bezel: false
+  });
+
   useEffect(() => {
-    const load = async () => {
-      // If we are in XP mode, default to .doc
+    // 1. Load Content
+    const loadContent = async () => {
       if (retro === 'windows-xp-2001' && fileName === 'Untitled') {
         setFileName('Document1.doc');
       }
@@ -21,12 +29,32 @@ function Journal() {
         setEntry(localStorage.getItem(fileName) || '');
       }
     };
-    load();
-  }, [fileName, retro]); // Added retro to dependency to catch theme changes
 
-  const save = async () => {
+    // 2. Load Visual Settings
+    const loadSettings = () => {
+      const saved = JSON.parse(localStorage.getItem('retroSettings')) || {};
+      setVisuals({
+        crt: saved.crtFilter || false,       // The Scanlines
+        curve: saved.curvedMonitor || false, // The Bubble Shape
+        cursor: saved.blockCursor || false,  // The Blinking Block
+        bezel: saved.monitorFrame || false   // The Plastic Case
+      });
+    };
+
+    loadContent();
+    loadSettings();
+  }, [fileName, retro]); 
+
+
+  // SAVE FUNCTIONALITY
+const save = async () => {
+    // 1. Get the preferred format from Settings (default to txt)
+    const settings = JSON.parse(localStorage.getItem('retroSettings')) || {};
+    const format = settings.fileFormat || 'txt';
+
     if (window.electronAPI) {
-      await window.electronAPI.saveJournal({ fileName, content: entry });
+      // 2. Send the content AND the format to the backend
+      await window.electronAPI.saveJournal({ fileName, content: entry, format });
       alert('Saved to Disk.');
     } else {
       localStorage.setItem(fileName, entry);
@@ -37,14 +65,24 @@ function Journal() {
   const getProgramName = () => {
     if (retro === 'apple-mac-1985') return "PeachWrite";
     if (retro === 'apple-iie') return "PEACH WRITER ][";
-    if (retro === 'commodore-64') return "*** ADMIRAL WORD PROCESSOR ***";
+    if (retro === 'commodore-64') return "*** ADMIRAL 75 WORD PROCESSOR ***";
     if (retro === 'e-ink') return "InkWriter 2008";
     if (retro === 'windows-xp-2001') return "Doorways Word";
     return "RETRO JOURNAL";
   };
 
+  // HELPER: Build the main class string based on settings
+  const getVisualClasses = () => {
+    let classes = `journal ${retro} ${isNightMode ? 'night-mode' : ''}`;
+    if (visuals.crt) classes += ' visual-crt';
+    if (visuals.curve) classes += ' visual-curve';
+    if (visuals.cursor) classes += ' visual-cursor';
+    if (visuals.bezel) classes += ' visual-bezel';
+    return classes;
+  };
+
   return (
-    <div className={`journal ${retro} ${isNightMode ? 'night-mode' : ''}`}>
+    <div className={getVisualClasses()}>
       
       {/* ========================================= */}
       {/* LAYOUT 1: PEACH MACANDCHEESE (1985)       */}
@@ -170,7 +208,7 @@ function Journal() {
         </div>
 
       /* ========================================= */
-      /* LAYOUT 3: STANDARD SCREEN (Apple/C64/E-Ink) */
+      /* LAYOUT 3: STANDARD SCREEN (Everything Else) */
       /* ========================================= */
       ) : (
         <div className="screen">
@@ -205,12 +243,14 @@ function Journal() {
           <textarea
             value={entry}
             onChange={(e) => setEntry(e.target.value)}
-            placeholder={retro === 'e-ink' ? "Tap here to begin writing..." : "Start journaling..."}
+            placeholder="Start journaling..."
             autoFocus
             spellCheck="false"
           />
+          
+          {/* --- FOOTERS --- */}
 
-          {/* Footer Logic */}
+          {/* E-INK Footer Logic */}
           {retro === 'e-ink' ? (
              <div className="e-ink-footer">
                 <div className="e-ink-controls">
@@ -250,6 +290,10 @@ function Journal() {
           )}
         </div>
       )}
+
+      {/* Bezel Overlay (If selected in settings) */}
+      {visuals.bezel && <div className="monitor-bezel-overlay"></div>}
+      
     </div>
   );
 }
