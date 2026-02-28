@@ -330,3 +330,92 @@
   margin-top: 30px;
   color: #444;
 }
+
+/* ========================================= */
+/* CLEAN MODAL (For Credits & Attributions)  */
+/* ========================================= */
+.clean-modal {
+  width: 650px;
+  max-width: 90vw;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
+  /* Using standard system fonts for maximum readability */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+.clean-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+  border-radius: 8px 8px 0 0;
+}
+
+.clean-modal-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #111;
+  font-weight: 600;
+  letter-spacing: normal; /* Removes any retro spacing */
+}
+
+.clean-modal-header button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #888;
+  line-height: 1;
+  padding: 0;
+}
+
+.clean-modal-header button:hover {
+  color: #d9534f; /* Soft red on hover */
+}
+
+.clean-modal-content {
+  padding: 25px;
+  overflow-y: auto;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.clean-intro {
+  margin-bottom: 25px;
+  color: #444;
+}
+
+.clean-modal-content h3 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  color: #0056b3; /* A nice, readable hyperlink blue */
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.clean-modal-content ul {
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+
+.clean-modal-content li {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.clean-footer {
+  margin-top: 35px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}

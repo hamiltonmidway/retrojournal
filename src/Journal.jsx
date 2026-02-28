@@ -15,35 +15,40 @@ function Journal() {
     bezel: false
   });
 
-  useEffect(() => {
-    // 1. Load Content
-    const loadContent = async () => {
-      if (retro === 'windows-xp-2001' && fileName === 'Untitled') {
-        setFileName('Document1.doc');
-      }
-      
-      if (window.electronAPI) {
-        const loaded = await window.electronAPI.loadJournal(fileName);
-        setEntry(loaded);
-      } else {
-        setEntry(localStorage.getItem(fileName) || '');
-      }
-    };
+
+useEffect(() => {
+    // 1. Set default filename for Windows XP
+    if (retro === 'windows-xp-2001' && fileName === 'Untitled') {
+      setFileName('Document1.doc');
+    }
 
     // 2. Load Visual Settings
     const loadSettings = () => {
       const saved = JSON.parse(localStorage.getItem('retroSettings')) || {};
       setVisuals({
-        crt: saved.crtFilter || false,       // The Scanlines
-        curve: saved.curvedMonitor || false, // The Bubble Shape
-        cursor: saved.blockCursor || false,  // The Blinking Block
-        bezel: saved.monitorFrame || false   // The Plastic Case
+        crt: saved.crtFilter || false,       
+        curve: saved.curvedMonitor || false, 
+        cursor: saved.blockCursor || false,  
+        bezel: saved.monitorFrame || false   
       });
     };
 
-    loadContent();
     loadSettings();
-  }, [fileName, retro]); 
+  }, [retro]); // We also cleaned up the dependency array here!
+
+
+// LOAD FUNCTIONALITY (Manual triggered only)
+  const load = async () => {
+    if (window.electronAPI) {
+      const loaded = await window.electronAPI.loadJournal();
+      if (loaded) { // Only overwrite the text area if they actually selected a file
+        setEntry(loaded);
+      }
+    } else {
+      const loadedLocal = localStorage.getItem(fileName);
+      if (loadedLocal) setEntry(loadedLocal);
+    }
+  };
 
 
   // SAVE FUNCTIONALITY
@@ -228,7 +233,7 @@ const save = async () => {
           {retro === 'commodore-64' && (
              <div className="c64-header-container">
                <div className="c64-header-bar">{getProgramName()}</div>
-               <div className="c64-subtext">A Product of Gemini & Friend</div>
+               <div className="c64-subtext">(c) 1984 Admiral Computers</div>
              </div>
           )}
 
