@@ -1648,16 +1648,17 @@
 /* FONTS                                                                      */
 /* -------------------------------------------------------------------------- */
 
-@font-face { font-family: 'AppleIIe'; src: url('/fonts/Appleiie.ttf') format('truetype'); }
-@font-face { font-family: 'Commodore64'; src: url('/fonts/Commodore64.ttf') format('truetype'); }
-@font-face { font-family: 'Atari400'; src: url('/fonts/Atari400.ttf') format('truetype'); }
-@font-face { font-family: 'IBMPCJr'; src: url('/fonts/IBMPCjr.ttf') format('truetype'); }
-@font-face { font-family: 'AppleMac1985'; src: url('/fonts/Mac1985.ttf') format('truetype'); }
-@font-face { font-family: 'Dos1987'; src: url('/fonts/DOS1987.ttf') format('truetype'); }
-@font-face { font-family: 'Windows31'; src: url('/fonts/windows1990.ttf') format('truetype'); }
-@font-face { font-family: 'MacSystem7'; src: url('/fonts/MacSystem7.ttf') format('truetype'); }
-@font-face { font-family: 'Windows95'; src: url('/fonts/windows95.ttf') format('truetype'); }
-@font-face { font-family: 'MacOsx2001'; src: url('/fonts/MacOSX2001.ttf') format('truetype'); }
+@font-face { font-family: 'AppleIIe'; src: url('/fonts/PrintChar21.ttf') format('truetype'); }
+@font-face { font-family: 'Commodore64'; src: url('/fonts/Bescii-Mono.ttf') format('truetype'); }
+@font-face { font-family: 'Atari400'; src: url('/fonts/Atari-Classic-Chunky.ttf') format('truetype'); }
+@font-face { font-family: 'IBMPCJr'; src: url('/fonts/Flexi-IBM-VGA-True.ttf') format('truetype'); }
+@font-face { font-family: 'AppleMac1985'; src: url('/fonts/Sysfont.ttf') format('truetype'); }
+@font-face { font-family: 'Dos1987'; src: url('/fonts/Ultimate-Oldschool-PC-font.ttf') format('truetype'); }
+@font-face { font-family: 'Windows31'; src: url('/fonts/windows.ttf') format('truetype'); }
+@font-face { font-family: 'MacSystem7'; src: url('/fonts/chicago12pix.ttf') format('truetype'); }
+@font-face { font-family: 'Windows95'; src: url('/fonts/W95FA.ttf') format('truetype'); }
+@font-face { font-family: 'MacOsx2001'; src: url('/fonts/Deja-Vu-Sans.ttf') format('truetype'); }
+@font-face { font-family: 'WindowsXP'; src: url('/fonts/windows-xp-like-a.ttf') format('truetype'); }
 
 /* -------------------------------------------------------------------------- */
 /* JOURNAL LAYOUT                                                             */
