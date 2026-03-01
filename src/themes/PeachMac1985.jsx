@@ -1,4 +1,5 @@
 import React from 'react';
+import './PeachMac1985.css';
 
 function PeachMac1985({ 
   entry, 

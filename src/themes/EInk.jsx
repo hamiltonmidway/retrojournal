@@ -1,4 +1,5 @@
 import React from 'react';
+import './EInk.css';
 
 function EInk({ 
   entry, 

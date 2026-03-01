@@ -1,0 +1,247 @@
+/* -------------------------------------------------------------------------- */
+/* PEACH MACANDCHEESE - Home Screen Logo                                      */
+/* -------------------------------------------------------------------------- */
+
+.vibe-card.apple-mac-1985 {
+  background-color: #e8e8e8;
+  border: 1px solid #ccc;
+}
+
+.mac-badge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.mac-word {
+  font-family: 'AppleMac1985', 'Geneva', sans-serif; 
+  font-size: 2.5rem; 
+  color: #000;
+}
+
+/* -------------------------------------------------------------------------- */
+/* PEACHWRITE - Journal Screen Layout                                         */
+/* -------------------------------------------------------------------------- */
+
+/* 1. THE DESKTOP (50% Grey Dither) */
+.journal.apple-mac-1985 {
+  background-color: #808080;
+  background-image: 
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
+  background-size: 4px 4px;
+  background-position: 0 0, 2px 2px;
+  
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'AppleMac1985', 'Geneva', sans-serif;
+}
+
+/* Fallback screen settings (just in case it gets rendered inside a generic screen box) */
+.apple-mac-1985 .screen {
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 4px; 
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+.apple-mac-1985 textarea {
+  font-family: 'AppleMac1985', sans-serif;
+  color: #000;
+}
+
+/* 2. THE MENU BAR (Fixed Top) */
+.mac-menu-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  background: #fff;
+  border-bottom: 2px solid #000;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  gap: 20px;
+  z-index: 100;
+}
+
+.mac-menu-apple {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.mac-menu-item {
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+}
+.mac-menu-item:hover {
+  background: #000;
+  color: #fff; 
+  padding: 0 5px;
+}
+
+/* 3. THE WINDOW FRAME */
+.mac-window {
+  width: 700px;
+  height: 500px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 8px; 
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.5); 
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 4. THE PINSTRIPE TITLE BAR */
+.mac-title-bar {
+  height: 28px;
+  border-bottom: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: repeating-linear-gradient(
+    to bottom,
+    #fff,
+    #fff 2px,
+    #000 2px,
+    #000 3px
+  );
+}
+
+.mac-title-text-container {
+  background: #fff;
+  padding: 0 15px;
+  border-left: 1px solid #fff; 
+  border-right: 1px solid #fff;
+  z-index: 2;
+}
+
+.mac-title-text {
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.mac-close-box {
+  position: absolute;
+  left: 8px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 1px solid #000;
+  box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px #000; 
+  cursor: pointer;
+  z-index: 5;
+}
+.mac-close-box:active {
+  background: #000; 
+}
+
+/* 5. THE RULER */
+.mac-ruler {
+  height: 30px;
+  border-bottom: 2px solid #000;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  background: #fff;
+}
+.ruler-line {
+  flex-grow: 1;
+  border-bottom: 1px dotted #000; 
+  display: flex;
+  justify-content: space-between;
+  padding-right: 40px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* 6. CONTENT AREA */
+.mac-content {
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+}
+
+.mac-content textarea {
+  flex-grow: 1;
+  border: none;
+  resize: none;
+  outline: none;
+  padding: 10px;
+  font-family: 'AppleMac1985', 'Geneva', sans-serif;
+  font-size: 18px; 
+  line-height: 1.5;
+}
+
+/* Scrollbar (Right) */
+.mac-scrollbar {
+  width: 20px;
+  border-left: 2px solid #000;
+  display: flex;
+  flex-direction: column;
+  background-image: radial-gradient(#000 15%, transparent 16%); 
+  background-size: 2px 2px;
+}
+
+.scroll-arrow {
+  height: 20px;
+  background: #fff;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: pointer;
+}
+.scroll-track {
+  flex-grow: 1;
+  position: relative;
+}
+.scroll-thumb {
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  border: 1px solid #000;
+  position: absolute;
+  top: 10px;
+}
+
+/* 7. FOOTER (Resize Handle) */
+.mac-footer {
+  height: 15px;
+  border-top: 2px solid #000;
+  display: flex;
+  justify-content: flex-end;
+}
+.mac-resize-box {
+  width: 15px;
+  height: 100%;
+  border-left: 2px solid #000;
+  background: #fff;
+}
+
+/* 8. FLOATING SAVE BUTTON */
+.mac-floppy-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: 'AppleMac1985', sans-serif;
+  box-shadow: 4px 4px 0 #000;
+  cursor: pointer;
+}
+.mac-floppy-btn:active {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(2px, 2px);
+}

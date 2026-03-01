@@ -1,0 +1,129 @@
+/* -------------------------------------------------------------------------- */
+/* PEACH IIe (Apple IIe Parody) - Home Screen Logo                            */
+/* -------------------------------------------------------------------------- */
+
+.peach-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+}
+
+.peach-icon {
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2)); 
+}
+
+.peach-text-group {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.peach-word {
+  font-family: 'Comfortaa', sans-serif; 
+  font-weight: 700; 
+  font-size: 3rem;
+  letter-spacing: -3px; 
+  color: #222; 
+  transform: scaleY(0.9); 
+}
+
+.iie-word {
+  font-family: sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: #222;
+  margin-left: 5px;
+}
+
+.vibe-card.apple-iie {
+  background-color: #f2f0e4; 
+  border: 1px solid #dcd9cc;
+}
+
+/* -------------------------------------------------------------------------- */
+/* PEACH WRITER ][ (Apple IIe Specific Layout) - Journal Screen               */
+/* -------------------------------------------------------------------------- */
+
+/* Notice how we combined the layout AND the animations here! */
+.apple-iie .screen {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem; 
+  background: #000;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.4); 
+  animation: flicker 0.15s infinite;
+  border-color: #2b2b2b;
+}
+
+.apple-iie textarea {
+  flex-grow: 1; 
+  padding: 1rem 0; 
+  font-family: 'AppleIIe', monospace;
+  color: #33ff33; 
+  text-shadow: 0 0 4px rgba(51, 255, 51, 0.6);
+}
+
+.apple-header {
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-family: 'AppleIIe', monospace;
+  color: #33ff33;
+}
+
+.apple-header-border {
+  border: 4px double #33ff33; 
+  padding: 0.5rem 2rem;
+  display: inline-block;
+  background: #000;
+}
+
+.apple-iie .retro-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px dashed #33ff33; 
+  padding-top: 0.8rem;
+  margin-top: 0.5rem;
+  font-family: 'AppleIIe', monospace;
+}
+
+.apple-iie .status-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #33ff33;
+}
+
+.apple-iie .status-field input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #33ff33; 
+  color: #33ff33;
+  font-family: 'AppleIIe', monospace;
+  font-size: 1.2rem;
+  width: 200px;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.apple-iie .command-group {
+  display: flex;
+  gap: 15px;
+}
+
+.apple-iie button {
+  background: transparent;
+  border: none;
+  color: #33ff33;
+  font-family: 'AppleIIe', monospace;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 2px 5px;
+  text-transform: uppercase;
+}
+
+.apple-iie button:hover {
+  background-color: #33ff33;
+  color: #000; 
+}

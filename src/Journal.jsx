@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
-import PasswordModal from './PasswordModal';
+import PasswordModal from './modals/PasswordModal';
 
 // ==========================================
 // THEME IMPORTS 

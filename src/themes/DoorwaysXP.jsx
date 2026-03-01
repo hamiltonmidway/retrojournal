@@ -1,4 +1,5 @@
 import React from 'react';
+import './DoorwaysXP.css';
 
 function DoorwaysXP({ 
   entry, 

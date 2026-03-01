@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SettingsModal from './SettingsModal';
-import ParodyModal from './ParodyModal';
-import CreditsModal from './CreditsModal'; 
-import AboutModal from './AboutModal'; 
+import SettingsModal from './modals/SettingsModal';
+import ParodyModal from './modals/ParodyModal';
+import CreditsModal from './modals/CreditsModal'; 
+import AboutModal from './modals/AboutModal'; 
 import './Home.css';
 
 // Keep the vibes array exactly as it is!
@@ -26,7 +26,7 @@ const vibes = [
 // Make sure these names match exactly what you called them in your CSS @font-face rules!
 const easterEggFonts = [
   'VT323', // Default
-   'Comfortaa',
+  'Comfortaa',
   'Michroma',
   'Koulen',
   'Kanit',

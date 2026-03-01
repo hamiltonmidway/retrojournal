@@ -1,0 +1,181 @@
+/* -------------------------------------------------------------------------- */
+/* ELECTRONIC PAPER (E-Ink / NeoVim Style) - Home Screen Logo                 */
+/* -------------------------------------------------------------------------- */
+
+.vibe-card.e-ink {
+  background-color: #d4d4d4; 
+  border: 4px solid #333; 
+  box-shadow: none; 
+}
+
+.e-ink-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.e-ink-icon-box {
+  background-color: #d4d4d4;
+  padding: 10px;
+}
+
+.e-ink-label-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.e-ink-title {
+  font-family: 'Courier New', monospace; 
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.e-ink-subtitle {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* INKWRITER 2008 (E-Ink Layout) - Journal Screen Layout                      */
+/* -------------------------------------------------------------------------- */
+
+/* 1. THE SCREEN (The Device) */
+.journal.e-ink {
+  background-color: #333; 
+}
+
+.e-ink .screen {
+  /* DAY MODE (Default) */
+  background-color: #d4d4d4; 
+  border: 15px solid #e0e0e0; 
+  border-radius: 8px;
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  position: relative;
+  transition: background-color 0.3s ease; 
+}
+
+/* 2. NIGHT MODE OVERRIDES */
+.e-ink.night-mode .screen {
+  background-color: #1a1a1a; 
+  border-color: #333; 
+}
+
+/* 3. THE HEADER */
+.e-ink-header {
+  background-color: #000;
+  color: #fff;
+  padding: 8px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* 4. THE WRITING AREA */
+.e-ink textarea {
+  flex-grow: 1;
+  border: none;
+  resize: none;
+  outline: none;
+  padding: 2rem;
+  font-family: 'EB Garamond', serif; 
+  font-size: 1.3rem;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+
+  /* FORCE DAY MODE COLORS */
+  background-color: #d4d4d4; 
+  color: #222222 !important; 
+}
+
+/* NIGHT MODE TEXTAREA */
+.e-ink.night-mode textarea {
+  background-color: #1a1a1a;
+  color: #c0c0c0 !important; 
+}
+
+/* Placeholder Colors */
+.e-ink textarea::placeholder {
+  color: #666;
+  font-style: italic;
+}
+.e-ink.night-mode textarea::placeholder {
+  color: #555;
+}
+
+/* 5. THE FOOTER */
+.e-ink-footer {
+  border-top: 2px solid #111;
+  padding: 10px 15px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Night mode footer */
+.e-ink.night-mode .e-ink-footer {
+  background-color: #222;
+  border-top: 1px solid #444;
+}
+
+.e-ink-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.e-ink-filename {
+  border: 1px solid #111;
+  background: #fff;
+  color: #111;
+  padding: 5px 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  width: 200px;
+}
+
+/* Buttons */
+.e-ink-button-row button {
+  background: #fff;
+  border: 2px solid #111;
+  color: #111;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  padding: 5px 15px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #888;
+}
+
+/* Night Mode Buttons */
+.e-ink.night-mode .e-ink-button-row button {
+  background: #333;
+  color: #fff;
+  border-color: #666;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.e-ink-status-line {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: #555;
+}
+.e-ink.night-mode .e-ink-status-line {
+  color: #888;
+}

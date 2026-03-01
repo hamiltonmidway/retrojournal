@@ -1,0 +1,29 @@
+/* ========================================================================== */
+/* RETRO JOURNAL - TYPOGRAPHY HUB                                             */
+/* ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* WEB FONTS (Google Fonts)                                                   */
+/* -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Koulen&family&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,900&display=swap');
+
+/* -------------------------------------------------------------------------- */
+/* LOCAL RETRO FONTS (from /public/fonts/)                                    */
+/* -------------------------------------------------------------------------- */
+@font-face { font-family: 'AppleIIe'; src: url('/fonts/PrintChar21.ttf') format('truetype'); }
+@font-face { font-family: 'Commodore64'; src: url('/fonts/Bescii-Mono.ttf') format('truetype'); }
+@font-face { font-family: 'Atari400'; src: url('/fonts/Atari-Classic-Chunky.ttf') format('truetype'); }
+@font-face { font-family: 'IBMPCJr'; src: url('/fonts/Flexi-IBM-VGA-True.ttf') format('truetype'); }
+@font-face { font-family: 'AppleMac1985'; src: url('/fonts/Sysfont.ttf') format('truetype'); }
+@font-face { font-family: 'Dos1987'; src: url('/fonts/Ultimate-Oldschool-PC-font.ttf') format('truetype'); }
+@font-face { font-family: 'Windows31'; src: url('/fonts/windows.ttf') format('truetype'); }
+@font-face { font-family: 'MacSystem7'; src: url('/fonts/chicago12pix.ttf') format('truetype'); }
+@font-face { font-family: 'Windows95'; src: url('/fonts/W95FA.ttf') format('truetype'); }
+@font-face { font-family: 'MacOsx2001'; src: url('/fonts/Deja-Vu-Sans.ttf') format('truetype'); }
+@font-face { font-family: 'WindowsXP'; src: url('/fonts/windows-xp-like-a.ttf') format('truetype'); }

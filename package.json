@@ -16,7 +16,10 @@
     "electron:dev": "concurrently -k \"cross-env BROWSER=none npm run dev\" \"wait-on http://localhost:5173 && npm run electron\""
   },
   "dependencies": {
+    "crypto-js": "^4.2.0",
+    "docx": "^9.6.0",
     "electron-squirrel-startup": "^1.0.1",
+    "jszip": "^3.10.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.0"

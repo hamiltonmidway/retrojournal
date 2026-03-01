@@ -1,4 +1,5 @@
 import React from 'react';
+import './Admiral75.css';
 
 function Admiral75({ 
   entry, 
