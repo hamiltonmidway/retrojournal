@@ -6,7 +6,7 @@ function AboutModal({ onClose }) {
       <div className="about-modal" onClick={(e) => e.stopPropagation()}>
          {/* Title Bar */}
          <div className="about-title-bar">
-            <span>ℹ About Retro Journal</span>
+            <span>About Retro Journal</span>
             <button onClick={onClose}>×</button>
          </div>
          
