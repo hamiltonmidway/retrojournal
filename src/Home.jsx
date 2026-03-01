@@ -22,6 +22,29 @@ const vibes = [
   { id: 'e-ink', label: 'Electronic Paper' },
 ];
 
+// === NEW: EASTER EGG FONT ARRAY ===
+// Make sure these names match exactly what you called them in your CSS @font-face rules!
+const easterEggFonts = [
+  'VT323', // Default
+   'Comfortaa',
+  'Michroma',
+  'Koulen',
+  'Kanit',
+  'EB Garamond',
+  'Bodoni Moda',
+  'AppleIIe', 
+  'Commodore64',
+  'Atari400',
+  'IBMPCJr',
+  'AppleMac1985',
+  'Dos1987',
+  'Windows31',
+  'MacSystem7',
+  'Windows95',
+  'MacOsx2001',
+  'WindowsXP',
+];
+
 function Home() {
   const navigate = useNavigate();
   const [selectedVibe, setSelectedVibe] = useState(vibes[0]);
@@ -38,23 +61,9 @@ function Home() {
   // State for the Credits Modal (Add this line)
   const [showCredits, setShowCredits] = useState(false);
 
-// === NEW: AUTO-JUMP LOGIC ===
-  useEffect(() => {
-    // 1. Check if we have already "booted" this session (Prevents the Loop Trap!)
-    const hasBooted = sessionStorage.getItem('sessionActive');
-    
-    // 2. Load the User's Preferences
-    const settings = JSON.parse(localStorage.getItem('retroSettings')) || {};
-    const lastVibeId = localStorage.getItem('lastVibe');
 
-    // 3. The Decision: If clean start + setting ON + history exists -> JUMP!
-    if (!hasBooted && settings.skipMenu && lastVibeId) {
-      // Mark session as active so coming "back" doesn't trigger this again
-      sessionStorage.setItem('sessionActive', 'true');
-      console.log("Auto-Skipping Menu -> " + lastVibeId);
-      navigate(`/journal/${lastVibeId}`);
-    }
-  }, [navigate]);
+  // === NEW: EASTER EGG STATE ===
+  const [fontIndex, setFontIndex] = useState(0);
 
   // === NEW: BOOT HANDLER ===
   const handleBoot = () => {
@@ -68,6 +77,12 @@ function Home() {
     navigate(`/journal/${selectedVibe.id}`);
   };
 
+// === NEW: EASTER EGG CLICK HANDLER ===
+  const handleTitleClick = () => {
+    // This adds 1 to the index. If it hits the end of the list, the '%' wraps it back to 0!
+    setFontIndex((prevIndex) => (prevIndex + 1) % easterEggFonts.length);
+  };
+
   return (
     <div className="split-layout">
       
@@ -75,12 +90,19 @@ function Home() {
       <div className="gallery-section">
          
          <div className="gallery-header">
-            <div className="terminal-box">
-              <h1>WELCOME TO RETROJOURNAL<span className="cursor"></span></h1>
+            {/* === UPDATED: EASTER EGG ATTACHED HERE === */}
+            <div 
+              className="terminal-box" 
+              onClick={handleTitleClick} 
+              style={{ cursor: 'pointer', userSelect: 'none' }}
+              title="Click me!"
+            >
+              <h1 style={{ fontFamily: easterEggFonts[fontIndex] }}>
+                WELCOME TO RETROJOURNAL<span className="cursor"></span>
+              </h1>
             </div>
             <p>PICK A RETRO VIBE TO PREVIEW:</p>
          </div>
-
          <div className="vibe-grid">
             {vibes.map(vibe => (
                <div
@@ -135,11 +157,12 @@ function Home() {
                       <div className="ox-main-row"><span className="ox-logo">OX</span><span className="ox-jr">jr</span></div>
                     </div>
 
-                 /* 5. MACANDCHEESE */
+                /* 5. MACANDCHEESE */
                  ) : vibe.id === 'apple-mac-1985' ? (
                     <div className="mac-badge-container">
                        <div className="mac-inset-box logo-box">
-                          <svg width="50" height="50" viewBox="0 0 100 120" className="peach-icon-small">
+                          {/* UPDATED: Increased SVG size from 50 to 125 */}
+                          <svg width="125" height="125" viewBox="0 0 100 120" className="peach-icon-small">
                             <defs><linearGradient id="peachStripesSmall" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="16%" stopColor="#57b947" /><stop offset="16%" stopColor="#f3c200" /><stop offset="32%" stopColor="#f3c200" /><stop offset="32%" stopColor="#f48020" /><stop offset="48%" stopColor="#f48020" /><stop offset="48%" stopColor="#db3038" /><stop offset="64%" stopColor="#db3038" /><stop offset="64%" stopColor="#b633ad" /><stop offset="80%" stopColor="#b633ad" /><stop offset="80%" stopColor="#5c3b93" /></linearGradient></defs>
                             <path d="M 50 20 Q 65 0 80 20 Q 65 40 50 20" fill="#57b947" transform="rotate(-20 50 20)"/>
                             <path d="M 50 35 C 30 35 5 50 5 75 C 5 110 50 120 50 120 C 50 120 95 110 95 75 C 95 50 70 35 50 35 Q 50 45 50 35 Z" fill="url(#peachStripesSmall)" />

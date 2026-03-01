@@ -1,13 +1,35 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import CryptoJS from 'crypto-js';
+import PasswordModal from './PasswordModal';
+
+// ==========================================
+// THEME IMPORTS 
+// ==========================================
+import PeachIIe from './themes/PeachIIe.jsx';
+import PeachMac1985 from './themes/PeachMac1985.jsx';
+import DoorwaysXP from './themes/DoorwaysXP.jsx';
+import Admiral75 from './themes/Admiral75.jsx';
+import EInk from './themes/EInk.jsx';
 
 function Journal() {
   const { retro } = useParams();
+  
+  // ==========================================
+  // CORE STATE (The "Brain")
+  // ==========================================
   const [entry, setEntry] = useState('');
   const [fileName, setFileName] = useState('Untitled'); 
   const [isNightMode, setIsNightMode] = useState(false);
 
-  // NEW: State for Visual Settings
+  const [sessionPassword, setSessionPassword] = useState('');
+  const [modalConfig, setModalConfig] = useState({ 
+    show: false, 
+    mode: 'encrypt', 
+    action: null, 
+    payload: null 
+  });
+
   const [visuals, setVisuals] = useState({
     crt: false,
     curve: false,
@@ -15,14 +37,11 @@ function Journal() {
     bezel: false
   });
 
-
-useEffect(() => {
-    // 1. Set default filename for Windows XP
+  useEffect(() => {
     if (retro === 'windows-xp-2001' && fileName === 'Untitled') {
       setFileName('Document1.doc');
     }
 
-    // 2. Load Visual Settings
     const loadSettings = () => {
       const saved = JSON.parse(localStorage.getItem('retroSettings')) || {};
       setVisuals({
@@ -32,37 +51,71 @@ useEffect(() => {
         bezel: saved.monitorFrame || false   
       });
     };
-
     loadSettings();
-  }, [retro]); // We also cleaned up the dependency array here!
+  }, [retro]);
 
-
-// LOAD FUNCTIONALITY (Manual triggered only)
-  const load = async () => {
-    if (window.electronAPI) {
-      const loaded = await window.electronAPI.loadJournal();
-      if (loaded) { // Only overwrite the text area if they actually selected a file
-        setEntry(loaded);
+  // ==========================================
+  // LOGIC & HANDLERS
+  // ==========================================
+  
+  const handlePasswordSubmit = (password) => {
+    if (modalConfig.action === 'save') {
+      setSessionPassword(password);
+      setModalConfig({ show: false, mode: '', action: null, payload: null });
+      executeSave(password);
+    } else if (modalConfig.action === 'load') {
+      try {
+        const bytes = CryptoJS.AES.decrypt(modalConfig.payload, password);
+        const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
+        if (!decryptedText) throw new Error("Incorrect Password");
+        setEntry(decryptedText);
+        setSessionPassword(password); 
+        setModalConfig({ show: false, mode: '', action: null, payload: null });
+      } catch (error) {
+        alert("Incorrect Password! Cannot unlock file.");
       }
-    } else {
-      const loadedLocal = localStorage.getItem(fileName);
-      if (loadedLocal) setEntry(loadedLocal);
     }
   };
 
+  const handleExit = () => {
+    setSessionPassword(''); // Secure Memory Wipe
+    window.history.back();
+  };
 
-  // SAVE FUNCTIONALITY
-const save = async () => {
-    // 1. Get the preferred format from Settings (default to txt)
+  const triggerLoad = async () => {
+    let loadedContent = window.electronAPI ? await window.electronAPI.loadJournal() : localStorage.getItem(fileName);
+    if (loadedContent) {
+      if (loadedContent.startsWith('U2FsdGVkX1')) {
+         setModalConfig({ show: true, mode: 'decrypt', action: 'load', payload: loadedContent });
+      } else {
+         setEntry(loadedContent); 
+      }
+    }
+  };
+
+  const triggerSave = async () => {
+    const settings = JSON.parse(localStorage.getItem('retroSettings')) || {};
+    if (settings.enableEncryption && !sessionPassword) {
+      setModalConfig({ show: true, mode: 'encrypt', action: 'save', payload: null });
+    } else {
+      executeSave(sessionPassword);
+    }
+  };
+
+  const executeSave = async (passwordToUse) => {
     const settings = JSON.parse(localStorage.getItem('retroSettings')) || {};
     const format = settings.fileFormat || 'txt';
+    let contentToSave = entry;
+
+    if (settings.enableEncryption && passwordToUse) {
+      contentToSave = CryptoJS.AES.encrypt(entry, passwordToUse).toString();
+    }
 
     if (window.electronAPI) {
-      // 2. Send the content AND the format to the backend
-      await window.electronAPI.saveJournal({ fileName, content: entry, format });
+      await window.electronAPI.saveJournal({ fileName, content: contentToSave, format });
       alert('Saved to Disk.');
     } else {
-      localStorage.setItem(fileName, entry);
+      localStorage.setItem(fileName, contentToSave);
       alert('Saved Locally.');
     }
   };
@@ -76,7 +129,6 @@ const save = async () => {
     return "RETRO JOURNAL";
   };
 
-  // HELPER: Build the main class string based on settings
   const getVisualClasses = () => {
     let classes = `journal ${retro} ${isNightMode ? 'night-mode' : ''}`;
     if (visuals.crt) classes += ' visual-crt';
@@ -86,218 +138,69 @@ const save = async () => {
     return classes;
   };
 
+  // ==========================================
+  // THEME ROUTING (The "Traffic Cop")
+  // ==========================================
+
+  // 1. Bundle up all the tools the child theme will need to function
+  const themeProps = {
+    entry,
+    setEntry,
+    fileName,
+    setFileName,
+    isNightMode,
+    setIsNightMode,
+    triggerSave,
+    handleExit,
+    programName: getProgramName()
+  };
+
+  // 2. Decide which child component to render based on the URL
+  const renderTheme = () => {
+    switch (retro) {
+        case 'apple-iie':
+        return <PeachIIe {...themeProps} />;
+        case 'apple-mac-1985':
+        return <PeachMac1985 {...themeProps} />;
+        case 'windows-xp-2001':
+        return <DoorwaysXP {...themeProps} />;
+        case 'commodore-64':
+        return <Admiral75 {...themeProps} />;
+        case 'e-ink':
+        return <EInk {...themeProps} />;
+      default:
+        // A temporary fallback while we migrate!
+        return (
+          <div className="screen">
+            <h2 style={{color: 'white', padding: '20px'}}>
+              Migrating {retro} to its own component...
+            </h2>
+          </div>
+        ); 
+    }
+  };
+
+  // ==========================================
+  // FINAL RENDER
+  // ==========================================
   return (
     <div className={getVisualClasses()}>
       
-      {/* ========================================= */}
-      {/* LAYOUT 1: PEACH MACANDCHEESE (1985)       */}
-      {/* ========================================= */}
-      {retro === 'apple-mac-1985' ? (
-        <div className="mac-desktop">
-          
-          <div className="mac-menu-bar">
-            <span className="mac-menu-apple"></span>
-            <span className="mac-menu-item active">File</span>
-            <span className="mac-menu-item">Edit</span>
-            <span className="mac-menu-item">Search</span>
-            <span className="mac-menu-item">Format</span>
-            <span className="mac-menu-item">Font</span>
-            <span className="mac-menu-item">Style</span>
-          </div>
+      {/* RENDER THE CHOSEN VISUAL THEME */}
+      {renderTheme()}
 
-          <div className="mac-window">
-             <div className="mac-title-bar">
-                <button className="mac-close-box" onClick={() => window.history.back()}></button>
-                <div className="mac-title-text-container">
-                   <span className="mac-title-text">{fileName}</span>
-                </div>
-             </div>
-
-             <div className="mac-ruler">
-                <div className="ruler-line">
-                  <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
-                </div>
-             </div>
-
-             <div className="mac-content">
-                <textarea
-                  value={entry}
-                  onChange={(e) => setEntry(e.target.value)}
-                  placeholder="Type your masterpiece..."
-                  autoFocus
-                  spellCheck="false"
-                />
-                <div className="mac-scrollbar">
-                   <div className="scroll-arrow">▲</div>
-                   <div className="scroll-track"><div className="scroll-thumb"></div></div>
-                   <div className="scroll-arrow">▼</div>
-                </div>
-             </div>
-             
-             <div className="mac-footer">
-                <div className="mac-resize-box"><div className="resize-icon"></div></div>
-             </div>
-          </div>
-          
-          <button className="mac-floppy-btn" onClick={save}>Save to Disk</button>
-        </div>
-
-      /* ========================================= */
-      /* LAYOUT 2: DOORWAYS XP (2001)              */
-      /* ========================================= */
-      ) : retro === 'windows-xp-2001' ? (
-        <div className="xp-desktop">
-          
-          <div className="xp-window">
-            <div className="xp-title-bar">
-               <div className="xp-title-text">
-                 <span className="xp-app-icon">W</span> {getProgramName()} - {fileName}
-               </div>
-               <div className="xp-window-controls">
-                 <button className="xp-control-btn min">-</button>
-                 <button className="xp-control-btn max">□</button>
-                 <button className="xp-control-btn close" onClick={() => window.history.back()}>×</button>
-               </div>
-            </div>
-
-            <div className="xp-menu-bar">
-              <span>File</span><span>Edit</span><span>View</span><span>Insert</span><span>Format</span><span>Help</span>
-            </div>
-
-            <div className="xp-toolbar">
-               <button className="xp-tool-btn" onClick={save} title="Save">💾</button>
-               <div className="xp-divider"></div>
-               <button className="xp-tool-btn">🖨️</button>
-               <button className="xp-tool-btn">✂️</button>
-               <button className="xp-tool-btn">📋</button>
-               <div className="xp-divider"></div>
-               <input 
-                 className="xp-filename-input"
-                 value={fileName}
-                 onChange={(e) => setFileName(e.target.value)}
-               />
-            </div>
-
-            <div className="xp-content-area">
-               <textarea
-                 value={entry}
-                 onChange={(e) => setEntry(e.target.value)}
-                 placeholder="Type your document here..."
-                 autoFocus
-                 spellCheck="false"
-               />
-            </div>
-
-            <div className="xp-status-bar">
-               <div className="xp-status-item">Page 1</div>
-               <div className="xp-status-item">Sec 1</div>
-               <div className="xp-status-item">1/1</div>
-               <div className="xp-status-item">Ln {entry.split('\n').length}</div>
-               <div className="xp-status-item">Col {entry.length}</div>
-            </div>
-          </div>
-
-          <div className="xp-taskbar">
-             <button className="xp-start-button" onClick={() => window.history.back()}>
-                <span className="xp-flag">❖</span> start
-             </button>
-             <div className="xp-task-group">
-                <div className="xp-task-item active">
-                   <span className="xp-app-icon">W</span> {fileName}
-                </div>
-             </div>
-             <div className="xp-tray">
-                <span className="xp-time">12:00 PM</span>
-             </div>
-          </div>
-        </div>
-
-      /* ========================================= */
-      /* LAYOUT 3: STANDARD SCREEN (Everything Else) */
-      /* ========================================= */
-      ) : (
-        <div className="screen">
-          
-          {/* Apple IIe Header */}
-          {retro === 'apple-iie' && (
-             <div className="apple-header">
-               <div className="apple-header-border">
-                 <div className="apple-header-text">
-                   {getProgramName()} <br/> COPYRIGHT 1981, PEACH COMPUTER INC.
-                 </div>
-               </div>
-             </div>
-          )}
-
-          {/* Commodore 64 Header */}
-          {retro === 'commodore-64' && (
-             <div className="c64-header-container">
-               <div className="c64-header-bar">{getProgramName()}</div>
-               <div className="c64-subtext">(c) 1984 Admiral Computers</div>
-             </div>
-          )}
-
-          {/* E-Ink Header */}
-          {retro === 'e-ink' && (
-            <div className="e-ink-header">
-               <span className="e-ink-title-text">{getProgramName()}</span>
-               <span className="e-ink-wifi">Wi-Fi: OFF</span>
-            </div>
-          )}
-
-          <textarea
-            value={entry}
-            onChange={(e) => setEntry(e.target.value)}
-            placeholder="Start journaling..."
-            autoFocus
-            spellCheck="false"
-          />
-          
-          {/* --- FOOTERS --- */}
-
-          {/* E-INK Footer Logic */}
-          {retro === 'e-ink' ? (
-             <div className="e-ink-footer">
-                <div className="e-ink-controls">
-                    <input 
-                      type="text"
-                      value={fileName} 
-                      onChange={(e) => setFileName(e.target.value)} 
-                      className="e-ink-filename" 
-                    />
-                    <div className="e-ink-button-row">
-                       <button onClick={() => setIsNightMode(!isNightMode)}>{isNightMode ? '☼ Day' : '☾ Night'}</button>
-                       <button onClick={save}>Save</button>
-                       <button onClick={() => window.history.back()}>Menu</button>
-                    </div>
-                </div>
-                <div className="e-ink-status-line">
-                   <span>Loc {entry.length}</span>
-                   <span className="battery-icon">🔋 84%</span>
-                </div>
-             </div>
-          ) : (
-            /* Standard Retro Footer (Apple/C64) */
-            <div className="retro-status-bar">
-               <div className="status-field">
-                 <span>FILE:</span>
-                 <input 
-                   type="text" 
-                   value={fileName} 
-                   onChange={(e) => setFileName(e.target.value.toUpperCase())} 
-                 />
-               </div>
-               <div className="command-group">
-                 <button onClick={save}>{retro === 'commodore-64' ? '[F1] SAVE' : '[CTRL-S] SAVE'}</button>
-                 <button onClick={() => window.history.back()}>[ESC] EXIT</button>
-               </div>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Bezel Overlay (If selected in settings) */}
+      {/* GLOBAL OVERLAYS */}
       {visuals.bezel && <div className="monitor-bezel-overlay"></div>}
+
+      {/* SECURITY MODAL */}
+      {modalConfig.show && (
+        <PasswordModal 
+          mode={modalConfig.mode}
+          fileName={fileName}
+          onSubmit={handlePasswordSubmit}
+          onClose={() => setModalConfig({ show: false, mode: '', action: null, payload: null })}
+        />
+      )}
       
     </div>
   );

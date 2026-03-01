@@ -436,49 +436,70 @@
 .big-blue-text {
   font-family: 'Kanit', sans-serif;
   font-weight: 900;
-  font-size: 1rem;
+  font-size: 2rem; /* Doubled from 1rem */
   color: #004085; /* Dark Corporate Blue */
   text-transform: uppercase;
-  margin-left: 2px;
+  margin-left: 4px; /* Adjusted for scale */
 }
 
 .ox-main-row {
   display: flex;
   align-items: baseline;
-  gap: 5px;
+  gap: 10px; /* Doubled from 5px */
   line-height: 0.8;
 }
 
 .ox-logo {
   font-family: 'Kanit', sans-serif;
   font-weight: 900;
-  font-size: 5rem;
-  letter-spacing: -2px;
+  font-size: 10rem; /* Doubled from 5rem */
+  letter-spacing: -4px; /* Doubled from -2px */
   
   /* THE CSS MAGIC: Blue Scanlines! */
   background: repeating-linear-gradient(
     to bottom,
     #006699 0%,
-    #006699 15%,   /* Blue Stripe */
+    #006699 15%,   
     transparent 15%,
-    transparent 25% /* Gap */
+    transparent 25% 
   );
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent; /* Hide the actual text color so stripes show */
+  color: transparent; 
 }
 
 .ox-jr {
-  font-family: 'Times New Roman', serif; /* Classic Serif for the 'jr' */
+  font-family: 'Times New Roman', serif;
   font-weight: bold;
   font-style: italic;
-  font-size: 2.5rem;
+  font-size: 5rem; /* Doubled from 2.5rem */
   color: #333;
 }
+
 
 /* -------------------------------------------------------------------------- */
 /* PEACH MACANDCHEESE (Macintosh 1985 Parody)                                 */
 /* -------------------------------------------------------------------------- */
+
+/* Card Background (Classic Mac Platinum) */
+.vibe-card.apple-mac-1985 {
+  background-color: #e8e8e8;
+  border: 1px solid #ccc;
+}
+
+.mac-badge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.mac-word {
+  font-family: 'AppleMac1985', 'Geneva', sans-serif; /* Uses your retro font! */
+  font-size: 2.5rem; /* Scaled up 2.5x */
+  color: #000;
+}
+
 
 /* 1. THE DESKTOP (50% Grey Dither) */
 .journal.apple-mac-1985 {
