@@ -1,0 +1,195 @@
+/* -------------------------------------------------------------------------- */
+/* OLARI 500 (Atari 400 Parody) - Home Screen Logo                            */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background (Beige Plastic) */
+.vibe-card.atari-400 {
+  background-color: #d6cfb8; 
+  border: 4px solid #bba; 
+}
+
+/* The "Badge" Plate */
+.solaris-badge {
+  background-color: #e3dec9; 
+  border: 2px solid #a39f8f; 
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 4px;
+  box-shadow: inset 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+.solaris-icon-box {
+  background-color: #333; 
+  border-radius: 4px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solaris-icon path {
+  fill: #fff; 
+}
+
+.solaris-text-group {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.solaris-word {
+  font-family: 'Koulen', sans-serif; 
+  font-size: 2.5rem;
+  color: #222; 
+  line-height: 0.8;
+  letter-spacing: -1px;
+}
+
+.model-500 {
+  font-family: 'Koulen', sans-serif;
+  font-size: 2.5rem;
+  color: transparent; 
+  -webkit-text-stroke: 2px #eebc38; 
+  line-height: 0.8;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* OLARI 500 (Atari 400 Parody) - Journal Screen Layout                       */
+/* -------------------------------------------------------------------------- */
+
+.atari-400 .screen {
+  background-color: #000; /* Outer TV Overscan */
+  border: 20px solid #bfa675; /* The tan plastic casing of the 400 */
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  animation: flicker 0.15s infinite;
+}
+
+/* The Title Bar */
+.olari-header {
+  text-align: center;
+  color: #fff;
+  font-family: 'Atari400', monospace;
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: 4px;
+}
+
+/* The Main Editor Box (The "Blue Screen") */
+.olari-blue-screen {
+  background-color: #002855; /* Classic deep Atari blue */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #000;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* The Formatting Code Bar at the top */
+.olari-top-bar {
+  background-color: #002855;
+  color: #60a4f4; /* Cyan-ish light blue */
+  padding: 6px 10px;
+  display: flex;
+  gap: 15px;
+  font-family: 'Atari400', monospace;
+  font-size: 1.1rem;
+}
+
+.inv-char {
+  background-color: #60a4f4;
+  color: #002855; /* Inverted for the letter */
+  padding: 0 4px;
+  margin-right: 2px;
+}
+
+/* The Text Area */
+.atari-400 textarea {
+  background-color: transparent;
+  color: #60a4f4;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 10px 20px;
+  font-family: 'Atari400', monospace;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+/* The Bottom Ruler Bar */
+.olari-bottom-bar {
+  color: #60a4f4;
+  padding: 4px 20px;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Atari400', monospace;
+  font-size: 1.1rem;
+}
+.olari-arrows span {
+  margin-right: 35px;
+}
+
+/* The Black Footer Area */
+.olari-footer {
+  background-color: #000;
+  color: #fff;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  font-family: 'Atari400', monospace;
+}
+
+/* The specific copyright box from the boot screen! */
+.olari-copyright {
+  background-color: #fff;
+  color: #000;
+  padding: 4px 15px;
+  font-size: 1rem;
+  border: 2px solid #fff;
+}
+
+/* Action Buttons */
+.olari-commands {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.olari-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: 'Atari400', monospace;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.olari-btn .key {
+  border: 2px solid #fff;
+  padding: 2px 6px;
+  margin: 0 4px;
+}
+.olari-btn:hover .key {
+  background: #fff;
+  color: #000;
+}
+
+.olari-filename input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  font-family: 'Atari400', monospace;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  padding: 2px 5px;
+  width: 150px;
+  outline: none;
+}

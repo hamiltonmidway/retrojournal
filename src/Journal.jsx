@@ -7,6 +7,7 @@ import PasswordModal from './modals/PasswordModal';
 // THEME IMPORTS 
 // ==========================================
 import PeachIIe from './themes/PeachIIe.jsx';
+import Olari500 from './themes/Olari500.jsx';
 import PeachMac1985 from './themes/PeachMac1985.jsx';
 import DoorwaysXP from './themes/DoorwaysXP.jsx';
 import Admiral75 from './themes/Admiral75.jsx';
@@ -123,6 +124,7 @@ function Journal() {
   const getProgramName = () => {
     if (retro === 'apple-mac-1985') return "PeachWrite";
     if (retro === 'apple-iie') return "PEACH WRITER ][";
+    if (retro === 'atari-400') return "O L A R I W R I T E R";
     if (retro === 'commodore-64') return "*** ADMIRAL 75 WORD PROCESSOR ***";
     if (retro === 'e-ink') return "InkWriter 2008";
     if (retro === 'windows-xp-2001') return "Doorways Word";
@@ -160,6 +162,8 @@ function Journal() {
     switch (retro) {
         case 'apple-iie':
         return <PeachIIe {...themeProps} />;
+        case 'atari-400':
+        return <Olari500 {...themeProps} />;
         case 'apple-mac-1985':
         return <PeachMac1985 {...themeProps} />;
         case 'windows-xp-2001':
