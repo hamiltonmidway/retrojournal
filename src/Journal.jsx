@@ -14,6 +14,7 @@ import Doorways31 from './themes/Doorways31.jsx';
 import Doorways95 from './themes/Doorways95.jsx';
 import DoorwaysXP from './themes/DoorwaysXP.jsx';
 import PeachMac1985 from './themes/PeachMac1985.jsx';
+import PeachAqua from './themes/PeachAqua.jsx';
 import PeachOS7 from './themes/PeachOS7.jsx';
 import Admiral75 from './themes/Admiral75.jsx';
 import EInk from './themes/EInk.jsx';
@@ -182,6 +183,8 @@ function Journal() {
         return <PeachMac1985 {...themeProps} />;
         case 'mac-system-7-1994':
         return <PeachOS7 {...themeProps} />;
+        case 'mac-osx-2001':
+        return <PeachAqua {...themeProps} />;
         case 'windows-xp-2001':
         return <DoorwaysXP {...themeProps} />;
         case 'commodore-64':

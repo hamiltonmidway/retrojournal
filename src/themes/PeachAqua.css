@@ -1,0 +1,353 @@
+/* -------------------------------------------------------------------------- */
+/* PEACH AQUA (Mac OS X 2001 Parody) - Journal Screen Layout                  */
+/* -------------------------------------------------------------------------- */
+
+.aqua-desktop {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Lucida Grande', 'Trebuchet MS', sans-serif;
+  color: #000;
+  user-select: none;
+  /* Classic Aqua Blue Swirl Desktop Background */
+  background: radial-gradient(circle at center, #2e71d8 0%, #153e85 100%);
+}
+
+/* 1. TOP GLOBAL MENU BAR */
+.aqua-global-menu {
+  width: 100%;
+  height: 24px;
+  background: linear-gradient(to bottom, #ffffff 0%, #eeeeee 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  font-size: 13px;
+  border-bottom: 1px solid #999;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.aqua-menu-left {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.aqua-apple-icon {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.aqua-menu-active {
+  font-weight: bold;
+}
+
+/* 2. MAIN WINDOW FRAME */
+.aqua-window {
+  width: 100%;
+  max-width: 850px;
+  height: 85%;
+  margin-top: 30px;
+  background-color: #ededed;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid #777;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.8);
+  overflow: hidden;
+}
+
+/* 3. TITLE BAR */
+.aqua-title-bar {
+  height: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  /* The subtle horizontal pinstripes of early OS X! */
+  background: repeating-linear-gradient(to bottom, #e2e2e2, #e2e2e2 1px, #f2f2f2 1px, #f2f2f2 2px);
+  border-bottom: 1px solid #888;
+}
+
+.aqua-stoplights {
+  display: flex;
+  gap: 6px;
+  width: 60px; /* Balances the title centering */
+}
+
+.aqua-light {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  box-shadow: inset 1px 2px 3px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.8);
+  cursor: pointer;
+}
+.aqua-light.red { background: radial-gradient(circle at 30% 30%, #ff8a84, #ff5f56 60%, #cc0000); border: 1px solid #c2362b; }
+.aqua-light.yellow { background: radial-gradient(circle at 30% 30%, #ffdf6b, #ffbd2e 60%, #cc8800); border: 1px solid #ce9a25; }
+.aqua-light.green { background: radial-gradient(circle at 30% 30%, #68e87b, #27c93f 60%, #008800); border: 1px solid #239b34; }
+
+.aqua-title-text {
+  font-size: 13px;
+  font-weight: bold;
+  color: #222;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.aqua-title-spacer {
+  width: 60px;
+}
+
+/* 4. APPLEWORKS TOOLBAR */
+.aqua-toolbar {
+  background: linear-gradient(to bottom, #f9f9f9 0%, #e0e0e0 100%);
+  padding: 6px 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid #999;
+}
+
+.aqua-tool-group {
+  display: flex;
+  gap: 4px;
+}
+
+.aqua-btn {
+  background: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 49%, #e0e0e0 50%, #f4f4f4 100%);
+  border: 1px solid #999;
+  border-radius: 4px;
+  width: 28px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1), inset 0 1px 0 #fff;
+}
+.aqua-btn:active {
+  background: #d4d4d4;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.aqua-divider {
+  width: 1px;
+  height: 22px;
+  background-color: #aaa;
+  border-right: 1px solid #fff;
+}
+
+/* Glossy Dropdowns */
+.aqua-dropdown {
+  background: #fff;
+  border: 1px solid #888;
+  height: 22px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 6px;
+  font-size: 12px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.aqua-drop-arrows {
+  background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 49%, #cccccc 50%, #f3f3f3 100%);
+  border-left: 1px solid #888;
+  width: 18px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #333;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+}
+
+/* 5. THE RULER */
+.aqua-ruler {
+  background: #fff;
+  border-bottom: 1px solid #888;
+  padding: 2px 20px;
+  font-family: 'Times New Roman', serif;
+  font-size: 12px;
+}
+
+.aqua-ruler-ticks {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+}
+
+/* 6. CONTENT AREA */
+.aqua-content-wrapper {
+  flex-grow: 1;
+  display: flex;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.aqua-textarea {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 40px;
+  font-family: 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000 !important; /* Just in case it tries to hide again! */
+  background-color: transparent;
+}
+
+/* Aqua Gel Scrollbars */
+.aqua-scrollbar-v {
+  width: 16px;
+  background-color: #f0f0f0;
+  border-left: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+.aqua-scroll-track {
+  flex-grow: 1;
+  background-color: #e5e5e5;
+  border-left: 1px solid #d4d4d4;
+  display: flex;
+  justify-content: center;
+  padding: 2px 0;
+}
+
+/* THE GEL THUMB */
+.aqua-scroll-thumb {
+  width: 14px;
+  height: 60px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #8bb4e7 0%, #5d97e2 20%, #3e81d6 50%, #579ce3 100%);
+  border: 1px solid #1a56a8;
+  box-shadow: inset 0 0 4px rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aqua-thumb-ridges {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.aqua-thumb-ridges div {
+  width: 6px;
+  height: 1px;
+  background: #1a56a8;
+  border-bottom: 1px solid #a6c9f2;
+}
+
+.aqua-scroll-buttons {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #ccc;
+}
+
+.aqua-scroll-btn {
+  background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 49%, #d0d0d0 50%, #eeeeee 100%);
+  border: none;
+  border-bottom: 1px solid #aaa;
+  height: 16px;
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #333;
+}
+.aqua-scroll-btn:active {
+  background: #c0c0c0;
+}
+
+/* 7. STATUS BAR */
+.aqua-status-bar {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  display: flex;
+  font-size: 12px;
+}
+
+.aqua-status-item {
+  padding: 4px 10px;
+  border-right: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* PEACH AQUA (Mac OS X Parody)                                               */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background (Pinstripes!) */
+.vibe-card.mac-osx-2001 {
+  background-color: #f0f0f0;
+  /* The Pinstripe Pattern */
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  border: 1px solid #ccc;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.aqua-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* The "Gel" Effect on the Icon */
+.aqua-icon {
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); /* Soft shadow floating */
+}
+
+/* To simulate the 3D depth of Aqua, we add an inner shine via CSS if needed,
+   but the SVG paths handle most of it! */
+
+.aqua-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 2.5rem;
+  color: #333;
+  opacity: 0.8;
+  letter-spacing: -1px;
+}
+
+/* The Candy Loading Bar */
+.aqua-loader {
+  width: 120px;
+  height: 10px;
+  background: #ddd;
+  border-radius: 10px; /* Fully rounded caps */
+  border: 1px solid #bbb;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.aqua-bar {
+  width: 100%;
+  height: 100%;
+  /* The "Barber Pole" blue animation */
+  background: repeating-linear-gradient(
+    45deg,
+    #5ac8fa,
+    #5ac8fa 10px,
+    #007aff 10px,
+    #007aff 20px
+  );
+  opacity: 0.8;
+}
