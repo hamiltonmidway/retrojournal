@@ -9,6 +9,8 @@ import PasswordModal from './modals/PasswordModal';
 import PeachIIe from './themes/PeachIIe.jsx';
 import Olari500 from './themes/Olari500.jsx';
 import IBMPCJr from './themes/IBMPCJr.jsx';
+import Dos1987 from './themes/Dos1987.jsx';
+import Doorways31 from './themes/Doorways31.jsx';
 import PeachMac1985 from './themes/PeachMac1985.jsx';
 import DoorwaysXP from './themes/DoorwaysXP.jsx';
 import PeachOS7 from './themes/PeachOS7.jsx';
@@ -167,8 +169,12 @@ function Journal() {
         return <PeachIIe {...themeProps} />;
         case 'atari-400':
         return <Olari500 {...themeProps} />;
+        case 'dos-1987':
+        return <Dos1987 {...themeProps} />;
         case 'ibm-pc-jr':
         return <IBMPCJr {...themeProps} />;
+        case 'windows-31-1990':
+        return <Doorways31 {...themeProps} />;
         case 'apple-mac-1985':
         return <PeachMac1985 {...themeProps} />;
         case 'mac-system-7-1994':

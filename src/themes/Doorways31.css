@@ -1,0 +1,418 @@
+/* -------------------------------------------------------------------------- */
+/* SEATTLESOFT DOORWAYS 3.1 - Journal Screen Layout                           */
+/* -------------------------------------------------------------------------- */
+
+.win31-container {
+  background-color: #c0c0c0; /* Standard Win 3.1 Desktop Background */
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Windows31', 'MS Sans Serif', sans-serif;
+  color: #000;
+  user-select: none;
+}
+
+/* 1. THE MAIN WINDOW FRAME */
+.win31-window {
+  width: 100%;
+  height: 100%;
+  background-color: #c0c0c0;
+  display: flex;
+  flex-direction: column;
+  /* The classic Win 3.1 outer window border */
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  box-shadow: 1px 1px 0 #000; /* Sharp outer drop */
+  padding: 2px;
+}
+
+/* 2. TITLE BAR */
+.win31-title-bar {
+  background-color: #0000aa; /* Deep Windows Blue */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 3px;
+  font-weight: bold;
+}
+
+.win31-control-box {
+  background-color: #c0c0c0;
+  color: #000;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  font-family: monospace;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.win31-title-text {
+  flex-grow: 1;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.win31-window-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.win31-btn-arrow {
+  background-color: #c0c0c0;
+  color: #000;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.win31-btn-arrow:active {
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+/* 3. MENU BAR */
+.win31-menu-bar {
+  display: flex;
+  gap: 12px;
+  padding: 4px 10px;
+  background-color: #fff; /* Menu bars in 3.1 were often white */
+  border-bottom: 1px solid #000;
+}
+
+.win31-menu-item {
+  cursor: pointer;
+}
+.win31-menu-item:hover {
+  background-color: #0000aa;
+  color: #fff;
+}
+.underline {
+  text-decoration: underline;
+}
+
+/* 4. CHUNKY TOOLBARS */
+.win31-toolbar-area {
+  background-color: #c0c0c0;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 1px solid #888;
+}
+
+.win31-toolbar-row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.win31-tool-btn {
+  background-color: #c0c0c0;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 2px 6px;
+  min-width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+}
+.win31-tool-btn:active {
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  padding: 3px 5px 1px 7px; /* Shifts text to simulate pressing down! */
+}
+
+.win31-divider {
+  width: 2px;
+  height: 20px;
+  background-color: #fff;
+  border-left: 1px solid #888;
+  margin: 0 4px;
+}
+
+.win31-dropdown {
+  background-color: #fff;
+  border: 1px solid #000;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 4px;
+  font-size: 12px;
+  width: 120px;
+}
+
+.win31-drop-arrow {
+  background-color: #c0c0c0;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  height: 100%;
+  width: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+/* 5. THE RULER */
+.win31-ruler {
+  background-color: #fff;
+  border-bottom: 1px solid #000;
+  padding: 2px 10px;
+  font-family: 'Times New Roman', serif;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  color: #000;
+}
+
+/* 6. CONTENT AREA */
+.win31-content-wrapper {
+  flex-grow: 1;
+  display: flex;
+  background-color: #fff;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  overflow: hidden;
+}
+
+.win31-textarea {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 20px 40px;
+  font-family: 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #000;
+  background-color: transparent;
+}
+
+/* Scrollbars */
+.win31-scrollbar-v {
+  width: 18px;
+  background-color: #c0c0c0;
+  border-left: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.win31-scroll-btn {
+  background-color: #c0c0c0;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  height: 18px;
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.win31-scroll-track {
+  flex-grow: 1;
+  /* The iconic checkered dither pattern for Windows scroll tracks */
+  background-image: repeating-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), repeating-linear-gradient(45deg, #fff 25%, #c0c0c0 25%, #c0c0c0 75%, #fff 75%, #fff);
+  background-position: 0 0, 2px 2px;
+  background-size: 4px 4px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.win31-scroll-thumb {
+  width: 100%;
+  height: 30px;
+  background-color: #c0c0c0;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.win31-h-scroll-row {
+  display: flex;
+  height: 18px;
+  background-color: #c0c0c0;
+}
+
+.win31-h-blank {
+  width: 40px; /* Aligns with text margin roughly */
+  border-right: 1px solid #000;
+}
+
+.win31-scrollbar-h {
+  flex-grow: 1;
+  display: flex;
+  border-top: 1px solid #000;
+}
+
+.win31-scroll-btn-h {
+  background-color: #c0c0c0;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  width: 18px;
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.win31-scroll-track-h {
+  flex-grow: 1;
+  background-image: repeating-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), repeating-linear-gradient(45deg, #fff 25%, #c0c0c0 25%, #c0c0c0 75%, #fff 75%, #fff);
+  background-position: 0 0, 2px 2px;
+  background-size: 4px 4px;
+}
+
+.win31-scroll-thumb-h {
+  height: 100%;
+  width: 40px;
+  background-color: #c0c0c0;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.win31-scroll-corner {
+  width: 18px;
+  background-color: #c0c0c0;
+}
+
+/* 7. STATUS BAR */
+.win31-status-bar {
+  display: flex;
+  background-color: #c0c0c0;
+  padding: 2px;
+  gap: 2px;
+  font-size: 11px;
+}
+
+.win31-status-panel {
+  border-top: 1px solid #888;
+  border-left: 1px solid #888;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  padding: 2px 6px;
+  display: flex;
+  align-items: center;
+  min-width: 40px;
+  justify-content: center;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* SEATTLESOFT DOORWAYS 3.1 (Windows 3.1 Parody)                              */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background (Clean Box White) */
+.vibe-card.windows-31-1990 {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.doorways-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+/* The Logo Row */
+.doorways-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+/* The Pixel Trail Grid */
+.pixel-trail {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-right: 5px;
+  opacity: 0.6;
+}
+
+.pix {
+  width: 6px;
+  height: 6px;
+  background-color: #000;
+}
+/* Stagger the pixels to look like motion */
+.p1 { transform: translateX(5px); }
+.p3 { transform: translateX(2px); }
+.p6 { transform: translateX(-2px); }
+
+.doorways-icon {
+  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
+}
+
+/* The Typography */
+.doorways-text-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.seattle-text {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1rem;
+  color: #111;
+}
+
+.doorways-text {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 2.2rem;
+  color: #111;
+  letter-spacing: -1px;
+}
+
+.ver-text {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 0.9rem;
+  color: #111;
+  margin-top: 2px;
+}
+
