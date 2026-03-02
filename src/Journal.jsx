@@ -8,8 +8,10 @@ import PasswordModal from './modals/PasswordModal';
 // ==========================================
 import PeachIIe from './themes/PeachIIe.jsx';
 import Olari500 from './themes/Olari500.jsx';
+import IBMPCJr from './themes/IBMPCJr.jsx';
 import PeachMac1985 from './themes/PeachMac1985.jsx';
 import DoorwaysXP from './themes/DoorwaysXP.jsx';
+import PeachOS7 from './themes/PeachOS7.jsx';
 import Admiral75 from './themes/Admiral75.jsx';
 import EInk from './themes/EInk.jsx';
 
@@ -125,6 +127,7 @@ function Journal() {
     if (retro === 'apple-mac-1985') return "PeachWrite";
     if (retro === 'apple-iie') return "PEACH WRITER ][";
     if (retro === 'atari-400') return "O L A R I W R I T E R";
+    if (retro === 'ibm-pc-jr') return "OX-WRITE 1.0";
     if (retro === 'commodore-64') return "*** ADMIRAL 75 WORD PROCESSOR ***";
     if (retro === 'e-ink') return "InkWriter 2008";
     if (retro === 'windows-xp-2001') return "Doorways Word";
@@ -164,8 +167,12 @@ function Journal() {
         return <PeachIIe {...themeProps} />;
         case 'atari-400':
         return <Olari500 {...themeProps} />;
+        case 'ibm-pc-jr':
+        return <IBMPCJr {...themeProps} />;
         case 'apple-mac-1985':
         return <PeachMac1985 {...themeProps} />;
+        case 'mac-system-7-1994':
+        return <PeachOS7 {...themeProps} />;
         case 'windows-xp-2001':
         return <DoorwaysXP {...themeProps} />;
         case 'commodore-64':

@@ -1,0 +1,272 @@
+/* -------------------------------------------------------------------------- */
+/* PEACH OS 7 (Mac System 7 / Word 5.1 Parody) - Journal Screen Layout        */
+/* -------------------------------------------------------------------------- */
+
+.mac-system-7-1994 .screen {
+  background-color: #a5a5a5; /* Classic Mac Desktop Desktop Pattern Color */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2"><rect width="1" height="1" fill="%23888"/><rect x="1" y="1" width="1" height="1" fill="%23888"/></svg>');
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 1. THE WINDOW FRAME */
+.os7-window {
+  width: 100%;
+  max-width: 850px;
+  height: 90%;
+  background-color: #fff;
+  border: 1px solid #000;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.5); /* Hard drop shadow */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. THE STRIPED TITLE BAR */
+.os7-title-bar {
+  height: 24px;
+  border-bottom: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  background-color: #fff;
+}
+
+.os7-title-stripes {
+  flex-grow: 1;
+  height: 14px;
+  margin: 0 10px;
+  /* The classic 6 black lines! */
+  background: repeating-linear-gradient(
+    to bottom,
+    #fff,
+    #fff 1px,
+    #000 1px,
+    #000 2px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.os7-title-text {
+  background-color: #fff;
+  padding: 0 10px;
+  font-family: 'MacSystem7', 'Chicago', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* The Close & Zoom Boxes */
+.os7-close-box, .os7-zoom-box {
+  width: 14px;
+  height: 14px;
+  background-color: #fff;
+  border: 1px solid #000;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+  cursor: pointer;
+}
+.os7-close-box:active, .os7-zoom-box:active {
+  background-color: #000;
+}
+
+/* 3. THE OVERWHELMING TOOLBARS */
+.os7-toolbars {
+  background-color: #fff;
+  border-bottom: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+}
+
+.os7-toolbar-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 0;
+}
+
+/* The Cookie-Cutter Button! */
+.os7-btn {
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+  min-width: 24px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'MacSystem7', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0 #000; /* Makes them look raised */
+  padding: 0 4px;
+}
+.os7-btn:active, .os7-btn.active {
+  box-shadow: none;
+  transform: translate(1px, 1px);
+  background-color: #000;
+  color: #fff;
+}
+
+.os7-divider {
+  width: 2px;
+  height: 20px;
+  background-color: #000;
+  margin: 0 4px;
+}
+
+/* The Native Dropdowns */
+.os7-dropdown {
+  border: 1px solid #000;
+  box-shadow: 1px 1px 0 #000;
+  font-family: 'MacSystem7', sans-serif;
+  font-size: 12px;
+  height: 22px;
+  outline: none;
+  cursor: pointer;
+}
+.font-drop { width: 120px; }
+.size-drop { width: 50px; }
+
+/* 4. THE RULER */
+.os7-ruler {
+  height: 24px;
+  border-bottom: 1px solid #000;
+  background-color: #fff;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 20px;
+  /* Tick marks using CSS gradients! */
+  background-image: repeating-linear-gradient(to right, #000, #000 1px, transparent 1px, transparent 10px);
+  background-size: 100% 5px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.os7-ruler-numbers {
+  display: flex;
+  width: 100%;
+  font-family: 'MacSystem7', sans-serif;
+  font-size: 10px;
+  letter-spacing: 34px; /* Spaces out the numbers across the ticks */
+  margin-bottom: 6px;
+}
+
+/* 5. TEXT AREA */
+.os7-content {
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.mac-system-7-1994 textarea {
+  flex-grow: 1;
+  border: none;
+  resize: none;
+  outline: none;
+  padding: 20px;
+  /* MS Word 5.1 usually defaulted to New York or Times */
+  font-family: 'Times New Roman', Times, serif; 
+  font-size: 18px;
+  line-height: 1.4;
+  color: #000;
+}
+
+/* 6. STATUS BAR */
+.os7-status-bar {
+  height: 20px;
+  border-top: 1px solid #000;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-family: 'MacSystem7', sans-serif;
+  font-size: 11px;
+  gap: 20px;
+}
+
+.os7-filename-input {
+  border: none;
+  border-bottom: 1px dotted #000;
+  font-family: 'MacSystem7', sans-serif;
+  font-size: 11px;
+  outline: none;
+  width: 150px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* PEACH ORCHARD 7 (Mac System 7 / Mac OS 8 Parody)                           */
+/* -------------------------------------------------------------------------- */
+
+/* The Card Background (Classic Mac Grey) */
+.vibe-card.mac-system-7-1994 {
+  background-color: #b0b0b0; /* That flat, slightly dark grey */
+  border: 1px solid #999;
+  /* Optional: Simple CSS pattern to mimic dither if you want, but flat grey is safer */
+}
+
+.orchard-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The White "Welcome" Window */
+.orchard-window {
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.2); /* Hard drop shadow */
+  width: 80%;
+}
+
+.picasso-peach {
+  /* No drop shadow needed, the flat look is the aesthetic */
+}
+
+.orchard-text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.orchard-title {
+  font-family: 'EB Garamond', serif; /* Re-using our classy font */
+  font-size: 2rem;
+  line-height: 1;
+  color: #333;
+}
+
+.orchard-subtitle {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-self: flex-start; /* "Starting up..." is usually left-aligned or centered */
+}
+
+/* The Progress Bar */
+.orchard-progress-bar {
+  width: 100%;
+  height: 8px;
+  border: 1px solid #666;
+  background: #eee;
+  border-radius: 0; /* Square edges */
+  padding: 1px;
+}
+
+.orchard-progress-fill {
+  width: 40%; /* Stuck at 40% forever */
+  height: 100%;
+  background-color: #4b62b0; /* Matches the dark blue of the logo */
+}

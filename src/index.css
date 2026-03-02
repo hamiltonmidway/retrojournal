@@ -62,67 +62,6 @@
   letter-spacing: 0.05em;
 }
 
-
-/* -------------------------------------------------------------------------- */
-/* BIG BLUE OX JR (IBM PC Jr Parody)                                          */
-/* -------------------------------------------------------------------------- */
-
-/* The Card Background (Industrial Cool Gray) */
-.vibe-card.ibm-pc-jr {
-  background-color: #e0e0e0; /* Cool, neutral grey */
-  border: 1px solid #c0c0c0;
-}
-
-.ox-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0px;
-}
-
-.big-blue-text {
-  font-family: 'Kanit', sans-serif;
-  font-weight: 900;
-  font-size: 2rem; /* Doubled from 1rem */
-  color: #004085; /* Dark Corporate Blue */
-  text-transform: uppercase;
-  margin-left: 4px; /* Adjusted for scale */
-}
-
-.ox-main-row {
-  display: flex;
-  align-items: baseline;
-  gap: 10px; /* Doubled from 5px */
-  line-height: 0.8;
-}
-
-.ox-logo {
-  font-family: 'Kanit', sans-serif;
-  font-weight: 900;
-  font-size: 10rem; /* Doubled from 5rem */
-  letter-spacing: -4px; /* Doubled from -2px */
-  
-  /* THE CSS MAGIC: Blue Scanlines! */
-  background: repeating-linear-gradient(
-    to bottom,
-    #006699 0%,
-    #006699 15%,   
-    transparent 15%,
-    transparent 25% 
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent; 
-}
-
-.ox-jr {
-  font-family: 'Times New Roman', serif;
-  font-weight: bold;
-  font-style: italic;
-  font-size: 5rem; /* Doubled from 2.5rem */
-  color: #333;
-}
-
 /* -------------------------------------------------------------------------- */
 /* DX-DISK 87 (Microsoft MS-DOS Parody)                                       */
 /* -------------------------------------------------------------------------- */
@@ -259,80 +198,7 @@
   margin-top: 2px;
 }
 
-/* -------------------------------------------------------------------------- */
-/* PEACH ORCHARD 7 (Mac System 7 / Mac OS 8 Parody)                           */
-/* -------------------------------------------------------------------------- */
 
-/* The Card Background (Classic Mac Grey) */
-.vibe-card.mac-system-7-1994 {
-  background-color: #b0b0b0; /* That flat, slightly dark grey */
-  border: 1px solid #999;
-  /* Optional: Simple CSS pattern to mimic dither if you want, but flat grey is safer */
-}
-
-.orchard-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* The White "Welcome" Window */
-.orchard-window {
-  background-color: #fff;
-  border: 1px solid #000;
-  padding: 15px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 4px 4px 0 rgba(0,0,0,0.2); /* Hard drop shadow */
-  width: 80%;
-}
-
-.picasso-peach {
-  /* No drop shadow needed, the flat look is the aesthetic */
-}
-
-.orchard-text-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.orchard-title {
-  font-family: 'EB Garamond', serif; /* Re-using our classy font */
-  font-size: 2rem;
-  line-height: 1;
-  color: #333;
-}
-
-.orchard-subtitle {
-  font-family: 'EB Garamond', serif;
-  font-size: 0.9rem;
-  color: #333;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  align-self: flex-start; /* "Starting up..." is usually left-aligned or centered */
-}
-
-/* The Progress Bar */
-.orchard-progress-bar {
-  width: 100%;
-  height: 8px;
-  border: 1px solid #666;
-  background: #eee;
-  border-radius: 0; /* Square edges */
-  padding: 1px;
-}
-
-.orchard-progress-fill {
-  width: 40%; /* Stuck at 40% forever */
-  height: 100%;
-  background-color: #4b62b0; /* Matches the dark blue of the logo */
-}
 
 /* -------------------------------------------------------------------------- */
 /* SEATTLESOFT DOORWAYS 95 (Windows 95 Parody)                                */
