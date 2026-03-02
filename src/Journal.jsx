@@ -11,8 +11,9 @@ import Olari500 from './themes/Olari500.jsx';
 import IBMPCJr from './themes/IBMPCJr.jsx';
 import Dos1987 from './themes/Dos1987.jsx';
 import Doorways31 from './themes/Doorways31.jsx';
-import PeachMac1985 from './themes/PeachMac1985.jsx';
+import Doorways95 from './themes/Doorways95.jsx';
 import DoorwaysXP from './themes/DoorwaysXP.jsx';
+import PeachMac1985 from './themes/PeachMac1985.jsx';
 import PeachOS7 from './themes/PeachOS7.jsx';
 import Admiral75 from './themes/Admiral75.jsx';
 import EInk from './themes/EInk.jsx';
@@ -173,6 +174,8 @@ function Journal() {
         return <Dos1987 {...themeProps} />;
         case 'ibm-pc-jr':
         return <IBMPCJr {...themeProps} />;
+        case 'windows-95':
+        return <Doorways95 {...themeProps} />;
         case 'windows-31-1990':
         return <Doorways31 {...themeProps} />;
         case 'apple-mac-1985':
