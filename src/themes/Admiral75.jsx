@@ -4,8 +4,7 @@ import './Admiral75.css';
 function Admiral75({ 
   entry, 
   setEntry, 
-  fileName, 
-  setFileName, 
+  triggerLoad, 
   triggerSave, 
   handleExit, 
   programName 
@@ -23,23 +22,16 @@ function Admiral75({
       <textarea
         value={entry}
         onChange={(e) => setEntry(e.target.value)}
-        placeholder="Start journaling..."
+        placeholder="Tap here to begin writing."
         autoFocus
         spellCheck="false"
       />
       
       {/* C64 FOOTER / STATUS BAR */}
       <div className="retro-status-bar">
-         <div className="status-field">
-           <span>FILE:</span>
-           <input 
-             type="text" 
-             value={fileName} 
-             /* C64 loved uppercase file names! */
-             onChange={(e) => setFileName(e.target.value.toUpperCase())} 
-           />
-         </div>
-         <div className="command-group">
+         {/* Updated to our clean 3-button layout */}
+         <div className="command-group" style={{ width: '100%', justifyContent: 'space-between' }}>
+           <button onClick={triggerLoad}>[F3] LOAD</button>
            <button onClick={triggerSave}>[F1] SAVE</button>
            <button onClick={handleExit}>[ESC] EXIT</button>
          </div>

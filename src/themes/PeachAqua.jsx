@@ -7,6 +7,7 @@ function PeachAqua({
   fileName, 
   setFileName, 
   triggerSave, 
+  triggerLoad,
   handleExit, 
   programName 
 }) {
@@ -88,7 +89,7 @@ function PeachAqua({
              className="aqua-textarea"
              value={entry}
              onChange={(e) => setEntry(e.target.value)}
-             placeholder="Start typing..."
+             placeholder="Tap here to begin writing."
              autoFocus
              spellCheck="false"
            />
@@ -109,13 +110,16 @@ function PeachAqua({
         </div>
 
         {/* 6. BOTTOM STATUS BAR */}
-        <div className="aqua-status-bar">
-           <div className="aqua-status-item">100</div>
-           <div className="aqua-status-item">
+        <div className="aqua-status-bar" style={{ justifyContent: 'space-between', padding: '0 10px', alignItems: 'center' }}>
+           <div style={{ display: 'flex', gap: '15px', padding: '4px 0' }}>
+              <button onClick={triggerLoad} style={{ cursor: 'pointer', background: 'none', border: 'none', color: '#0055cc' }}>Load</button>
+              <button onClick={triggerSave} style={{ cursor: 'pointer', background: 'none', border: 'none', color: '#0055cc' }}>Save</button>
+              <button onClick={handleExit} style={{ cursor: 'pointer', background: 'none', border: 'none', color: '#cc0000' }}>Exit</button>
+           </div>
+           <div className="aqua-status-item" style={{ borderRight: 'none' }}>
               <span style={{color: '#0055cc'}}>▼</span> Page {entry.split('\n').length}
            </div>
         </div>
-
       </div>
     </div>
   );

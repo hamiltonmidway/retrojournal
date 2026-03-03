@@ -5,7 +5,7 @@ function Dos1987({
   entry, 
   setEntry, 
   fileName, 
-  setFileName, 
+  triggerLoad, 
   triggerSave, 
   handleExit,
   programName
@@ -49,6 +49,7 @@ function Dos1987({
         <textarea
           value={entry}
           onChange={(e) => setEntry(e.target.value)}
+          placeholder="Tap here to begin writing."
           autoFocus
           spellCheck="false"
         />
@@ -88,8 +89,10 @@ function Dos1987({
          </div>
 
          {/* Command Bar (Cyan) */}
-         <div className="dos-command-bar">
-            Edit document or <span className="clickable-command" onClick={triggerSave}>Save</span> or <span className="clickable-command" onClick={handleExit}>Exit</span>
+         <div className="dos-command-bar" style={{ display: 'flex', justifyContent: 'space-between', padding: '0 50px' }}>
+            <button onClick={triggerLoad} style={{ cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'inherit', color: 'inherit' }}>Load</button>
+            <button onClick={triggerSave} style={{ cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'inherit', color: 'inherit' }}>Save</button>
+            <button onClick={handleExit} style={{ cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'inherit', color: 'inherit' }}>Exit</button>
          </div>
 
       </div>

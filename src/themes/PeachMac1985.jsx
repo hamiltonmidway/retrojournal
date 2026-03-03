@@ -5,6 +5,7 @@ function PeachMac1985({
   entry, 
   setEntry, 
   fileName, 
+  triggerLoad, 
   triggerSave, 
   handleExit 
 }) {
@@ -23,7 +24,7 @@ function PeachMac1985({
 
       <div className="mac-window">
          <div className="mac-title-bar">
-            {/* Using our new secure handleExit tool! */}
+            {/* Using our secure handleExit tool! */}
             <button className="mac-close-box" onClick={handleExit}></button>
             <div className="mac-title-text-container">
                <span className="mac-title-text">{fileName}</span>
@@ -40,7 +41,7 @@ function PeachMac1985({
             <textarea
               value={entry}
               onChange={(e) => setEntry(e.target.value)}
-              placeholder="Type your masterpiece..."
+              placeholder="Tap here to begin writing."
               autoFocus
               spellCheck="false"
             />
@@ -51,13 +52,16 @@ function PeachMac1985({
             </div>
          </div>
          
-         <div className="mac-footer">
+         <div className="mac-footer" style={{ justifyContent: 'space-between', alignItems: 'center', paddingLeft: '15px' }}>
+            <div style={{ display: 'flex', gap: '15px' }}>
+               <button onClick={triggerLoad} style={{ cursor: 'pointer', fontFamily: 'inherit', background: 'none', border: 'none', textDecoration: 'underline', color: 'inherit' }}>Load</button>
+               <button onClick={triggerSave} style={{ cursor: 'pointer', fontFamily: 'inherit', background: 'none', border: 'none', textDecoration: 'underline', color: 'inherit' }}>Save</button>
+               <button onClick={handleExit} style={{ cursor: 'pointer', fontFamily: 'inherit', background: 'none', border: 'none', textDecoration: 'underline', color: 'inherit' }}>Exit</button>
+            </div>
             <div className="mac-resize-box"><div className="resize-icon"></div></div>
          </div>
       </div>
       
-      {/* Using our new secure triggerSave tool! */}
-      <button className="mac-floppy-btn" onClick={triggerSave}>Save to Disk</button>
     </div>
   );
 }

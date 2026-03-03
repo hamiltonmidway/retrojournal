@@ -7,6 +7,7 @@ function PeachOS7({
   fileName, 
   setFileName, 
   triggerSave, 
+  triggerLoad,
   handleExit,
   programName
 }) {
@@ -91,21 +92,21 @@ function PeachOS7({
            <textarea
              value={entry}
              onChange={(e) => setEntry(e.target.value)}
-             placeholder="Start typing your document here..."
+             placeholder="Tap here to begin writing."
              autoFocus
              spellCheck="false"
            />
         </div>
 
         {/* 5. STATUS BAR */}
-        <div className="os7-status-bar">
-           <span>Page 1</span>
-           <div className="os7-divider" style={{height: '10px'}}></div>
-           <span>Normal</span>
-           <div className="os7-divider" style={{height: '10px'}}></div>
-           <span>File: <input className="os7-filename-input" value={fileName} onChange={(e) => setFileName(e.target.value)} /></span>
+        <div className="os7-status-bar" style={{ justifyContent: 'space-between' }}>
+           <div style={{ display: 'flex', gap: '15px' }}>
+             <button onClick={triggerLoad} style={{ cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'inherit' }}>Load</button>
+             <button onClick={triggerSave} style={{ cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'inherit' }}>Save</button>
+             <button onClick={handleExit} style={{ cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'inherit' }}>Exit</button>
+           </div>
+           <span>Page 1 | Normal</span>
         </div>
-
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import PasswordModal from './modals/PasswordModal';
 // ==========================================
 // THEME IMPORTS 
 // ==========================================
+
 import PeachIIe from './themes/PeachIIe.jsx';
 import Olari500 from './themes/Olari500.jsx';
 import IBMPCJr from './themes/IBMPCJr.jsx';
@@ -38,10 +39,7 @@ function Journal() {
   });
 
   const [visuals, setVisuals] = useState({
-    crt: false,
-    curve: false,
-    cursor: false,
-    bezel: false
+    crt: false
   });
 
   useEffect(() => {
@@ -52,10 +50,7 @@ function Journal() {
     const loadSettings = () => {
       const saved = JSON.parse(localStorage.getItem('retroSettings')) || {};
       setVisuals({
-        crt: saved.crtFilter || false,       
-        curve: saved.curvedMonitor || false, 
-        cursor: saved.blockCursor || false,  
-        bezel: saved.monitorFrame || false   
+        crt: saved.crtFilter || false       
       });
     };
     loadSettings();
@@ -141,9 +136,6 @@ function Journal() {
   const getVisualClasses = () => {
     let classes = `journal ${retro} ${isNightMode ? 'night-mode' : ''}`;
     if (visuals.crt) classes += ' visual-crt';
-    if (visuals.curve) classes += ' visual-curve';
-    if (visuals.cursor) classes += ' visual-cursor';
-    if (visuals.bezel) classes += ' visual-bezel';
     return classes;
   };
 
@@ -159,6 +151,7 @@ function Journal() {
     setFileName,
     isNightMode,
     setIsNightMode,
+    triggerLoad,
     triggerSave,
     handleExit,
     programName: getProgramName()
@@ -211,9 +204,6 @@ function Journal() {
       
       {/* RENDER THE CHOSEN VISUAL THEME */}
       {renderTheme()}
-
-      {/* GLOBAL OVERLAYS */}
-      {visuals.bezel && <div className="monitor-bezel-overlay"></div>}
 
       {/* SECURITY MODAL */}
       {modalConfig.show && (

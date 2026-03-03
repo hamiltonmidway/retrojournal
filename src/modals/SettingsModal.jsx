@@ -9,9 +9,7 @@ function SettingsModal({ onClose }) {
 
   // STATE: Visual
   const [crtFilter, setCrtFilter] = useState(false);
-  const [curvedMonitor, setCurvedMonitor] = useState(false);
-  const [blockCursor, setBlockCursor] = useState(false);
-  const [monitorFrame, setMonitorFrame] = useState(false);
+  // Removed curve, cursor, and bezel states!
 
   // STATE: File
   const [fileFormat, setFileFormat] = useState('txt');
@@ -23,9 +21,6 @@ function SettingsModal({ onClose }) {
     if (saved.enableEncryption) setEnableEncryption(saved.enableEncryption);
     
     if (saved.crtFilter) setCrtFilter(saved.crtFilter);
-    if (saved.curvedMonitor) setCurvedMonitor(saved.curvedMonitor);
-    if (saved.blockCursor) setBlockCursor(saved.blockCursor);
-    if (saved.monitorFrame) setMonitorFrame(saved.monitorFrame);
 
     if (saved.fileFormat) setFileFormat(saved.fileFormat);
   }, []);
@@ -35,9 +30,6 @@ function SettingsModal({ onClose }) {
     const settings = {
       enableEncryption,
       crtFilter,
-      curvedMonitor,
-      blockCursor,
-      monitorFrame,
       fileFormat
     };
     localStorage.setItem('retroSettings', JSON.stringify(settings));
@@ -151,30 +143,6 @@ function SettingsModal({ onClose }) {
                       onChange={(e) => setCrtFilter(e.target.checked)} 
                     />
                     Enable CRT Filter (Scanlines)
-                  </label>
-                  <label className="clean-input-row">
-                    <input 
-                      type="checkbox" 
-                      checked={curvedMonitor} 
-                      onChange={(e) => setCurvedMonitor(e.target.checked)} 
-                    />
-                    Enable Curved Monitor Effect
-                  </label>
-                  <label className="clean-input-row">
-                    <input 
-                      type="checkbox" 
-                      checked={blockCursor} 
-                      onChange={(e) => setBlockCursor(e.target.checked)} 
-                    />
-                    Use Square Blinking Cursor
-                  </label>
-                  <label className="clean-input-row">
-                    <input 
-                      type="checkbox" 
-                      checked={monitorFrame} 
-                      onChange={(e) => setMonitorFrame(e.target.checked)} 
-                    />
-                    Show Retro Monitor Frame
                   </label>
                 </div>
               )}

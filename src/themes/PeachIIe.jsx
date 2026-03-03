@@ -1,19 +1,9 @@
 import React from 'react';
 import './PeachIIe.css';
 
-function PeachIIe({ 
-  entry, 
-  setEntry, 
-  fileName, 
-  setFileName, 
-  triggerSave, 
-  handleExit, 
-  programName 
-}) {
+function PeachIIe({ entry, setEntry, triggerLoad, triggerSave, handleExit, programName }) {
   return (
     <div className="screen">
-      
-      {/* HEADER */}
       <div className="apple-header">
         <div className="apple-header-border">
           <div className="apple-header-text">
@@ -22,32 +12,22 @@ function PeachIIe({
         </div>
       </div>
 
-      {/* TEXT AREA */}
       <textarea
         value={entry}
         onChange={(e) => setEntry(e.target.value)}
-        placeholder="Start journaling..."
+        placeholder="Tap here to begin writing."
         autoFocus
         spellCheck="false"
       />
       
-      {/* FOOTER / STATUS BAR */}
       <div className="retro-status-bar">
-         <div className="status-field">
-           <span>FILE:</span>
-           <input 
-             type="text" 
-             value={fileName} 
-             /* We keep the uppercase logic here because it fits the Apple IIe aesthetic! */
-             onChange={(e) => setFileName(e.target.value.toUpperCase())} 
-           />
-         </div>
-         <div className="command-group">
+         {/* Updated to a clean 3-button layout */}
+         <div className="command-group" style={{ width: '100%', justifyContent: 'space-between' }}>
+           <button onClick={triggerLoad}>[CTRL-L] LOAD</button>
            <button onClick={triggerSave}>[CTRL-S] SAVE</button>
            <button onClick={handleExit}>[ESC] EXIT</button>
          </div>
       </div>
-
     </div>
   );
 }

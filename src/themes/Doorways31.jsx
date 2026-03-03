@@ -6,6 +6,7 @@ function Doorways31({
   setEntry, 
   fileName, 
   setFileName, 
+  triggerLoad, 
   triggerSave, 
   handleExit, 
   programName 
@@ -47,15 +48,13 @@ function Doorways31({
         <div className="win31-toolbar-area">
             {/* Top Row: File Controls */}
             <div className="win31-toolbar-row">
-                <button className="win31-tool-btn" onClick={triggerSave} title="Save">💾</button>
+                <button className="win31-tool-btn">📄</button>
                 <button className="win31-tool-btn">📂</button>
                 <div className="win31-divider"></div>
                 <button className="win31-tool-btn">✂️</button>
                 <button className="win31-tool-btn">📋</button>
                 <div className="win31-divider"></div>
                 <button className="win31-tool-btn">undo</button>
-                {/* Clicking "Exit" acts as our safe escape hatch */}
-                <button className="win31-tool-btn" style={{ marginLeft: 'auto', fontWeight: 'bold' }} onClick={handleExit}>Exit</button>
             </div>
 
             {/* Bottom Row: Formatting Controls */}
@@ -65,7 +64,7 @@ function Doorways31({
                     <button className="win31-drop-arrow">↓</button>
                 </div>
                 <div className="win31-dropdown">
-                    <span>Times New Roman</span>
+                    <span>Arial</span>
                     <button className="win31-drop-arrow">↓</button>
                 </div>
                 <div className="win31-dropdown" style={{ width: '40px' }}>
@@ -73,9 +72,9 @@ function Doorways31({
                     <button className="win31-drop-arrow">↓</button>
                 </div>
                 <div className="win31-divider"></div>
-                <button className="win31-tool-btn" style={{ fontWeight: 'bold', fontFamily: 'Times New Roman' }}>B</button>
-                <button className="win31-tool-btn" style={{ fontStyle: 'italic', fontFamily: 'Times New Roman' }}>I</button>
-                <button className="win31-tool-btn" style={{ textDecoration: 'underline', fontFamily: 'Times New Roman' }}>U</button>
+                <button className="win31-tool-btn" style={{ fontWeight: 'bold', fontFamily: 'Arial' }}>B</button>
+                <button className="win31-tool-btn" style={{ fontStyle: 'italic', fontFamily: 'Arial' }}>I</button>
+                <button className="win31-tool-btn" style={{ textDecoration: 'underline', fontFamily: 'Arial' }}>U</button>
             </div>
         </div>
 
@@ -92,7 +91,7 @@ function Doorways31({
              className="win31-textarea"
              value={entry}
              onChange={(e) => setEntry(e.target.value)}
-             placeholder="Start typing..."
+             placeholder="Tap here to begin writing."
              autoFocus
              spellCheck="false"
            />
@@ -116,14 +115,16 @@ function Doorways31({
         </div>
 
         {/* 7. STATUS BAR */}
-        <div className="win31-status-bar">
-           <div className="win31-status-panel">Pg 1</div>
-           <div className="win31-status-panel">Sec 1</div>
-           <div className="win31-status-panel">1 / 1</div>
-           <div className="win31-status-panel">At 1.5"</div>
-           <div className="win31-status-panel">Ln {lineCount}</div>
-           <div className="win31-status-panel">Col {entry.length}</div>
-           <div className="win31-status-panel" style={{flexGrow: 1}}>100%</div>
+        <div className="win31-status-bar" style={{ display: 'flex', justifyContent: 'space-between', padding: '0 5px' }}>
+           <div style={{ display: 'flex', gap: '15px', alignItems: 'center', paddingLeft: '10px' }}>
+              <button onClick={triggerLoad} style={{ cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'inherit', fontWeight: 'bold' }}>Load</button>
+              <button onClick={triggerSave} style={{ cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'inherit', fontWeight: 'bold' }}>Save</button>
+              <button onClick={handleExit} style={{ cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'inherit', fontWeight: 'bold' }}>Exit</button>
+           </div>
+           <div style={{ display: 'flex' }}>
+              <div className="win31-status-panel">Ln {lineCount}</div>
+              <div className="win31-status-panel">Col {entry.length}</div>
+           </div>
         </div>
 
       </div>

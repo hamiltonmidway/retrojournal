@@ -6,6 +6,7 @@ function Doorways95({
   setEntry, 
   fileName, 
   setFileName, 
+  triggerLoad, 
   triggerSave, 
   handleExit, 
   programName 
@@ -49,7 +50,7 @@ function Doorways95({
             {/* Top Row: File & Edit Controls */}
             <div className="win95-toolbar-row">
                 <button className="win95-tool-btn">📂</button>
-                <button className="win95-tool-btn" onClick={triggerSave} title="Save">💾</button>
+                <button className="win95-tool-btn" title="Save">💾</button>
                 <div className="win95-divider"></div>
                 <button className="win95-tool-btn">🖨️</button>
                 <div className="win95-divider"></div>
@@ -92,7 +93,7 @@ function Doorways95({
              className="win95-textarea"
              value={entry}
              onChange={(e) => setEntry(e.target.value)}
-             placeholder="Start typing..."
+             placeholder="Tap here to begin writing."
              autoFocus
              spellCheck="false"
            />
@@ -115,13 +116,16 @@ function Doorways95({
            <div className="win95-scroll-corner"></div>
         </div>
 
-        {/* 6. STATUS BAR (Inset 3D panels) */}
-        <div className="win95-status-bar">
-           <div className="win95-status-panel">Insert</div>
-           <div className="win95-status-panel">No Printer</div>
-           <div className="win95-status-panel">Select</div>
-           <div className="win95-status-panel" style={{ flexGrow: 1 }}>
-              Pg 1 Ln {lineCount}" Pos {entry.length}"
+        {/* 6. STATUS BAR */}
+        <div className="win95-status-bar" style={{ display: 'flex', justifyContent: 'space-between', padding: '0 5px' }}>
+           <div style={{ display: 'flex', gap: '15px', alignItems: 'center', paddingLeft: '10px' }}>
+              <button onClick={triggerLoad} style={{ cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'inherit', fontWeight: 'bold' }}>Load</button>
+              <button onClick={triggerSave} style={{ cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'inherit', fontWeight: 'bold' }}>Save</button>
+              <button onClick={handleExit} style={{ cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'inherit', fontWeight: 'bold' }}>Exit</button>
+           </div>
+           <div style={{ display: 'flex' }}>
+              <div className="win95-status-panel">Ln {lineCount}"</div>
+              <div className="win95-status-panel">Pos {entry.length}"</div>
            </div>
         </div>
 
@@ -129,6 +133,7 @@ function Doorways95({
 
       {/* 7. THE TASKBAR */}
       <div className="win95-taskbar">
+        {/* I left the handleExit on the Start button because clicking Start to Exit is a classic Windows 95 joke! */}
         <button className="win95-start-btn" onClick={handleExit}>
           <span className="win95-flag">❖</span> <strong>Start</strong>
         </button>

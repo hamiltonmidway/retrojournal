@@ -6,6 +6,7 @@ function IBMPCJr({
   setEntry, 
   fileName, 
   setFileName, 
+  triggerLoad, 
   triggerSave, 
   handleExit,
   programName
@@ -48,22 +49,15 @@ function IBMPCJr({
       <textarea
         value={entry}
         onChange={(e) => setEntry(e.target.value)}
-        placeholder="Start typing..."
+        placeholder="Tap here to begin writing."
         autoFocus
         spellCheck="false"
       />
 
       {/* 4. THE COMMAND FOOTER */}
       <div className="ox-footer">
-         <div className="ox-file-controls">
-            <span>File: </span>
-            <input 
-              className="ox-filename-input"
-              value={fileName} 
-              onChange={(e) => setFileName(e.target.value)} 
-            />
-         </div>
-         <div className="ox-commands">
+         <div className="ox-commands" style={{ width: '100%', justifyContent: 'space-between', display: 'flex' }}>
+            <button onClick={triggerLoad}>[F3] Load</button>
             <button onClick={triggerSave}>[F1] Save</button>
             <button onClick={handleExit}>[Esc] Exit</button>
          </div>
