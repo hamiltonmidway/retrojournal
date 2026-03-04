@@ -24,8 +24,8 @@ function createWindow() {
     },
   });
 
-  // 1. Force DevTools to open
-  mainWindow.webContents.openDevTools();
+  // 1. Force DevTools to open (commenting this out because we don't need this right now)
+  // mainWindow.webContents.openDevTools();
 
   // 2. USE 127.0.0.1 (More reliable on Linux than localhost)
   const devUrl = 'http://127.0.0.1:5173';
