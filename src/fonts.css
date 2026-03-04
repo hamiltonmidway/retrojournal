@@ -2,16 +2,38 @@
 /* RETRO JOURNAL - TYPOGRAPHY HUB                                             */
 /* ========================================================================== */
 
-/* -------------------------------------------------------------------------- */
-/* WEB FONTS (Google Fonts)                                                   */
-/* -------------------------------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Michroma&family&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Koulen&family&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,900&display=swap');
+/* ------------------------------------------------------------------------------ */
+/* LOCAL WEB FONTS (Previously Google Fonts, no longer pulled off the internet )  */
+/* ------------------------------------------------------------------------------ */
+
+@font-face {
+  font-family: 'VT323';
+  src: url('/fonts/VT323/VT323-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Michroma';
+  src: url('/fonts/Michroma/Michroma-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('/fonts/EB_Garamond/EBGaramond-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Bodoni Moda';
+  src: url('/fonts/Bodoni_Moda/BodoniModa-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 900;
+}
 
 /* -------------------------------------------------------------------------- */
 /* LOCAL RETRO FONTS (from /public/fonts/)                                    */
