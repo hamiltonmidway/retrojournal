@@ -34,10 +34,21 @@
   background-position: 0 0, 2px 2px;
   
   height: 100vh;
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   font-family: 'AppleMac1985', 'Geneva', sans-serif;
+  position: relative;
+}
+
+/* NEW: Desktop wrapper to manage the flexible layout */
+.mac-desktop {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 32px; /* Leaves 24px for the menu bar + an 8px gap */
+  padding-bottom: 16px;
+  box-sizing: border-box;
 }
 
 /* Fallback screen settings (just in case it gets rendered inside a generic screen box) */
@@ -69,8 +80,9 @@
 }
 
 .mac-menu-apple {
-  font-size: 18px;
+  font-size: 16px;
   margin-right: 10px;
+  filter: grayscale(100%) brightness(0); /* Turns the emoji into a solid black silhouette! */
 }
 
 .mac-menu-item {
@@ -86,8 +98,8 @@
 
 /* 3. THE WINDOW FRAME */
 .mac-window {
-  width: 700px;
-  height: 500px;
+  width: 95%; /* Replaces the fixed 700px */
+  height: 100%; /* Replaces the fixed 500px */
   background: #fff;
   border: 2px solid #000;
   border-radius: 8px; 
@@ -244,4 +256,36 @@
 .mac-floppy-btn:active {
   box-shadow: 2px 2px 0 #000;
   transform: translate(2px, 2px);
+}
+
+/* ========================================================================== */
+/* WINDOW SIZE SETTINGS OVERRIDES                                             */
+/* ========================================================================== */
+
+/* FULL SCREEN MODE */
+.size-full .mac-desktop {
+  /* The menu bar is exactly 24px tall, so 24px padding tucks it right underneath */
+  padding-top: 24px; 
+  padding-bottom: 0;
+}
+
+.size-full .mac-window {
+  width: 100%;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* SMALL SCREEN MODE */
+.size-small .mac-desktop {
+  /* The menu bar is 24px, so 80px gives a massive, distinct gap! */
+  padding-top: 80px; 
+  padding-bottom: 40px; 
+}
+
+.size-small .mac-window {
+  /* Optional: You can also shrink the width here so it truly feels "Small" */
+  width: 75%; 
+  max-width: 800px;
 }

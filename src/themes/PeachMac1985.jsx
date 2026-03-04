@@ -13,7 +13,8 @@ function PeachMac1985({
     <div className="mac-desktop">
       
       <div className="mac-menu-bar">
-        <span className="mac-menu-apple"></span>
+        {/* Replaced the proprietary Apple logo with our Black Peach! */}
+        <span className="mac-menu-apple">🍑</span>
         <span className="mac-menu-item active">File</span>
         <span className="mac-menu-item">Edit</span>
         <span className="mac-menu-item">Search</span>

@@ -29,7 +29,7 @@ function AboutModal({ onClose }) {
             </pre>
             
             <div className="dashed-line"></div>
-            <p>Version: 1.0.4</p>
+            <p>Version: 1.0.7</p>
             <p className="passion-text">
                Retro Journal is a passion project dedicated to the bygone era when computers 
                were completely offline, because your entire life was completely offline.
