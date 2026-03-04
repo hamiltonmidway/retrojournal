@@ -1,36 +1,42 @@
+
+
+
 /* ========================================================================== */
 /* RETRO JOURNAL - TEXT ENTRY WINDOW SIZES                                    */
 /* ========================================================================== */
 
 /* 1. SMALL 
   The classic default: a tiny, glowing monitor floating in the center of 
-  the dark background. We don't need to add anything here because your 
-  individual themes are already perfectly designed for this size! 
+  the dark background. 
 */
 .journal.size-small .screen {
   /* Inherits your original, custom theme sizes */
 }
 
 /* 2. MEDIUM 
-  A nice middle ground: takes up a large portion of the screen so it's 
-  easier to read, but keeps a cozy border around the edge. 
+  A nice middle ground: takes up a large portion of the screen but keeps a cozy border. 
 */
 .journal.size-medium .screen {
   width: 85vw !important;
   height: 90vh !important;
   max-width: none !important;
   max-height: none !important;
+  aspect-ratio: auto !important; /* Overrides the strict 4/3 CRT shape */
 }
 
 /* 3. FULL SCREEN 
-  Pure writing immersion: stretches completely edge-to-edge with no 
-  background border whatsoever. 
+  Pure writing immersion: stretches completely edge-to-edge. 
 */
 .journal.size-full .screen {
   width: 100vw !important;
   height: 100vh !important;
   max-width: none !important;
   max-height: none !important;
-  border-radius: 0 !important; /* Removes rounded corners to sit flush against the monitor */
-  border: none !important; /* Removes outer borders for a pure edge-to-edge feel */
+  border-radius: 0 !important; 
+  border: none !important; 
+  aspect-ratio: auto !important; /* Overrides the strict 4/3 CRT shape */
 }
+
+
+
+
