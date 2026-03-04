@@ -12,7 +12,7 @@ function CreditsModal({ onClose }) {
          
          <div className="clean-modal-content">
             <p className="clean-intro">
-              Retro Journal is made possible thanks to the generous work of the open-source community. 
+              Retro Journal is made possible thanks to the generous and kind work of the open-source community. 
               We are deeply grateful to the creators of the following typefaces:
             </p>
 
@@ -36,8 +36,6 @@ function CreditsModal({ onClose }) {
               <li><strong>VT323</strong> by Peter Hull.  (SIL Open Font License. <a href="/OFL.txt" target="_blank" rel="noopener noreferrer">License is here.)</a> </li>
               <li><strong>Comfortaa</strong> by Johan Aakerlund.   (SIL Open Font License. <a href="/OFL.txt" target="_blank" rel="noopener noreferrer">License is here.)</a> </li>
               <li><strong>Michroma</strong> by Vernon Adams.  (SIL Open Font License. <a href="/OFL.txt" target="_blank" rel="noopener noreferrer">License is here.)</a> </li>
-              <li><strong>Koulen</strong> by Danh Hong.  (SIL Open Font License. <a href="/OFL.txt" target="_blank" rel="noopener noreferrer">License is here.)</a> </li>
-              <li><strong>Kanit</strong> by Cadson Demak.  (SIL Open Font License. <a href="/OFL.txt" target="_blank" rel="noopener noreferrer">License is here.)</a> </li>
               <li><strong>EB Garamond</strong> by Georg Duffner.  (SIL Open Font License. <a href="/OFL.txt" target="_blank" rel="noopener noreferrer">License is here.)</a> </li>
               <li><strong>Bodoni Moda</strong> by Owen Earl.  (SIL Open Font License. <a href="/OFL.txt" target="_blank" rel="noopener noreferrer">License is here.)</a> </li>
             </ul>

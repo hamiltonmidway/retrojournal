@@ -1,42 +1,36 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* ========================================================================== */
+/* RETRO JOURNAL - TEXT ENTRY WINDOW SIZES                                    */
+/* ========================================================================== */
+
+/* 1. SMALL 
+  The classic default: a tiny, glowing monitor floating in the center of 
+  the dark background. We don't need to add anything here because your 
+  individual themes are already perfectly designed for this size! 
+*/
+.journal.size-small .screen {
+  /* Inherits your original, custom theme sizes */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* 2. MEDIUM 
+  A nice middle ground: takes up a large portion of the screen so it's 
+  easier to read, but keeps a cozy border around the edge. 
+*/
+.journal.size-medium .screen {
+  width: 85vw !important;
+  height: 90vh !important;
+  max-width: none !important;
+  max-height: none !important;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+/* 3. FULL SCREEN 
+  Pure writing immersion: stretches completely edge-to-edge with no 
+  background border whatsoever. 
+*/
+.journal.size-full .screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
+  border-radius: 0 !important; /* Removes rounded corners to sit flush against the monitor */
+  border: none !important; /* Removes outer borders for a pure edge-to-edge feel */
 }

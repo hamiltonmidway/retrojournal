@@ -9,7 +9,7 @@ function SettingsModal({ onClose }) {
 
   // STATE: Visual
   const [crtFilter, setCrtFilter] = useState(false);
-  // Removed curve, cursor, and bezel states!
+  const [windowSize, setWindowSize] = useState('small'); 
 
   // STATE: File
   const [fileFormat, setFileFormat] = useState('txt');
@@ -19,9 +19,8 @@ function SettingsModal({ onClose }) {
     const saved = JSON.parse(localStorage.getItem('retroSettings')) || {};
     
     if (saved.enableEncryption) setEnableEncryption(saved.enableEncryption);
-    
     if (saved.crtFilter) setCrtFilter(saved.crtFilter);
-
+    if (saved.windowSize) setWindowSize(saved.windowSize); // NEW: Load size
     if (saved.fileFormat) setFileFormat(saved.fileFormat);
   }, []);
 
@@ -30,6 +29,7 @@ function SettingsModal({ onClose }) {
     const settings = {
       enableEncryption,
       crtFilter,
+      windowSize, // NEW: Save size
       fileFormat
     };
     localStorage.setItem('retroSettings', JSON.stringify(settings));
@@ -143,6 +143,43 @@ function SettingsModal({ onClose }) {
                       onChange={(e) => setCrtFilter(e.target.checked)} 
                     />
                     Enable CRT Filter (Scanlines)
+                  </label>
+
+                  {/* NEW: Text Entry Window Size Options */}
+                  <hr className="clean-divider" />
+                  <p className="clean-panel-label">Text Entry Window Size:</p>
+
+                  <label className="clean-input-row">
+                    <input 
+                      type="radio" 
+                      name="windowSize" 
+                      value="small" 
+                      checked={windowSize === 'small'} 
+                      onChange={(e) => setWindowSize(e.target.value)} 
+                    />
+                    Small Text Entry Window
+                  </label>
+
+                  <label className="clean-input-row">
+                    <input 
+                      type="radio" 
+                      name="windowSize" 
+                      value="medium" 
+                      checked={windowSize === 'medium'} 
+                      onChange={(e) => setWindowSize(e.target.value)} 
+                    />
+                    Medium Text Entry Window
+                  </label>
+
+                  <label className="clean-input-row">
+                    <input 
+                      type="radio" 
+                      name="windowSize" 
+                      value="full" 
+                      checked={windowSize === 'full'} 
+                      onChange={(e) => setWindowSize(e.target.value)} 
+                    />
+                    Full Screen Text Entry Window
                   </label>
                 </div>
               )}

@@ -39,7 +39,8 @@ function Journal() {
   });
 
   const [visuals, setVisuals] = useState({
-    crt: false
+    crt: false,
+    windowSize: 'small' // NEW: Default to small to preserve current look
   });
 
   useEffect(() => {
@@ -50,7 +51,8 @@ function Journal() {
     const loadSettings = () => {
       const saved = JSON.parse(localStorage.getItem('retroSettings')) || {};
       setVisuals({
-        crt: saved.crtFilter || false       
+        crt: saved.crtFilter || false,
+        windowSize: saved.windowSize || 'small' // NEW: Load the saved size
       });
     };
     loadSettings();
@@ -134,7 +136,7 @@ function Journal() {
   };
 
   const getVisualClasses = () => {
-    let classes = `journal ${retro} ${isNightMode ? 'night-mode' : ''}`;
+    let classes = `journal ${retro} size-${visuals.windowSize} ${isNightMode ? 'night-mode' : ''}`; // UPDATED: Added size class
     if (visuals.crt) classes += ' visual-crt';
     return classes;
   };
