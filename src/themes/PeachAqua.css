@@ -47,10 +47,10 @@
 
 /* 2. MAIN WINDOW FRAME */
 .aqua-window {
-  width: 100%;
-  max-width: 850px;
-  height: 85%;
-  margin-top: 30px;
+  width: 95%; /* Replaces the fixed max-width */
+  flex-grow: 1; /* Automatically stretches to fill vertical space */
+  margin-top: 20px; /* Standard medium dead space */
+  margin-bottom: 20px; 
   background-color: #ededed;
   display: flex;
   flex-direction: column;
@@ -350,4 +350,25 @@
     #007aff 20px
   );
   opacity: 0.8;
+}
+
+/* ========================================================================== */
+/* WINDOW SIZE SETTINGS OVERRIDES                                             */
+/* ========================================================================== */
+
+/* FULL SCREEN MODE */
+.size-full .aqua-window {
+  width: 100%;
+  margin-top: 0; /* Tucks perfectly flush against the global menu bar! */
+  margin-bottom: 0; /* Touches the bottom edge of the screen */
+  border-radius: 0;
+  border: none; /* Removes the border for pure writing immersion */
+}
+
+/* SMALL SCREEN MODE */
+.size-small .aqua-window {
+  width: 75%; 
+  max-width: 850px; /* Keeps it cozy on massive monitors */
+  margin-top: 60px; /* Generates extra dead space at the top */
+  margin-bottom: 60px; /* Generates extra dead space at the bottom */
 }

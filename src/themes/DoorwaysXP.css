@@ -64,14 +64,17 @@
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  padding-top: 20px; 
+  /* The taskbar is 30px tall, so 50px gives us a perfect 20px gap! */
+  padding-bottom: 50px; 
+  box-sizing: border-box;
 }
 
 /* 2. THE WINDOW FRAME */
 .xp-window {
-  width: 800px;
-  height: 600px;
+  width: 95%; /* Replaces the fixed 800px */
+  height: 100%; /* Replaces the fixed 600px */
   background-color: #ece9d8; 
   border: 4px solid #0055ea; 
   border-radius: 8px 8px 0 0; 
@@ -317,4 +320,33 @@
   font-family: 'Tahoma', sans-serif;
   font-size: 12px;
   box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* ========================================================================== */
+/* WINDOW SIZE SETTINGS OVERRIDES                                             */
+/* ========================================================================== */
+
+/* FULL SCREEN MODE */
+.size-full .xp-desktop {
+  padding-top: 0; 
+  /* Tucks perfectly flush against the 30px taskbar at the bottom! */
+  padding-bottom: 30px; 
+}
+
+.size-full .xp-window {
+  width: 100%;
+  border-radius: 0;
+  border: none; /* Removes the thick blue border in full screen */
+}
+
+/* SMALL SCREEN MODE */
+.size-small .xp-desktop {
+  /* Pushes the window further into the center */
+  padding-top: 60px; 
+  padding-bottom: 90px; 
+}
+
+.size-small .xp-window {
+  width: 75%; 
+  max-width: 800px;
 }

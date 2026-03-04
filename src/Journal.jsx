@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 import PasswordModal from './modals/PasswordModal';
 
@@ -22,6 +22,7 @@ import EInk from './themes/EInk.jsx';
 
 function Journal() {
   const { retro } = useParams();
+  const navigate = useNavigate();
   
   // ==========================================
   // CORE STATE (The "Brain")
@@ -81,7 +82,7 @@ function Journal() {
 
   const handleExit = () => {
     setSessionPassword(''); // Secure Memory Wipe
-    window.history.back();
+    navigate('/'); // 
   };
 
   const triggerLoad = async () => {
@@ -198,9 +199,10 @@ function Journal() {
   // ==========================================
   // FINAL RENDER
   // ==========================================
+
   return (
-    <div className={getVisualClasses()}>
-      
+    <div className={getVisualClasses()} key={retro}>
+
       {/* RENDER THE CHOSEN VISUAL THEME */}
       {renderTheme()}
 
