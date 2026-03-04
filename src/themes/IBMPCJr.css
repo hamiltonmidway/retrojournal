@@ -47,9 +47,9 @@
   font-family: 'IBMPCJr', monospace;
   color: #33ff33;
   font-size: 1.1rem;
-  white-space: pre; /* Keeps the exact spacing of the ruler */
+  white-space: nowrap; /* Forces it onto a single, never-ending line */
   margin-bottom: 1rem;
-  overflow: hidden; /* Cuts it off if the screen is too small */
+  overflow: hidden; /* Cuts it off precisely at the screen's edge */
 }
 
 /* --- THE TEXT AREA --- */

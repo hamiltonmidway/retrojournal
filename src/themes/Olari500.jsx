@@ -10,16 +10,7 @@ function Olari500({ entry, setEntry, triggerLoad, triggerSave, handleExit, progr
       <div className="olari-header">{programName}</div>
       <div className="olari-blue-screen">
          <div className="olari-top-bar">
-            <span><span className="inv-char">B</span>12</span>
-            <span><span className="inv-char">D</span>4</span>
-            <span><span className="inv-char">G</span>1</span>
-            <span><span className="inv-char">I</span>5</span>
-            <span><span className="inv-char">J</span>0</span>
-            <span><span className="inv-char">L</span>10</span>
-            <span><span className="inv-char">R</span>70</span>
-            <span><span className="inv-char">S</span>2</span>
-            <span><span className="inv-char">T</span>12</span>
-            <span><span className="inv-char">Y</span>132</span>
+            <span><span className="inv-char"></span></span>
             <span className="inv-char">←</span>
          </div>
 

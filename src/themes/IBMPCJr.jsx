@@ -14,8 +14,9 @@ function IBMPCJr({
   // Calculate the lines dynamically just like the real software!
   const lineCount = entry.split('\n').length;
   
-  // The exact, chaotic ruler from the 1984 screenshot
-  const displayWriteRuler = "«..:.._..2.._..:.._.3._..:.._.4.⌂..:.._.5._..:.._.6._..:.._.7.»..:.._.8._..▪.._.9.";
+// The exact, chaotic ruler from the 1984 screenshot, repeated to fill any screen!
+  const baseRuler = "«_.1._..:.._.2._..:.._.3._..:.._.4._..:.._.5._..:.._.6._..:.._.7._..:.._.8._..:.._.9._..:..";
+  const displayWriteRuler = baseRuler.repeat(10);
 
   return (
     <div className="screen">
