@@ -39,19 +39,17 @@ function Journal() {
   });
 
   const [visuals, setVisuals] = useState({
-    crt: false,
-    windowSize: 'small' // NEW: Default to small to preserve current look
+    windowSize: 'small' // Default to small to preserve current look
   });
 
   useEffect(() => {
     if (retro === 'windows-xp-2001' && fileName === 'Untitled') {
-      setFileName('Document1.doc');
+      setFileName('journal-1.doc');
     }
 
     const loadSettings = () => {
       const saved = JSON.parse(localStorage.getItem('retroSettings')) || {};
       setVisuals({
-        crt: saved.crtFilter || false,
         windowSize: saved.windowSize || 'small' // NEW: Load the saved size
       });
     };
@@ -137,7 +135,6 @@ function Journal() {
 
   const getVisualClasses = () => {
     let classes = `journal ${retro} size-${visuals.windowSize} ${isNightMode ? 'night-mode' : ''}`; // UPDATED: Added size class
-    if (visuals.crt) classes += ' visual-crt';
     return classes;
   };
 

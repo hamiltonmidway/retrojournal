@@ -8,7 +8,6 @@ function SettingsModal({ onClose }) {
   const [enableEncryption, setEnableEncryption] = useState(false);
 
   // STATE: Visual
-  const [crtFilter, setCrtFilter] = useState(false);
   const [windowSize, setWindowSize] = useState('small'); 
 
   // STATE: File
@@ -19,7 +18,6 @@ function SettingsModal({ onClose }) {
     const saved = JSON.parse(localStorage.getItem('retroSettings')) || {};
     
     if (saved.enableEncryption) setEnableEncryption(saved.enableEncryption);
-    if (saved.crtFilter) setCrtFilter(saved.crtFilter);
     if (saved.windowSize) setWindowSize(saved.windowSize); // NEW: Load size
     if (saved.fileFormat) setFileFormat(saved.fileFormat);
   }, []);
@@ -28,7 +26,6 @@ function SettingsModal({ onClose }) {
   const handleSave = () => {
     const settings = {
       enableEncryption,
-      crtFilter,
       windowSize, // NEW: Save size
       fileFormat
     };
@@ -136,17 +133,7 @@ function SettingsModal({ onClose }) {
               {/* TAB 2: VISUAL */}
               {activeTab === 'visual' && (
                 <div className="tab-panel">
-                  <label className="clean-input-row">
-                    <input 
-                      type="checkbox" 
-                      checked={crtFilter} 
-                      onChange={(e) => setCrtFilter(e.target.checked)} 
-                    />
-                    Enable CRT Filter (Scanlines)
-                  </label>
-
                   {/* NEW: Text Entry Window Size Options */}
-                  <hr className="clean-divider" />
                   <p className="clean-panel-label">Text Entry Window Size:</p>
 
                   <label className="clean-input-row">
