@@ -129,7 +129,7 @@ function Journal() {
     if (retro === 'ibm-pc-jr') return "OX-WRITE 1.0";
     if (retro === 'commodore-64') return "*** ADMIRAL 75 WORD PROCESSOR ***";
     if (retro === 'e-ink') return "InkWriter 2008";
-    if (retro === 'windows-xp-2001') return "Doorways Word";
+    if (retro === 'windows-xp-2001') return "Doorways Paper";
     return "RETRO JOURNAL";
   };
 

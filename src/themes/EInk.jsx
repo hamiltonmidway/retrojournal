@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './EInk.css';
 
 function EInk({ 
@@ -11,13 +11,28 @@ function EInk({
   isNightMode,
   setIsNightMode
 }) {
+  // 1. Set up the local clock state
+  const [time, setTime] = useState(new Date());
+
+  // 2. Make the clock tick every minute (no internet required!)
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 60000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="screen">
       
       {/* E-INK HEADER */}
       <div className="e-ink-header">
          <span className="e-ink-title-text">{programName}</span>
-         <span className="e-ink-wifi">Wi-Fi: OFF</span>
+         <span className="e-ink-date">
+            {time.toLocaleDateString(undefined, { 
+               month: 'short', 
+               day: 'numeric', 
+               year: 'numeric' 
+            })}
+         </span>
       </div>
 
       {/* TEXT AREA */}
@@ -52,7 +67,10 @@ function EInk({
          </div>
          <div className="e-ink-status-line">
             <span>Loc {entry.length}</span>
-            <span className="battery-icon">🔋 84%</span>
+            {/* Dynamic local time replacing the battery icon */}
+            <span className="e-ink-time">
+              {time.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}
+            </span>
          </div>
       </div>
 

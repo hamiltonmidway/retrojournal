@@ -51,8 +51,18 @@
 .journal.windows-xp-2001 {
   padding: 0;
   height: 100vh;
-  width: 100vw;
+  width: 100%; /* Changed from 100vw to prevent horizontal scrolling */
   background: linear-gradient(to bottom, #5896e8 0%, #8ebceb 60%, #5ba922 60%, #468c13 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* This completely disables the scrollbars */
+  position: relative; /* Anchors the taskbar perfectly to the window */
+}
+
+.xp-desktop {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

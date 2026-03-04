@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './PeachAqua.css';
 
 function PeachAqua({ 
@@ -11,6 +11,15 @@ function PeachAqua({
   handleExit, 
   programName 
 }) {
+  // 1. Set up the local clock state
+  const [time, setTime] = useState(new Date());
+
+  // 2. Make the clock tick every minute (no internet required!)
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 60000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="aqua-desktop">
       
@@ -29,7 +38,10 @@ function PeachAqua({
             <span>Help</span>
          </div>
          <div className="aqua-menu-right">
-            <span>Mon 9:41 AM</span>
+            {/* Dynamic local day and time */}
+            <span>
+              {time.toLocaleDateString(undefined, { weekday: 'short' })} {time.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}
+            </span>
          </div>
       </div>
 

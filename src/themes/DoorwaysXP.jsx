@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './DoorwaysXP.css';
 
 function DoorwaysXP({ 
@@ -10,18 +10,27 @@ function DoorwaysXP({
   handleExit, 
   programName 
 }) {
+  // 1. Set up the local clock state
+  const [time, setTime] = useState(new Date());
+
+  // 2. Make the clock tick every minute (no internet required!)
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 60000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="xp-desktop">
       
       <div className="xp-window">
         <div className="xp-title-bar">
            <div className="xp-title-text">
-             <span className="xp-app-icon">W</span> {programName} - {fileName || 'Document1'}
+             {/* Swapped "W" for "P" */}
+             <span className="xp-app-icon">P</span> {programName} - {fileName || 'Document1'}
            </div>
            <div className="xp-window-controls">
              <button className="xp-control-btn min">-</button>
              <button className="xp-control-btn max">□</button>
-             {/* Using our secure handleExit tool! */}
              <button className="xp-control-btn close" onClick={handleExit}>×</button>
            </div>
         </div>
@@ -31,7 +40,6 @@ function DoorwaysXP({
         </div>
 
         <div className="xp-toolbar">
-           {/* The icon stays for the retro aesthetic, but the functional button is moved to the bottom! */}
            <button className="xp-tool-btn" title="Save">💾</button>
            <div className="xp-divider"></div>
            <button className="xp-tool-btn">🖨️</button>
@@ -63,17 +71,20 @@ function DoorwaysXP({
       </div>
 
       <div className="xp-taskbar">
-         {/* Using our secure handleExit tool to go back to the menu! */}
          <button className="xp-start-button" onClick={handleExit}>
             <span className="xp-flag">❖</span> start
          </button>
          <div className="xp-task-group">
             <div className="xp-task-item active">
-               <span className="xp-app-icon">W</span> {fileName || 'Document1'}
+               {/* Swapped "W" for "P" */}
+               <span className="xp-app-icon">P</span> {fileName || 'Document1'}
             </div>
          </div>
          <div className="xp-tray">
-            <span className="xp-time">12:00 PM</span>
+            {/* Formatted local time */}
+            <span className="xp-time">
+              {time.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}
+            </span>
          </div>
       </div>
     </div>

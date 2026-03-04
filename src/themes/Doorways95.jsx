@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Doorways95.css';
 
 function Doorways95({ 
@@ -12,6 +12,15 @@ function Doorways95({
   programName 
 }) {
   const lineCount = entry.split('\n').length;
+  
+  // 1. Set up the local clock state
+  const [time, setTime] = useState(new Date());
+
+  // 2. Make the clock tick every minute (no internet required!)
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 60000);
+    return () => clearInterval(timer);
+  }, []);
   
   return (
     <div className="win95-desktop">
@@ -142,7 +151,8 @@ function Doorways95({
           <span className="win95-app-icon">📝</span> Doorways 95 - [{fileName ? fileName : 'Document1'}]
         </div>
         <div className="win95-system-tray">
-          <span>3:27 PM</span>
+          {/* Swapped hardcoded time for the dynamic local time */}
+          <span>{time.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}</span>
         </div>
       </div>
 
