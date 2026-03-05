@@ -2,11 +2,11 @@
   "name": "retrojournal",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
-  "main": "electron/main.js",
+  "main": "main.cjs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "dist": "electron-builder",
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "electron-forge start",
@@ -14,6 +14,30 @@
     "make": "electron-forge make",
     "electron": "electron .",
     "electron:dev": "concurrently -k \"cross-env BROWSER=none npm run dev\" \"wait-on http://localhost:5173 && npm run electron\""
+  },
+  "build": {
+    "appId": "com.hamiltonmidway.retrojournal",
+    "productName": "Retro Journal",
+    "copyright": "Copyright © 2026 Hamilton Midway Enterprises, LLC",
+    "directories": {
+      "output": "release"
+    },
+"files": [
+      "dist/**/*",
+      "main.cjs",
+      "preload.cjs",
+      "package.json",
+      "./" 
+    ],
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
   },
   "dependencies": {
     "crypto-js": "^4.2.0",
@@ -41,6 +65,7 @@
     "concurrently": "^9.2.1",
     "cross-env": "^7.0.3",
     "electron": "^40.4.1",
+    "electron-builder": "^26.8.1",
     "electron-forge-maker-appimage": "^26.7.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",

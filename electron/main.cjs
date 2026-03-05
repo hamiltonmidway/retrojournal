@@ -1,0 +1,180 @@
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const path = require('node:path');
+const fs = require('node:fs/promises');
+
+// === NEW LIBRARIES FOR FILE FORMATTING ===
+const docx = require('docx');
+const { Document, Packer, Paragraph, TextRun } = docx;
+const JSZip = require('jszip');
+const mammoth = require('mammoth');
+
+// (Notice we deleted the __dirname workaround here! 
+// Classic .cjs files have __dirname built-in automatically!)
+
+let mainWindow;
+
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    title: 'Retro Journal',
+    autoHideMenuBar: true, 
+    webPreferences: {
+      // Make sure we point to the newly renamed file!
+      preload: path.join(__dirname, app.isPackaged ? 'preload.cjs' : 'preload.cjs'),
+      contextIsolation: true,
+      nodeIntegration: false,
+    },
+  });
+
+// 1. Force DevTools to open (commenting this out because we don't need this right now)
+  // mainWindow.webContents.openDevTools();
+
+  // 2 & 3. LOAD THE APP (Development vs. Production)
+  if (app.isPackaged) {
+    // PRODUCTION: If the app is compiled into an executable, load the static HTML file!
+    // Note: 'dist' is the standard folder where Vite puts your final built files.
+    mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));
+  } else {
+    // DEVELOPMENT: If we are just testing locally, use the live development server!
+    const devUrl = 'http://127.0.0.1:5173';
+    console.log(`[Main] Attempting to load: ${devUrl}`);
+    mainWindow.loadURL(devUrl).catch((err) => {
+      console.error('[Main] FAILED TO LOAD URL:', err);
+    });
+  }
+}
+
+// === FILE SYSTEM HANDLERS ===
+// === save journal ===
+ipcMain.handle('save-journal', async (event, { fileName, content, format }) => {
+  try {
+    // 1. Determine the extension based on the user's setting
+    const ext = format || 'txt'; 
+    
+    // 2. Configure the save dialog to match that extension
+    const { filePath } = await dialog.showSaveDialog(mainWindow, {
+      title: 'Save Journal Entry',
+      defaultPath: fileName.endsWith(`.${ext}`) ? fileName : `${fileName}.${ext}`,
+      filters: [
+        { name: `${ext.toUpperCase()} File`, extensions: [ext] },
+        { name: 'All Files', extensions: ['*'] }
+      ]
+    });
+
+    if (filePath) {
+      
+      // === FORMAT 1: MICROSOFT WORD (.docx) ===
+      if (format === 'docx') {
+        // Construct a proper Microsoft Word Document
+        const doc = new Document({
+          sections: [{
+            properties: {},
+            children: content.split('\n').map(line => 
+              new Paragraph({
+                children: [new TextRun(line)]
+              })
+            ),
+          }],
+        });
+        
+        const buffer = await Packer.toBuffer(doc);
+        await fs.writeFile(filePath, buffer);
+
+      // === FORMAT 2: OPEN DOCUMENT (.odt) ===
+      } else if (format === 'odt') {
+        // Construct a proper OpenDocument Text file using JSZip
+        const zip = new JSZip();
+        
+        // 1. ODT requires a mimetype file (must be uncompressed in a strict spec, but standard text works fine)
+        zip.file('mimetype', 'application/vnd.oasis.opendocument.text');
+        
+        // 2. The manifest tells LibreOffice what is inside the zip
+        const manifestXML = `<?xml version="1.0" encoding="UTF-8"?>
+<manifest:manifest xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0" manifest:version="1.2">
+  <manifest:file-entry manifest:full-path="/" manifest:media-type="application/vnd.oasis.opendocument.text"/>
+  <manifest:file-entry manifest:full-path="content.xml" manifest:media-type="text/xml"/>
+</manifest:manifest>`;
+        zip.folder('META-INF').file('manifest.xml', manifestXML);
+        
+        // 3. The actual text content (we escape XML characters to prevent crashes if they type < or &)
+        const paragraphs = content.split('\n').map(line => {
+           const safeLine = line.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+           return `<text:p>${safeLine}</text:p>`;
+        }).join('');
+        
+        const contentXML = `<?xml version="1.0" encoding="UTF-8"?>
+<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" office:version="1.2">
+  <office:body>
+    <office:text>
+      ${paragraphs}
+    </office:text>
+  </office:body>
+</office:document-content>`;
+        zip.file('content.xml', contentXML);
+        
+        // Generate the final zipped buffer and write it to disk
+        const buffer = await zip.generateAsync({ type: 'nodebuffer' });
+        await fs.writeFile(filePath, buffer);
+
+      // === FORMAT 3 & 4: PLAIN TEXT (.txt & .md) ===
+      } else {
+        await fs.writeFile(filePath, content, 'utf-8');
+      }
+      
+      return { success: true, path: filePath };
+    }
+    return { canceled: true };
+  } catch (err) {
+    return { error: err.message };
+  }
+});
+
+// === load journal ===
+ipcMain.handle('load-journal', async (event) => {
+  try {
+    const { filePaths } = await dialog.showOpenDialog(mainWindow, {
+      properties: ['openFile'],
+      filters: [
+        // Added docx and odt to the allowed file types!
+        { name: 'Documents', extensions: ['txt', 'md', 'docx', 'odt'] } 
+      ]
+    });
+
+    if (filePaths && filePaths.length > 0) {
+      const filePath = filePaths[0];
+      const ext = filePath.split('.').pop().toLowerCase();
+
+      // === FORMAT 1: PLAIN TEXT (.txt, .md) ===
+      if (ext === 'txt' || ext === 'md') {
+        return await fs.readFile(filePath, 'utf-8');
+      }
+
+      // === FORMAT 2: MICROSOFT WORD (.docx) ===
+      if (ext === 'docx') {
+        // Mammoth easily rips out the raw text, ignoring complex MS Word formatting
+        const result = await mammoth.extractRawText({ path: filePath });
+        return result.value; 
+      }
+
+      // === FORMAT 3: OPEN DOCUMENT (.odt) ===
+      if (ext === 'odt') {
+        // ODTs are just zip files! We read the file, unzip it, and grab content.xml
+        const fileBuffer = await fs.readFile(filePath);
+        const zip = await JSZip.loadAsync(fileBuffer);
+        const xmlContent = await zip.file('content.xml').async('string');
+        
+        // Strip out all the XML tags (<text:p>, etc.) to leave just the raw string
+        const rawText = xmlContent.replace(/<[^>]+>/g, '\n').replace(/\n+/g, '\n').trim();
+        return rawText;
+      }
+    }
+    return null;
+  } catch (err) {
+    return { error: err.message };
+  }
+});
+
+app.whenReady().then(createWindow);
+app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });
+app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });

@@ -1,14 +1,15 @@
-import { app, BrowserWindow, ipcMain, dialog } from 'electron';
-import { fileURLToPath } from 'node:url';
-import path from 'node:path';
-import fs from 'node:fs/promises';
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const path = require('node:path');
+const fs = require('node:fs/promises');
 
 // === NEW LIBRARIES FOR FILE FORMATTING ===
-import { Document, Packer, Paragraph, TextRun } from 'docx';
-import JSZip from 'jszip';
-import mammoth from 'mammoth';
+const docx = require('docx');
+const { Document, Packer, Paragraph, TextRun } = docx;
+const JSZip = require('jszip');
+const mammoth = require('mammoth');
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// (Notice we deleted the __dirname workaround here! 
+// Classic .cjs files have __dirname built-in automatically!)
 
 let mainWindow;
 
@@ -19,23 +20,29 @@ function createWindow() {
     title: 'Retro Journal',
     autoHideMenuBar: true, 
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      // Make sure we point to the newly renamed file!
+      preload: path.join(__dirname, app.isPackaged ? 'preload.cjs' : 'preload.cjs'),
       contextIsolation: true,
       nodeIntegration: false,
     },
   });
 
-  // 1. Force DevTools to open (commenting this out because we don't need this right now)
+// 1. Force DevTools to open (commenting this out because we don't need this right now)
   // mainWindow.webContents.openDevTools();
 
-  // 2. USE 127.0.0.1 (More reliable on Linux than localhost)
-  const devUrl = 'http://127.0.0.1:5173';
-  console.log(`[Main] Attempting to load: ${devUrl}`);
-
-  // 3. LOAD URL (With NO crashing backup plan)
-  mainWindow.loadURL(devUrl).catch((err) => {
-    console.error('[Main] FAILED TO LOAD URL:', err);
-  });
+  // 2 & 3. LOAD THE APP (Development vs. Production)
+  if (app.isPackaged) {
+    // PRODUCTION: If the app is compiled into an executable, load the static HTML file!
+    // Note: 'dist' is the standard folder where Vite puts your final built files.
+    mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));
+  } else {
+    // DEVELOPMENT: If we are just testing locally, use the live development server!
+    const devUrl = 'http://127.0.0.1:5173';
+    console.log(`[Main] Attempting to load: ${devUrl}`);
+    mainWindow.loadURL(devUrl).catch((err) => {
+      console.error('[Main] FAILED TO LOAD URL:', err);
+    });
+  }
 }
 
 // === FILE SYSTEM HANDLERS ===
