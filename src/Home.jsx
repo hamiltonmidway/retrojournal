@@ -4,18 +4,18 @@ import SettingsModal from './modals/SettingsModal';
 import ParodyModal from './modals/ParodyModal';
 import CreditsModal from './modals/CreditsModal'; 
 import AboutModal from './modals/AboutModal'; 
-import AppleIIePreviewPicture from "../public/previews/apple-iie.png"
-import Commodore64PreviewPicture from "../public/previews/commodore-64.png"
-import Atari400PreviewPicture from "../public/previews/atari-400.png"
-import IBMPCJrPreviewPicture from "../public/previews/ibm-pc-jr.png"
-import AppleMacintoshPreviewPicture from "../public/previews/apple-mac-1985.png"
-import DOS1987PreviewPicture from "../public/previews/dos-1987.png"
-import MicrosoftWindows31PreviewPicture from "../public/previews/windows-31-1990.png"
-import AppleMacOS7PreviewPicture from "../public/previews/mac-system-7-1994.png"
-import MicrosoftWindows95PreviewPicture from "../public/previews/windows-95.png"
-import ApplePeachAquaPreviewPicture from "../public/previews/mac-osx-2001.png"
-import MicrosoftWindowsXPPreviewPicture from "../public/previews/windows-xp-2001.png"
-import EInkPreviewPicture from "../public/previews/e-ink.png"
+import AppleIIePreviewPicture from "./previews/apple-iie.png"
+import Commodore64PreviewPicture from "./previews/commodore-64.png"
+import Atari400PreviewPicture from "./previews/atari-400.png"
+import IBMPCJrPreviewPicture from "./previews/ibm-pc-jr.png"
+import AppleMacintoshPreviewPicture from "./previews/apple-mac-1985.png"
+import DOS1987PreviewPicture from "./previews/dos-1987.png"
+import MicrosoftWindows31PreviewPicture from "./previews/windows-31-1990.png"
+import AppleMacOS7PreviewPicture from "./previews/mac-system-7-1994.png"
+import MicrosoftWindows95PreviewPicture from "./previews/windows-95.png"
+import ApplePeachAquaPreviewPicture from "./previews/mac-osx-2001.png"
+import MicrosoftWindowsXPPreviewPicture from "./previews/windows-xp-2001.png"
+import EInkPreviewPicture from "./previews/e-ink.png"
 import './Home.css';
 
 // We are officially updating the vibes array!
@@ -276,8 +276,8 @@ function Home() {
 
         <div className="monitor-bezel">
           <div className="monitor-screen">
-            <div className="preview-content" key={selectedVibe.id}>
-               <img src={`/previews/${selectedVibe.id}.png`} 
+               <div className="preview-content" key={selectedVibe.id}>
+               <img src={selectedVibe.preview} 
                   alt={selectedVibe.label}
                   className="preview-image"
                   onError={(e) => {
