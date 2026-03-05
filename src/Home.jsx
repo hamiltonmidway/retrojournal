@@ -4,23 +4,36 @@ import SettingsModal from './modals/SettingsModal';
 import ParodyModal from './modals/ParodyModal';
 import CreditsModal from './modals/CreditsModal'; 
 import AboutModal from './modals/AboutModal'; 
+import AppleIIePreviewPicture from "../public/previews/apple-iie.png"
+import Commodore64PreviewPicture from "../public/previews/commodore-64.png"
+import Atari400PreviewPicture from "../public/previews/atari-400.png"
+import IBMPCJrPreviewPicture from "../public/previews/ibm-pc-jr.png"
+import AppleMacintoshPreviewPicture from "../public/previews/apple-mac-1985.png"
+import DOS1987PreviewPicture from "../public/previews/dos-1987.png"
+import MicrosoftWindows31PreviewPicture from "../public/previews/windows-31-1990.png"
+import AppleMacOS7PreviewPicture from "../public/previews/mac-system-7-1994.png"
+import MicrosoftWindows95PreviewPicture from "../public/previews/windows-95.png"
+import ApplePeachAquaPreviewPicture from "../public/previews/mac-osx-2001.png"
+import MicrosoftWindowsXPPreviewPicture from "../public/previews/windows-xp-2001.png"
+import EInkPreviewPicture from "../public/previews/e-ink.png"
 import './Home.css';
 
-// Keep the vibes array exactly as it is!
+// We are officially updating the vibes array!
 const vibes = [
-  { id: 'apple-iie', label: 'Peach //e' },
-  { id: 'commodore-64', label: 'Admiral 75' },
-  { id: 'atari-400', label: 'Olari 500' },
-  { id: 'ibm-pc-jr', label: 'Big Blue Ox Jr' },
-  { id: 'apple-mac-1985', label: 'MacAndCheese' },
-  { id: 'dos-1987', label: 'DX-DISK 87' },
-  { id: 'windows-31-1990', label: 'Doorways 3.1' },
-  { id: 'mac-system-7-1994', label: 'Peach OS 7' },
-  { id: 'windows-95', label: 'Doorways 95' },
-  { id: 'mac-osx-2001', label: 'Peach Aqua' },
-  { id: 'windows-xp-2001', label: 'Doorways XP' },
-  { id: 'e-ink', label: 'Electronic Paper' },
+  { id: 'apple-iie', label: 'Peach //e', preview: AppleIIePreviewPicture },
+  { id: 'commodore-64', label: 'Admiral 75', preview: Commodore64PreviewPicture },
+  { id: 'atari-400', label: 'Olari 500', preview: Atari400PreviewPicture },
+  { id: 'ibm-pc-jr', label: 'Big Blue Ox Jr', preview: IBMPCJrPreviewPicture },
+  { id: 'apple-mac-1985', label: 'MacAndCheese', preview: AppleMacintoshPreviewPicture },
+  { id: 'dos-1987', label: 'DX-DISK 87', preview: DOS1987PreviewPicture },
+  { id: 'windows-31-1990', label: 'Doorways 3.1', preview: MicrosoftWindows31PreviewPicture },
+  { id: 'mac-system-7-1994', label: 'Peach OS 7', preview: AppleMacOS7PreviewPicture },
+  { id: 'windows-95', label: 'Doorways 95', preview: MicrosoftWindows95PreviewPicture },
+  { id: 'mac-osx-2001', label: 'Peach Aqua', preview: ApplePeachAquaPreviewPicture },
+  { id: 'windows-xp-2001', label: 'Doorways XP', preview: MicrosoftWindowsXPPreviewPicture },
+  { id: 'e-ink', label: 'Electronic Paper', preview: EInkPreviewPicture },
 ];
+
 
 // === NEW: EASTER EGG FONT ARRAY ===
 // Make sure these names match exactly what you called them in your CSS @font-face rules!
@@ -264,15 +277,14 @@ function Home() {
         <div className="monitor-bezel">
           <div className="monitor-screen">
             <div className="preview-content" key={selectedVibe.id}>
-              <img 
-                src={`/previews/${selectedVibe.id}.png`} 
-                alt={selectedVibe.label}
-                className="preview-image"
-                onError={(e) => {
+               <img src={`/previews/${selectedVibe.id}.png`} 
+                  alt={selectedVibe.label}
+                  className="preview-image"
+                  onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.nextSibling.style.display = 'flex';
-                }}
-              />
+                  }}
+                  />
               <div className="preview-text-fallback" style={{display: 'none'}}>
                   <h1>PREVIEW: {selectedVibe.label}</h1>
                   <p>System Ready.</p>
