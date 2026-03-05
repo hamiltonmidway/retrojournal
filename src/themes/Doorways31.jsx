@@ -1,6 +1,7 @@
 import React from 'react';
 import './Doorways31.css';
 
+
 function Doorways31({ 
   entry, 
   setEntry, 
@@ -84,6 +85,7 @@ function Doorways31({
             <span>. . . . 1 . . . . 2 . . . . 3 . . . . 4 . . . . 5 . . . . 6 . . . . 7</span>
             <span>]</span>
         </div>
+
 
         {/* 6. CONTENT AREA (White Paper) */}
         <div className="win31-content-wrapper">
