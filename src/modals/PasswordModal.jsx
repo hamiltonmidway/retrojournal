@@ -24,7 +24,7 @@ function PasswordModal({ mode, fileName, onSubmit, onClose }) {
         return;
       }
       if (!hasWrittenDown) {
-        setError('You must check the box confirming you have saved your password.');
+        setError('You must check the box confirming you have written down your password somewhere.');
         return;
       }
     }
@@ -48,6 +48,13 @@ function PasswordModal({ mode, fileName, onSubmit, onClose }) {
               ? `You are about to secure "${fileName}" with AES-256 encryption.`
               : `"${fileName}" is encrypted. Enter your key to read it.`}
           </p>
+
+          {/* NEW EXPLICIT WARNING FOR ENCRYPTION MODE */}
+          {mode === 'encrypt' && (
+             <p className="warning-text" style={{ fontWeight: 'bold', marginBottom: '15px', marginTop: '10px' }}>
+               WARNING: Make sure you understand the risks of losing your encryption key before you enable this setting. We cannot help you recover your encryption key if you lose it.
+             </p>
+          )}
 
           <form onSubmit={handleSubmit} className="password-form">
             

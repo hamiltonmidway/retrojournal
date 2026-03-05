@@ -2,26 +2,87 @@
 /* PEACH OS 7 (Mac System 7 / Word 5.1 Parody) - Journal Screen Layout        */
 /* -------------------------------------------------------------------------- */
 
+
+
+
+
 .mac-system-7-1994 .screen {
-  background-color: #a5a5a5; /* Classic Mac Desktop Desktop Pattern Color */
+  background-color: #a5a5a5; 
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2"><rect width="1" height="1" fill="%23888"/><rect x="1" y="1" width="1" height="1" fill="%23888"/></svg>');
-  padding: 2rem;
+  /* Changed to only pad the top for the menu bar, allowing margins to handle the rest! */
+  padding: 33px 0 0 0; 
+  display: flex;
+  flex-direction: column; /* THE DEVTOOLS FIX: Forces the window to stretch vertically! */
+  align-items: center;
+  justify-content: center;
+  position: relative; 
+  box-sizing: border-box;
+}
+
+/* === NEW: GLOBAL MENU BAR === */
+.os7-global-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 33px; /* Scaled exactly 50% up from 22px! */
+  background-color: #fff;
+  border-bottom: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px; /* Bumped this slightly to balance the bigger text */
+  font-family: 'MacSystem7', 'Chicago', sans-serif;
+  font-size: 21px; /* Scaled exactly 50% up from 14px! */
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.os7-menu-left, .os7-menu-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.os7-apple-menu {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+}
+
+.os7-menu-item {
+  cursor: pointer;
+  color: #000;
+  padding: 0 4px;
+}
+
+.os7-menu-item:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.os7-menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0 4px;
 }
 
 /* 1. THE WINDOW FRAME */
 .os7-window {
-  width: 100%;
-  max-width: 850px;
-  height: 90%;
+  width: 95%; /* Replaces the fixed 100% to give it standard breathing room */
+  flex-grow: 1; /* Replaces the fixed 90% height to automatically stretch */
+  margin-top: 22px; /* Standard medium dead space */
+  margin-bottom: 22px; 
   background-color: #fff;
   border: 1px solid #000;
   box-shadow: 2px 2px 0px rgba(0,0,0,0.5); /* Hard drop shadow */
   display: flex;
   flex-direction: column;
 }
+
 
 /* 2. THE STRIPED TITLE BAR */
 .os7-title-bar {
@@ -168,9 +229,9 @@
   resize: none;
   outline: none;
   padding: 20px;
-  /* MS Word 5.1 usually defaulted to New York or Times */
-  font-family: 'Times New Roman', Times, serif; 
-  font-size: 18px;
+  /* Updated to the classic Chicago pixel font! */
+  font-family: 'MacSystem7', sans-serif; 
+  font-size: 24px; /* You can tweak this if the pixel font feels too big/small! */
   line-height: 1.4;
   color: #000;
 }
@@ -269,4 +330,25 @@
   width: 40%; /* Stuck at 40% forever */
   height: 100%;
   background-color: #4b62b0; /* Matches the dark blue of the logo */
+}
+
+/* ========================================================================== */
+/* WINDOW SIZE SETTINGS OVERRIDES                                             */
+/* ========================================================================== */
+
+/* FULL SCREEN MODE */
+.size-full .os7-window {
+  width: 100%;
+  margin-top: 0; /* Tucks perfectly flush against the global menu bar! */
+  margin-bottom: 0; /* Touches the bottom edge of the screen */
+  border: none; /* Removes the border for pure writing immersion */
+  box-shadow: none; /* Removes the drop shadow */
+}
+
+/* SMALL SCREEN MODE */
+.size-small .os7-window {
+  width: 75%; 
+  max-width: 850px; /* Keeps it cozy on massive monitors */
+  margin-top: 60px; /* Generates extra dead space at the top */
+  margin-bottom: 60px; /* Generates extra dead space at the bottom */
 }

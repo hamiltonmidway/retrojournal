@@ -6,6 +6,7 @@ import fs from 'node:fs/promises';
 // === NEW LIBRARIES FOR FILE FORMATTING ===
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import JSZip from 'jszip';
+import mammoth from 'mammoth';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -127,10 +128,39 @@ ipcMain.handle('load-journal', async (event) => {
   try {
     const { filePaths } = await dialog.showOpenDialog(mainWindow, {
       properties: ['openFile'],
-      filters: [{ name: 'Text Documents', extensions: ['txt', 'md'] }]
+      filters: [
+        // Added docx and odt to the allowed file types!
+        { name: 'Documents', extensions: ['txt', 'md', 'docx', 'odt'] } 
+      ]
     });
+
     if (filePaths && filePaths.length > 0) {
-      return await fs.readFile(filePaths[0], 'utf-8');
+      const filePath = filePaths[0];
+      const ext = filePath.split('.').pop().toLowerCase();
+
+      // === FORMAT 1: PLAIN TEXT (.txt, .md) ===
+      if (ext === 'txt' || ext === 'md') {
+        return await fs.readFile(filePath, 'utf-8');
+      }
+
+      // === FORMAT 2: MICROSOFT WORD (.docx) ===
+      if (ext === 'docx') {
+        // Mammoth easily rips out the raw text, ignoring complex MS Word formatting
+        const result = await mammoth.extractRawText({ path: filePath });
+        return result.value; 
+      }
+
+      // === FORMAT 3: OPEN DOCUMENT (.odt) ===
+      if (ext === 'odt') {
+        // ODTs are just zip files! We read the file, unzip it, and grab content.xml
+        const fileBuffer = await fs.readFile(filePath);
+        const zip = await JSZip.loadAsync(fileBuffer);
+        const xmlContent = await zip.file('content.xml').async('string');
+        
+        // Strip out all the XML tags (<text:p>, etc.) to leave just the raw string
+        const rawText = xmlContent.replace(/<[^>]+>/g, '\n').replace(/\n+/g, '\n').trim();
+        return rawText;
+      }
     }
     return null;
   } catch (err) {

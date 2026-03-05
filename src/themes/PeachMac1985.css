@@ -46,7 +46,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 32px; /* Leaves 24px for the menu bar + an 8px gap */
+  padding-top: 44px; /* Leaves 36px for the thicker menu bar + an 8px gap */
   padding-bottom: 16px;
   box-sizing: border-box;
 }
@@ -69,7 +69,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 24px;
+  height: 36px; /* Scaled exactly 50% up from 24px! */
   background: #fff;
   border-bottom: 2px solid #000;
   display: flex;
@@ -80,13 +80,13 @@
 }
 
 .mac-menu-apple {
-  font-size: 16px;
+  font-size: 24px; /* Scaled exactly 50% up from 16px! */
   margin-right: 10px;
   filter: grayscale(100%) brightness(0); /* Turns the emoji into a solid black silhouette! */
 }
 
 .mac-menu-item {
-  font-size: 14px;
+  font-size: 21px; /* Scaled exactly 50% up from 14px! */
   color: #000;
   cursor: pointer;
 }
@@ -189,7 +189,7 @@
   outline: none;
   padding: 10px;
   font-family: 'AppleMac1985', 'Geneva', sans-serif;
-  font-size: 18px; 
+  font-size: 23px; 
   line-height: 1.5;
 }
 
@@ -264,8 +264,8 @@
 
 /* FULL SCREEN MODE */
 .size-full .mac-desktop {
-  /* The menu bar is exactly 24px tall, so 24px padding tucks it right underneath */
-  padding-top: 24px; 
+  /* Tucks it perfectly flush underneath the new 36px menu bar */
+  padding-top: 36px; 
   padding-bottom: 0;
 }
 
@@ -279,8 +279,8 @@
 
 /* SMALL SCREEN MODE */
 .size-small .mac-desktop {
-  /* The menu bar is 24px, so 80px gives a massive, distinct gap! */
-  padding-top: 80px; 
+  /* Bumped up slightly to 90px to maintain a massive, distinct gap! */
+  padding-top: 90px; 
   padding-bottom: 40px; 
 }
 

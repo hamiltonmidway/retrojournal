@@ -85,7 +85,10 @@ function SettingsModal({ onClose }) {
                   
                   {/* EXPLANTION BOX */}
                   <div className="encryption-explanation">
-                    <h4>How it works:</h4>
+                    <h4><u>WARNING:  Make sure you understand the risk of being locked out of your journal before you enable encryption.</u></h4>
+                    <p>
+                    </p>  
+                    <h4> How it works:</h4>
                     <p>
                       When you save or load a file, you will be prompted to enter a password. 
                       <strong> This password is never saved anywhere in the app.</strong> Instead, 
@@ -120,8 +123,8 @@ function SettingsModal({ onClose }) {
 
                     <h4 className="warning-text">⚠️ CRITICAL WARNING:</h4>
                     <p className="warning-text">
-                      When most people think of a password, they think of something that is temporary.   
-                      This isn't temporary; this is the one-time, permanent, unchanging encryption key for your journal.
+                      When most people think of a password, they think of something that is temporary, that can be changed later on.  
+                      This is not changeable, this isn't temporary; this is the one-time, permanent, unchanging encryption key for your journal.
                       Because your password *is* the encryption key, <strong>it cannot be reset or changed</strong>. 
                       If you forget your password, your journal is gone forever. It cannot be recovered, it cannot be retrieved.  It's gone.  We cannot help you recover a 
                       lost password because we have absolutely no idea what your password is!

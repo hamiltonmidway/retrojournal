@@ -229,7 +229,7 @@
 }
 
 .dx-text, .disk-text {
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'EB-Garamond', serif;
   font-weight: 900; /* Super heavy */
   font-style: italic; /* The Key Feature! */
   font-size: 3.5rem;
@@ -238,7 +238,7 @@
 }
 
 .number-87 {
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Michroma', serif;
   font-weight: 400; /* Lighter weight for the number, often seen on boxes */
   font-style: italic;
   font-size: 3.5rem;
@@ -247,7 +247,7 @@
 }
 
 .dos-subtitle {
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Michroma', serif;
   font-style: italic;
   font-size: 0.9rem;
   color: #444;
